@@ -9,6 +9,8 @@ public class SelectManyTestBlock : AbstractBlock
 {
     [SerializeField]
     private TestVariantAction[] _possibleActions;
+    [SerializeField]
+    private TestVariantAction[] _Folding_Action;
 
     [SerializeField]
     private RectTransform _buttonsHolder;
@@ -24,7 +26,18 @@ public class SelectManyTestBlock : AbstractBlock
 
     private void Start()
     {
-        float btnsHeight = ButtonsPadding;
+        if(GameManager.Instance._currentCommand.IsFolding && _Folding_Action.Length !=0){
+            Setting_Options(_Folding_Action);
+        }
+        else{
+            Setting_Options(_possibleActions);
+        }       
+    }
+
+
+    private void Setting_Options(TestVariantAction[] _options){
+
+         float btnsHeight = ButtonsPadding;
         _updateActions = new UnityEvent();
 
         var btnTextTransform = ButtonPrefab.GetComponentInChildren<Text>().transform as RectTransform;
@@ -32,7 +45,7 @@ public class SelectManyTestBlock : AbstractBlock
 
         var btns = new List<Toggle>();
 
-        foreach (var a in _possibleActions)
+        foreach (var a in  _options)
         {
             var instance = Instantiate(ButtonPrefab);
             instance.transform.SetParent(_buttonsHolder, false);

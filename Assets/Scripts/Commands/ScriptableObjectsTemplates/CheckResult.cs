@@ -27,7 +27,7 @@ public class CheckResult : MonoBehaviour
 
         if (IKO_Controll.Instance == null)
             return;
-        Report_text.text = IKO_Controll.Instance.Str_Mistakes + " Ошибок: " + IKO_Controll.Instance.Mistakes;
+        //Report_text.text = IKO_Controll.Instance.Str_Mistakes + " пїЅпїЅпїЅпїЅпїЅпїЅ: " + IKO_Controll.Instance.Mistakes;
     }
 
     public void ShowFailMessage()
@@ -37,7 +37,7 @@ public class CheckResult : MonoBehaviour
 
         if (IKO_Controll.Instance == null)
             return;
-        Report_text.text = IKO_Controll.Instance.Str_Mistakes + " Ошибок: " + IKO_Controll.Instance.Mistakes;
+        //Report_text.text = IKO_Controll.Instance.Str_Mistakes + " пїЅпїЅпїЅпїЅпїЅпїЅ: " + IKO_Controll.Instance.Mistakes;
 
     }
 
