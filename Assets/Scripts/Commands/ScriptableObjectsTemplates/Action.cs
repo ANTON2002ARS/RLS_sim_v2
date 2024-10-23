@@ -9,7 +9,7 @@ using UnityEditor;
 public abstract class Action : ScriptableObject
 {
     [Header("Action base fields")]
-    public string ActionName;
+    [Multiline] public string ActionName;
     public bool isUnordored;
     public UnordoredActionGroup relatedActionGroup;
 

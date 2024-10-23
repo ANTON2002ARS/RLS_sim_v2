@@ -35,4 +35,5 @@ public class Command : ScriptableObject
     public Action[] ActionsPos5;
 
     public bool IsTestOnly;
+    public bool IsFolding;
 }
