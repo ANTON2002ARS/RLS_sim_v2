@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System.IO;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
     public float RoleButtonsSpacing;
 
     // state
-    public Command _currentCommand;
+    public Command _currentCommand; 
     private int _personRole;
     private List<Action> actions = new List<Action>();
     private bool _testPassed;
@@ -111,7 +113,51 @@ public class GameManager : MonoBehaviour
         Tooltip.Hide();
         _iko?.gameObject.SetActive(true);
         _iko?.CloseIko();
+
+        //WriteToFile(CommandList[0]);
+        //WriteToFile(CommandList[1]);
+        //WriteToFile(CommandList[2]);
     }
+
+     public void WriteToFile(Command _command)
+       {
+            string fileName = "Answer_"+_command.CommandName +".ini"; 
+            string filePath = Path.Combine(Application.dataPath, fileName); // Полный путь к файлу
+            
+            // Проверка, существует ли уже файл с таким именем
+            
+                if (File.Exists(filePath))
+                    {
+                        Debug.LogWarning("Файл с таким именем уже существует!");
+                        return;
+                    }
+            using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    writer.WriteLine(_command.CommandName);
+                    writer.WriteLine("номер 1:");
+                    foreach (Action ans in _command.ActionsPos1){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                    writer.WriteLine("номер 2:");
+                    foreach (Action ans in _command.ActionsPos2){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                    writer.WriteLine("номер 3:");
+                    foreach (Action ans in _command.ActionsPos3){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                    writer.WriteLine("номер 4:");
+                    foreach (Action ans in _command.ActionsPos4){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                    writer.WriteLine("номер 5:");
+                    foreach (Action ans in _command.ActionsPos5){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                }
+        Debug.Log($"Файл {fileName} успешно создан!");
+    }
+
 
     private void StartCommandScript(Command command)
     {
