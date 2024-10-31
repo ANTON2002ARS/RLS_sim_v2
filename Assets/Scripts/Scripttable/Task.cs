@@ -18,7 +18,9 @@ public class Task : ScriptableObject
 
     //public List<GameObject> Command_need;  
 
-    public bool IKO_PRS;    
+    public bool IKO_PRS;   
+    
+
     
 }
 
