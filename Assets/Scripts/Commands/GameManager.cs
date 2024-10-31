@@ -119,7 +119,15 @@ public class GameManager : MonoBehaviour
         //WriteToFile(CommandList[2]);
     }
 
-     public void WriteToFile(Command _command)
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.H))
+        {
+            PassCheck();
+        }
+    }
+
+    public void WriteToFile(Command _command)
        {
             string fileName = "Answer_"+_command.CommandName +".ini"; 
             string filePath = Path.Combine(Application.dataPath, fileName); // Полный путь к файлу
