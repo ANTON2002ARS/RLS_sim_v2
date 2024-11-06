@@ -68,12 +68,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdac48bf6a831894395621267e9bd294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action_v:
-  - {fileID: 0}
-  - {fileID: 0}
-  first_pos_z: 0
-  secont_pos_z: 0
+  list_switch:
+  - angle: -60
+    Action_sw: {fileID: 0}
+  - angle: -120
+    Action_sw: {fileID: 0}
+  first_pos_z: -60
+  secont_pos_z: -120
   lever: {fileID: 7198714797635446527}
+  _number_turnig: 0
 --- !u!1 &6794704554976869387
 GameObject:
   m_ObjectHideFlags: 0
