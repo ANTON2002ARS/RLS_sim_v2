@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class Action_Blocks
 {
-    public Abst_Block of_Blocks;
+    public Abst_Toggles of_Blocks;
     public List<switch_position> Command_need;      
 }
 
