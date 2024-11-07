@@ -3,16 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class tumbler_V : MonoBehaviour
+public class tumbler_V : Abst_Toggles
 {
-    [SerializeField] private switch_position first_action;
-    [SerializeField] private float first_pos_z;
-    [SerializeField] private UnityEvent action_of_first;
-    [SerializeField] private switch_position second_action;
-    [SerializeField] private float secont_pos_z;
-    [SerializeField] private UnityEvent action_of_second;
-    [SerializeField] private Transform lever; 
+    [SerializeField] private Position_krutilka[] list_switch;  
+    [SerializeField] private Transform lever;
+    [SerializeField] private Abst_Block Block_use;
+    [SerializeField] private int _number_turnig;
 
-    private void Event_Action_to_first() => action_of_first?.Invoke();
-    private void Event_Action_to_second() => action_of_second?.Invoke();
+    private void OnTriggerEnter(Collider other)
+    {
+        _number_turnig++;
+        if(_number_turnig >= list_switch.Length)
+            _number_turnig = 0;
+        
+        Establish_pos(list_switch[_number_turnig]);             
+    }
+
+    public override void Establish_pos(Position_krutilka position_Krutilka)
+    {
+        lever.rotation = Quaternion.Euler(position_Krutilka.angle,0f,0f);
+        Del_Action(list_switch[_number_turnig == 1 ? 1: 0], Block_use);
+        Add_Status_to_blocks(position_Krutilka.Action_sw, Block_use);
+    }    
+
+    
+    public override void Reset_Switches(bool is_reset)
+    {
+        _number_turnig = 0;
+        Establish_pos(list_switch[_number_turnig]);    
+    }
+
+    
 }
