@@ -119,9 +119,6 @@ public class GameManager : MonoBehaviour
         //WriteToFile(CommandList[2]);
     }
 
-<<<<<<< HEAD
-     public void WriteToFile(Command _command)
-=======
     private void Update()
     {
         if (Input.GetKey(KeyCode.H))
@@ -131,7 +128,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void WriteToFile(Command _command)
->>>>>>> for-ARS
        {
             string fileName = "Answer_"+_command.CommandName +".ini"; 
             string filePath = Path.Combine(Application.dataPath, fileName); // Полный путь к файлу
