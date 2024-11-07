@@ -119,7 +119,19 @@ public class GameManager : MonoBehaviour
         //WriteToFile(CommandList[2]);
     }
 
+<<<<<<< HEAD
      public void WriteToFile(Command _command)
+=======
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.H))
+        {
+            PassCheck();
+        }
+    }
+
+    public void WriteToFile(Command _command)
+>>>>>>> for-ARS
        {
             string fileName = "Answer_"+_command.CommandName +".ini"; 
             string filePath = Path.Combine(Application.dataPath, fileName); // Полный путь к файлу
@@ -202,7 +214,7 @@ public class GameManager : MonoBehaviour
 
     public async void BackToCommandSelect()
     {
-        if (_personRole != 0 && !_testPassed && !await ShureCheck.CheckIfShure()) return;
+        // if (_personRole != 0 && !_testPassed && !await ShureCheck.CheckIfShure()) return;
         _currentCommand = null;
         _personRole = 0;
         CommandSelect.SetActive(true);
@@ -226,7 +238,7 @@ public class GameManager : MonoBehaviour
 
     public async void BackToRoleSelect()
     {
-        if (!await ShureCheck.CheckIfShure()) return;
+       // if (!await ShureCheck.CheckIfShure()) return;
         _personRole = 0;
         CommandSelect.SetActive(false);
         RoleSelect.SetActive(true);
@@ -408,7 +420,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void RemoveFromState(Action a) => actions.Remove(a);    
+    public void RemoveFromState(Action a) => actions.Remove(a);
+
+    public void Exit_App() => Application.Quit();
 
     private List<Action> GetCurrentRoleActions()
     {

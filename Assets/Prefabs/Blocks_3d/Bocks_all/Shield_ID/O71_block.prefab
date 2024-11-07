@@ -2645,6 +2645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9048653887972900307}
+  - component: {fileID: 7800876660883953217}
   m_Layer: 0
   m_Name: O71_block
   m_TagString: Untagged
@@ -2669,6 +2670,18 @@ Transform:
   - {fileID: 3480893095629239370}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7800876660883953217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851572941662314475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4dc711a04570cf38f19690c0e2fba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8884274068337799518
 GameObject:
   m_ObjectHideFlags: 0
@@ -4198,6 +4211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4478464736625044075, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+      propertyPath: Block_use
+      value: 
+      objectReference: {fileID: 7800876660883953217}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6864,6 +6881,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4478464736625044075, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+      propertyPath: Block_use
+      value: 
+      objectReference: {fileID: 7800876660883953217}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
