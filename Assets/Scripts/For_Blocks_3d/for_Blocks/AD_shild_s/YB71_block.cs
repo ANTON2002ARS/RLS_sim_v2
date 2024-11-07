@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YB71_block : MonoBehaviour
+public class YB71_block : Abst_Block
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public override List<switch_position> Action_Toggles { get; set; }
 
-    // Update is called once per frame
-    void Update()
+    public override void Set_Status(switch_position switch_position)
     {
-        
+        Debug.Log("Получен статус переключение" + switch_position.name);
+        Action_Toggles.Add(switch_position);
     }
 }
