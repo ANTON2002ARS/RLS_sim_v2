@@ -6,4 +6,5 @@ using UnityEngine;
 public class switch_position : ScriptableObject
 {
    [TextArea]public string Text_Button; 
+   public UnityEngine.Events.UnityEvent WhenFinished;
 }
