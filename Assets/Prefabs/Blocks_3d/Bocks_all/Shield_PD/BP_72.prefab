@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3333757262975813394}
+  - component: {fileID: 771703162060883349}
   m_Layer: 0
   m_Name: BP_72
   m_TagString: Untagged
@@ -31,9 +32,20 @@ Transform:
   m_Children:
   - {fileID: 8224194487456811350}
   - {fileID: 843840668288315012}
-  - {fileID: 5941473835805651069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &771703162060883349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804729240942126378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bec62941aff373d8b73c46f63054bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1422069405319270816
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +90,7 @@ Transform:
   - {fileID: 1967142854905547254}
   - {fileID: 4417847803987003838}
   - {fileID: 93163295406786969}
-  m_Father: {fileID: 3333757262975813394}
+  m_Father: {fileID: 843840668288315012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2238149758225289150
 GameObject:
@@ -105,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 2238149758225289150}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -125,6 +137,7 @@ Transform:
   - {fileID: 6366405716636570741}
   - {fileID: 1583915761952068852}
   - {fileID: 7327544396274925958}
+  - {fileID: 5941473835805651069}
   m_Father: {fileID: 3333757262975813394}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &404692738133786047
@@ -253,6 +266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: voltmetr_ampermetr
       objectReference: {fileID: 0}
+    - target: {fileID: 8073447312561907351, guid: ccbd4529b984d932cab590c80f430bb7, type: 3}
+      propertyPath: text_measur
+      value: 
+      objectReference: {fileID: 2806873410628829074}
     - target: {fileID: 9074481508692254978, guid: ccbd4529b984d932cab590c80f430bb7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.13103575
@@ -298,6 +315,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccbd4529b984d932cab590c80f430bb7, type: 3}
+--- !u!1 &2806873410628829074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2529096744961457061, guid: ccbd4529b984d932cab590c80f430bb7, type: 3}
+  m_PrefabInstance: {fileID: 427046365462463543}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8647514582944900405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9074481508692254978, guid: ccbd4529b984d932cab590c80f430bb7, type: 3}
@@ -321,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8811800394673920741, guid: 5c74c962bd300b7ef85bf88acfcf9856, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.63
       objectReference: {fileID: 0}
     - target: {fileID: 8811800394673920741, guid: 5c74c962bd300b7ef85bf88acfcf9856, type: 3}
       propertyPath: m_LocalPosition.z
