@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        Set_Button(panel_task_work,Task_Work, false);
+        Set_Button_Task(panel_task_work,Task_Work);
         Set_Button(panel_task_war, Task_War, true);
     }
 
@@ -46,6 +46,23 @@ public class MenuManager : MonoBehaviour
         }
         Active_Task = Task_War[index_button];
         SceneManager.LoadScene("Scene_Task");  
+    }
+
+    private void Set_Button_Task(Transform Children_panel, List<Task> tasks)
+    {        
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            GameObject new_button = Instantiate(button_task, Children_panel);
+            new_button.transform.SetParent(Children_panel);
+            Button button = new_button.GetComponent<Button>();
+            int index = i;
+            button.onClick.AddListener(() =>
+            {                
+                    Test_Work(index);         
+            });
+            Text text = button.GetComponentInChildren<Text>();
+            text.text = tasks[i].Text_Button;
+        }
     }
 
     private void Set_Button(Transform Children_panel, List<Task> tasks , bool is_war)

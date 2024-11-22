@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 860593874251901516}
   - component: {fileID: 2367456344095591358}
-  - component: {fileID: 6369640317891240910}
   - component: {fileID: 1799726255252989446}
+  - component: {fileID: 6369640317891240910}
   m_Layer: 0
   m_Name: Krutilka_Potansiometer
   m_TagString: Untagged
@@ -56,19 +56,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6369640317891240910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203016409124140981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14d09b6ccc7b9854eaf6a57d9da56b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2367456344095591358}
 --- !u!65 &1799726255252989446
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -90,6 +77,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.34, y: 0.34, z: 0.3}
   m_Center: {x: -0.0014, y: 0.0062, z: -0.14}
+--- !u!114 &6369640317891240910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203016409124140981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d09b6ccc7b9854eaf6a57d9da56b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2367456344095591358}
+  position_krutilka1:
+    angle: 0
+    Action_sw: {fileID: 0}
+  Block_use: {fileID: 0}
 --- !u!1 &344054718403819726
 GameObject:
   m_ObjectHideFlags: 0
