@@ -12,7 +12,7 @@ public class Potansiometr :  Abst_Toggles
     private void Start() => animator = this.GetComponent<Animator>();
     public void Turning()=> animator.SetTrigger("purning");
 
-    private void OnTriggerEnter(Collider other)
+    private void OnMouseUpAsButton()
     {
         Establish_pos(position_krutilka1);
     }

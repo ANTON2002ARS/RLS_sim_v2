@@ -8,9 +8,9 @@ public class knopka_V : Abst_Toggles
 
     [SerializeField] private Abst_Block block_use;
 
-     private void OnTriggerEnter(Collider other){
+    private void OnMouseUpAsButton()
+    {
         Establish_pos(pos_krutilka);
-
      }
 
    
