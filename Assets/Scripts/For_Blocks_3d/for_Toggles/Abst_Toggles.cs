@@ -18,13 +18,20 @@ public abstract class Abst_Toggles : MonoBehaviour
 
     protected void Del_Action(Position_krutilka position_krutilka, Abst_Block Block_use)
     {        
-        if(Block_use.Action_Toggles.Count ==1){
-            if(Block_use.Action_Toggles[Block_use.Action_Toggles.Count] == position_krutilka.Action_sw)
-                Block_use.Action_Toggles.RemoveAt(0);        
+        if(Block_use.Action_Toggles.Count ==0){
+            Debug.Log("List of block do not obg");
+        }
+        else if(Block_use.Action_Toggles.Count ==1){
+            if(Block_use.Action_Toggles[0] == position_krutilka.Action_sw){
+                Block_use.Action_Toggles.RemoveAt(0);    
+                Debug.Log("Delete element " + position_krutilka.Action_sw.name);
+            }                    
         }
         else{
-            if(Block_use.Action_Toggles[Block_use.Action_Toggles.Count -1] == position_krutilka.Action_sw)
-                Block_use.Action_Toggles.RemoveAt(Block_use.Action_Toggles.Count -1);        
+            if(Block_use.Action_Toggles[Block_use.Action_Toggles.Count -1] == position_krutilka.Action_sw){
+                Block_use.Action_Toggles.RemoveAt(Block_use.Action_Toggles.Count -1); 
+                Debug.Log("Delete element " + position_krutilka.Action_sw.name);
+            }                       
         }        
     }
 

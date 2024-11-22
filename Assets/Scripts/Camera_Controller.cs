@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Camera_Controller : MonoBehaviour
 {
-   public float speed = 10f;
-    public float rotationSpeed = 100f;
-    public float tiltSpeed = 5f;
+   public float speed = 3f;
+    public float rotationSpeed = 55f;
+    public float tiltSpeed = 55f;
     
     private Transform _cameraTransform;
     
