@@ -8,11 +8,11 @@ public class knopka_V : Abst_Toggles
 
     [SerializeField] private Abst_Block block_use;
 
-     private void OnMouseUpAsButton()
-     {
+     private void OnTriggerEnter(Collider other){
         Establish_pos(pos_krutilka);
-        Debug.Log("Puch button!!!");
+
      }
+
    
     public override void Establish_pos(Position_krutilka position_Krutilka)
     {

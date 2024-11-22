@@ -12,15 +12,14 @@ public class krutilka_switch : Abst_Toggles
     [SerializeField] private int _number_turnig;
 
 
-    private void OnMouseUpAsButton()
+    private void OnTriggerEnter(Collider other)
     {
         _number_turnig++;
         if(_number_turnig >= list_switch.Length)
             _number_turnig = 0;
         
         Establish_pos(list_switch[_number_turnig]);
-        Debug.Log("Turn krutilka!!!");
-    }   
+    }
 
     public override void Establish_pos(Position_krutilka position_krutilka)
     {
