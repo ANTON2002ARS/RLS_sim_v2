@@ -23,7 +23,7 @@ public class Razyem_Conaction : MonoBehaviour
             obg.obj_active.SetActive(false);        
     }
 
-    private void OnTriggerEnter(Collider other)=> Establish_pos();
+    private void OnMouseUpAsButton()=> Establish_pos();
     
     public void Establish_pos()
     {

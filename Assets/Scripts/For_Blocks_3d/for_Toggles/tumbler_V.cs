@@ -10,7 +10,7 @@ public class tumbler_V : Abst_Toggles
     [SerializeField] private Abst_Block Block_use;
     [SerializeField] private int _number_turnig;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnMouseUpAsButton()
     {
         _number_turnig++;
         if(_number_turnig >= list_switch.Length)
