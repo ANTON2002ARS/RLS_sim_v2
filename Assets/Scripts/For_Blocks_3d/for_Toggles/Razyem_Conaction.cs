@@ -14,11 +14,19 @@ public class Switchs_Obg
 public class Razyem_Conaction : MonoBehaviour
 {
     [SerializeField] private List<Switchs_Obg> switchs_obgs;
-    [SerializeField] private Abst_Block Block_use;
+    [SerializeField] private Abst_Block block_use;
     [SerializeField] private int index;
 
     private void Start()
-    {
+    {        
+        if(block_use == null){
+            Debug.Log("BLOCK IS NULL, name: " + this.gameObject.name);
+        }           
+        foreach(var sw in switchs_obgs){
+            if(sw.pos_state == null)
+                Debug.Log("Action_sw is null for block: "+ block_use.gameObject.name);
+        } 
+    
         foreach(var obg in switchs_obgs)        
             obg.obj_active.SetActive(false);        
     }
@@ -30,7 +38,7 @@ public class Razyem_Conaction : MonoBehaviour
         if (index >= switchs_obgs.Count)
             index = switchs_obgs.Count;
         Disble_only(switchs_obgs[index]);
-        Block_use.Set_Status(switchs_obgs[index].pos_state);
+        block_use.Set_Status(switchs_obgs[index].pos_state);
     }
 
     private void Disble_only(Switchs_Obg not_disble)

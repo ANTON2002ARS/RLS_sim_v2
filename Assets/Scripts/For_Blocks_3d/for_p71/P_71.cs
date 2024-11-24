@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class P_71 : MonoBehaviour
+public class P_71 : Abst_Block
 {
     [Header("for Display")]
     [SerializeField] private CanvasGroup Grid;
@@ -57,6 +57,20 @@ public class P_71 : MonoBehaviour
             }
         }
     }
+
+    private List<switch_position> _actionToggles;
+    public override List<switch_position> Action_Toggles
+    {
+        get => _actionToggles;
+        set => _actionToggles = value;
+    }
+    public override void Set_Status(switch_position switch_position)
+    {
+        Debug.Log("Получен статус переключение" + switch_position.name);
+        Action_Toggles.Add(switch_position);        
+    }
+    public override void Del_status(switch_position switch_position)=> Delete_Status(this, switch_position);   
+
     private bool turning_line;
     private void Work_of_Line(){
         var angles = LineObject.transform.localEulerAngles;

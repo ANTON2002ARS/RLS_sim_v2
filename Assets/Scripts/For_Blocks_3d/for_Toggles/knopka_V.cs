@@ -8,6 +8,16 @@ public class knopka_V : Abst_Toggles
 
     [SerializeField] private Abst_Block block_use;
 
+    private void Start(){        
+        if(block_use == null){
+            Debug.Log("BLOCK IS NULL, name: " + this.gameObject.name);
+            return;
+        }
+        if(pos_krutilka.Action_sw ==null)
+            Debug.Log("Action_sw is null for block: "+ block_use.gameObject.name);
+
+    } 
+
     private void OnMouseUpAsButton()
     {
         Establish_pos(pos_krutilka);
