@@ -31,12 +31,15 @@ public class Camera_Controller : MonoBehaviour
         transform.Translate(new Vector3(horizontal, 0, vertical) * speed * Time.deltaTime);
         if(Input.GetKey(KeyCode.Space)){
             transform.Translate(new Vector3(0, 1 * speed * Time.deltaTime, 0));
-        }       
+        }   
+        else if(Input.GetKey(KeyCode.LeftShift)){
+            transform.Translate(new Vector3(0, -1 * speed * Time.deltaTime, 0));
+        }    
     }
 
     private void HandleTilting()
     {
-        if (Input.GetKey(KeyCode.LeftShift)) // правая кнопка мыши + Shift
+        if (Input.GetMouseButton(1)) // правая кнопка мыши + Shift Input.GetKey(KeyCode.LeftShift)
         {
             Cursor.lockState = CursorLockMode.Locked;           
             float mouseX = Input.GetAxis("Mouse X");
