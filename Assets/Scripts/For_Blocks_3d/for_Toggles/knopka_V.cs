@@ -4,10 +4,32 @@ using UnityEngine;
 
 public class knopka_V : Abst_Toggles
 {
-    [SerializeField] private switch_position push_button;
+    [SerializeField] private Position_krutilka pos_krutilka;
 
-    public override void Reset_Switches(switch_position switch_)
+    [SerializeField] private Abst_Block block_use;
+
+    private void Start(){        
+        if(block_use == null){
+            Debug.Log("BLOCK IS NULL, name: " + this.gameObject.name);
+            return;
+        }
+        if(pos_krutilka.Action_sw ==null)
+            Debug.Log("Action_sw is null for block: "+ block_use.gameObject.name);
+
+    } 
+
+    private void OnMouseUpAsButton()
     {
-        throw new System.NotImplementedException();
+        Establish_pos(pos_krutilka);
+     }
+
+   
+    public override void Establish_pos(Position_krutilka position_Krutilka)
+    {
+        Del_Action(position_Krutilka, block_use);
+        Add_Status_to_blocks(position_Krutilka.Action_sw, block_use);
     }
+
+    public override void Reset_Switches(bool is_reset)=> throw new System.NotImplementedException();
+  
 }

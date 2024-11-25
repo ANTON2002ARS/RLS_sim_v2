@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System.IO;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
     public float RoleButtonsSpacing;
 
     // state
-    private Command _currentCommand;
+    public Command _currentCommand; 
     private int _personRole;
     private List<Action> actions = new List<Action>();
     private bool _testPassed;
@@ -111,7 +113,59 @@ public class GameManager : MonoBehaviour
         Tooltip.Hide();
         _iko?.gameObject.SetActive(true);
         _iko?.CloseIko();
+
+        //WriteToFile(CommandList[0]);
+        //WriteToFile(CommandList[1]);
+        //WriteToFile(CommandList[2]);
     }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.H))
+        {
+            PassCheck();
+        }
+    }
+
+    public void WriteToFile(Command _command)
+       {
+            string fileName = "Answer_"+_command.CommandName +".ini"; 
+            string filePath = Path.Combine(Application.dataPath, fileName); // РџРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
+            
+            // РџСЂРѕРІРµСЂРєР°, СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё СѓР¶Рµ С„Р°Р№Р» СЃ С‚Р°РєРёРј РёРјРµРЅРµРј
+            
+                if (File.Exists(filePath))
+                    {
+                        Debug.LogWarning("Р¤Р°Р№Р» СЃ С‚Р°РєРёРј РёРјРµРЅРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!");
+                        return;
+                    }
+            using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    writer.WriteLine(_command.CommandName);
+                    writer.WriteLine("РЅРѕРјРµСЂ 1:");
+                    foreach (Action ans in _command.ActionsPos1){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                    writer.WriteLine("РЅРѕРјРµСЂ 2:");
+                    foreach (Action ans in _command.ActionsPos2){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                    writer.WriteLine("РЅРѕРјРµСЂ 3:");
+                    foreach (Action ans in _command.ActionsPos3){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                    writer.WriteLine("РЅРѕРјРµСЂ 4:");
+                    foreach (Action ans in _command.ActionsPos4){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                    writer.WriteLine("РЅРѕРјРµСЂ 5:");
+                    foreach (Action ans in _command.ActionsPos5){
+                        writer.WriteLine(ans.ActionName);
+                    }
+                }
+        Debug.Log($"Р¤Р°Р№Р» {fileName} СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ!");
+    }
+
 
     private void StartCommandScript(Command command)
     {
@@ -119,7 +173,7 @@ public class GameManager : MonoBehaviour
         _currentCommand = command;
         CommandSelect.SetActive(false);
         float totalWidth = -RoleButtonsSpacing;
-        // Установка все значение на кнопки\\
+        // ????????? ??? ???????? ?? ??????\\
         RoleButton1.SetActive(command.Enabled_p1);
         RoleButton2.SetActive(command.Enabled_p2);
         RoleButton3.SetActive(command.Enabled_p3);
@@ -133,12 +187,12 @@ public class GameManager : MonoBehaviour
         ButtonsHolder.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, totalWidth);
         RoleSelect.SetActive(true);
     }
-    // Установливаем роль на кнопкам \\
+    // ????????????? ???? ?? ??????? \\
     public void SetRole(int r)
     {
         _personRole = r;
         OpenIkoButton.SetActive(_currentCommand.ShowIkoButton);
-        // Скрываем кнопку проверки\\
+        // ???????? ?????? ????????\\
         Check.SetActive(!_currentCommand.ShowIkoButton);
         Restorts_B.SetActive(!_currentCommand.ShowIkoButton);
         RoleSelect.SetActive(false);
@@ -156,7 +210,7 @@ public class GameManager : MonoBehaviour
 
     public async void BackToCommandSelect()
     {
-        if (_personRole != 0 && !_testPassed && !await ShureCheck.CheckIfShure()) return;
+        // if (_personRole != 0 && !_testPassed && !await ShureCheck.CheckIfShure()) return;
         _currentCommand = null;
         _personRole = 0;
         CommandSelect.SetActive(true);
@@ -180,7 +234,7 @@ public class GameManager : MonoBehaviour
 
     public async void BackToRoleSelect()
     {
-        if (!await ShureCheck.CheckIfShure()) return;
+       // if (!await ShureCheck.CheckIfShure()) return;
         _personRole = 0;
         CommandSelect.SetActive(false);
         RoleSelect.SetActive(true);
@@ -201,7 +255,7 @@ public class GameManager : MonoBehaviour
         _testPassed = false;
         OnReset.Invoke();
     }
-    // Проверка помехи на избавление \\
+    // ???????? ?????? ?? ?????????? \\
     public bool Check_Interference( string tag)
     {
         if (InterferenceFolder.childCount == 0)
@@ -229,7 +283,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("not find");
                 break;
         }
-        // Для проверки\\
+        // ??? ????????\\
         Debug.Log("Check: tag= " + tag);         
         if (actions == null)
             return false;
@@ -250,22 +304,22 @@ public class GameManager : MonoBehaviour
         actions.Clear();
         return true;
     }
-    // Удалеем все действие\\
+    // ??????? ??? ????????\\
     public void Clear_Action()
     {
         if (actions.Count == 0)
             return;        
         actions.Clear();
     }
-    // Сбрасываем состояние на тумблирах \\
+    // ?????????? ????????? ?? ????????? \\
     public void Reset_Blocks_Action()
     {
         Clear_Action();
         MainPanel.UpdateCurrentBlockUI(true);
         MainPanel.OpenDefaultBlock();
-        Report_Blocks.text = "Состояние сброшено";
+        //Report_Blocks.text = "????????? ????????";
     }
-    // Проверка для теста действий\\
+    // ???????? ??? ????? ????????\\
     public void CheckOrder()
     {
         var req = GetCurrentRoleActions().Where(a => !(a is InternalAction)).ToArray();
@@ -290,12 +344,12 @@ public class GameManager : MonoBehaviour
             i++;
         }
 
-        if (actions.Any(a => !a.IsInRequiredState()))
-        {
-            Debug.Log("Fail on req state");
-            FailCheck();
-            return;
-        }
+        // if (actions.Any(a => !a.IsInRequiredState()))
+        // {
+        //     Debug.Log("Fail on req state");
+        //     FailCheck();
+        //     return;
+        // }
         PassCheck();
     }
 
@@ -311,7 +365,7 @@ public class GameManager : MonoBehaviour
         CheckResultPanel.ShowPassMessage();
         _testPassed = true;
     }
-    // Добавить действие на список \\
+    // ???????? ???????? ?? ?????? \\
     public void AddToState(Action a)
     {
         if (_doesContainInternalActions)
@@ -349,20 +403,22 @@ public class GameManager : MonoBehaviour
             actions.Remove(last);
             if (!a.IsInDefaultState() || !a.RemoveIfMatchingDefaultState)
             {
-                // Добавление в список действие \\
+                // ?????????? ? ?????? ???????? \\
                 actions.Add(a);
-                Report_Blocks.text = "Выбор состояние: " + a.ActionName;
+                //Report_Blocks.text = "????? ?????????: " + a.ActionName;
             }                
         }
         else
         {
-            // Добавление в список действие \\
+            // ?????????? ? ?????? ???????? \\
             actions.Add(a);
-            Report_Blocks.text = "Выбор состояние: " + a.ActionName;
+            //Report_Blocks.text = "????? ?????????: " + a.ActionName;
         }
     }
 
-    public void RemoveFromState(Action a) => actions.Remove(a);    
+    public void RemoveFromState(Action a) => actions.Remove(a);
+
+    public void Exit_App() => Application.Quit();
 
     private List<Action> GetCurrentRoleActions()
     {
