@@ -51,7 +51,7 @@ public class ShureCheck : MonoBehaviour
 
         while (!_anyPressed)
         {
-           // await Task.Yield();
+          // await Task.Yield();
         }
         Close();
 

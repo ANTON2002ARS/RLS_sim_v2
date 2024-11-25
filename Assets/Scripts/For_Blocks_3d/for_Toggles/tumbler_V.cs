@@ -3,16 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class tumbler_V : MonoBehaviour
+public class tumbler_V : Abst_Toggles
 {
-    [SerializeField] private switch_position first_action;
-    [SerializeField] private float first_pos_z;
-    [SerializeField] private UnityEvent action_of_first;
-    [SerializeField] private switch_position second_action;
-    [SerializeField] private float secont_pos_z;
-    [SerializeField] private UnityEvent action_of_second;
-    [SerializeField] private Transform lever; 
+    [SerializeField] private Position_krutilka[] list_switch;  
+    [SerializeField] private Transform lever;
+    [SerializeField] private Abst_Block Block_use;
+    [SerializeField] private int _number_turnig;
 
-    private void Event_Action_to_first() => action_of_first?.Invoke();
-    private void Event_Action_to_second() => action_of_second?.Invoke();
+    private void Start(){        
+        if(Block_use == null){
+            Debug.Log("BLOCK IS NULL, name: " + this.gameObject.name);
+            return;
+        }
+
+        foreach(var sw in list_switch){
+            if(sw.Action_sw ==null)
+                Debug.Log("Action_sw is null for block: "+ Block_use.gameObject.name);
+        }
+
+        
+
+    } 
+
+    private void OnMouseUpAsButton()
+    {
+        _number_turnig++;
+        if(_number_turnig >= list_switch.Length)
+            _number_turnig = 0;
+        
+        Establish_pos(list_switch[_number_turnig]);             
+    }
+
+    public override void Establish_pos(Position_krutilka position_krutilka)
+    {
+        lever.rotation = Quaternion.Euler(position_krutilka.angle,0f,0f);        
+
+        foreach(var sw in list_switch){
+            if(sw != position_krutilka)
+                Del_Action(sw,Block_use);
+        }
+        Add_Status_to_blocks(position_krutilka.Action_sw, Block_use);
+        Debug.Log("Нажата кнопка: " + position_krutilka.Action_sw);
+    }    
+
+    
+    public override void Reset_Switches(bool is_reset)
+    {
+        _number_turnig = 0;
+        Establish_pos(list_switch[_number_turnig]);    
+    }
+
+    
 }
