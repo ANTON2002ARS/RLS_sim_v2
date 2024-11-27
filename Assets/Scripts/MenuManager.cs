@@ -90,6 +90,11 @@ public class MenuManager : MonoBehaviour
     }
 
 
+    public void Open_Scene_RLS()=>SceneManager.LoadScene("RLS_Scene");
+
+    public void Exit_App()=> Application.Quit();
+
+
 
 
 
