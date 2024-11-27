@@ -14,16 +14,20 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private GameObject CheckResult;
     [SerializeField] private GameObject Pass_Test;
     [SerializeField] private GameObject Faid_Test;
+    [SerializeField] private int index_block;
+
+    public static Scene_Game test_instance { get; private set; }
+    private void Awake() => test_instance = this;   
 
     void Start()
     {
-        //  Active_Task = MenuManager.Menu_Instance.Active_Task;
+        Active_Task = MenuManager.Menu_Instance.Active_Task;
          if(Active_Task == null){
             Debug.LogError("Task obj not set");
             return;
-         }        
+         } 
 
-         Show_Block(Active_Task.block_need[0].of_Blocks);
+         Show_Block(index_block);
          Show_SureChecker(false);
          CheckResult.SetActive(false);
 
@@ -34,12 +38,37 @@ public class Scene_Game : MonoBehaviour
             Pass_Testing();        
     }
     
-    public static Scene_Game test_Instance { get; private set; }
-    private void Awake() => test_Instance = this;    
+   
 
-    public void Show_Block(GameObject block){
-        GameObject b = Instantiate(block);
+    public void Show_Block( int index){
+        if( folder.childCount >0){
+            GameObject block = folder.GetChild(0).gameObject;
+            Destroy(block);
+        }        
+        GameObject b = Instantiate(Active_Task.block_need[index].of_Blocks);
         b.transform.SetParent(folder);
+        b.GetComponent<Abst_Block>().Need_Condition = Active_Task.block_need[index].Command_need;
+    }
+
+    public void Calling_Completion_Block(bool is_pass){
+        if(!is_pass)
+            Faid_Testing();
+        else{
+            index_block++;
+            if(index_block >= Active_Task.block_need.Count){
+                Pass_Testing();
+                index_block=0;
+                GameObject block = folder.GetChild(0).gameObject;
+                //Destroy(block);
+            }
+            else{
+                Show_Block(index_block);
+                Debug.Log("next block texting");
+            }
+        }
+
+        Debug.Log("отравотка блока, статус: " + is_pass);            
+        
     }
 
     public void Show_SureChecker(bool is_active)=> SureCheck.SetActive(is_active);
@@ -56,6 +85,6 @@ public class Scene_Game : MonoBehaviour
 
     public void Exit_Scene(){
         SceneManager.LoadScene("Menu_Scene");
-        MenuManager.Menu_Instance.Active_Task = null;
+        //MenuManager.Menu_Instance.Active_Task = null;
     }    
 }

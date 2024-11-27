@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Camera_Controller : MonoBehaviour
 {
@@ -59,6 +60,8 @@ public class Camera_Controller : MonoBehaviour
             this.transform.localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0f);
         }
     }
+
+    public void Exit_Scene()=> SceneManager.LoadScene("Menu_Scene");
 
     
 }
