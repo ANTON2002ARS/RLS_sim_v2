@@ -1713,6 +1713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d98065a391aebb8b14720f62d9f1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _need_condition: []
+  _actionToggles: []
 --- !u!1001 &29890076137048137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3124,6 +3126,18 @@ PrefabInstance:
       propertyPath: block_use
       value: 
       objectReference: {fileID: 7911334887193806763}
+    - target: {fileID: 695517849865694796, guid: faba10ddb28bf6de5817270cf65f3f8a, type: 3}
+      propertyPath: switchs_obgs.Array.data[0].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 393b3c8a56f13164ab57d34aa0206307, type: 2}
+    - target: {fileID: 695517849865694796, guid: faba10ddb28bf6de5817270cf65f3f8a, type: 3}
+      propertyPath: switchs_obgs.Array.data[1].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 951354ca3d2fd94429006c1596057246, type: 2}
+    - target: {fileID: 695517849865694796, guid: faba10ddb28bf6de5817270cf65f3f8a, type: 3}
+      propertyPath: switchs_obgs.Array.data[2].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: abd2d8e30d65e024c88abfe96b5239c6, type: 2}
     - target: {fileID: 1213583285180996112, guid: faba10ddb28bf6de5817270cf65f3f8a, type: 3}
       propertyPath: m_Name
       value: Razyem_3
@@ -3467,6 +3481,22 @@ PrefabInstance:
       propertyPath: block_use
       value: 
       objectReference: {fileID: 7911334887193806763}
+    - target: {fileID: 633423357139691687, guid: 577ce1226fb8d1d4ca416cdeb3fef7b2, type: 3}
+      propertyPath: switchs_obgs.Array.data[0].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 516f1df9132ec8c45b5ff0068bd8b04f, type: 2}
+    - target: {fileID: 633423357139691687, guid: 577ce1226fb8d1d4ca416cdeb3fef7b2, type: 3}
+      propertyPath: switchs_obgs.Array.data[1].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cfec41bd6a3a8b488ec744a2f69a356, type: 2}
+    - target: {fileID: 633423357139691687, guid: 577ce1226fb8d1d4ca416cdeb3fef7b2, type: 3}
+      propertyPath: switchs_obgs.Array.data[2].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d79b5181bdf43e4ead9a5b2fce41702, type: 2}
+    - target: {fileID: 633423357139691687, guid: 577ce1226fb8d1d4ca416cdeb3fef7b2, type: 3}
+      propertyPath: switchs_obgs.Array.data[3].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d286771b0dda10469352e9d1a3385fe, type: 2}
     - target: {fileID: 744710736852648865, guid: 577ce1226fb8d1d4ca416cdeb3fef7b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.254
@@ -7163,7 +7193,7 @@ PrefabInstance:
     - target: {fileID: 4478464736625044075, guid: b5e99825f0acfb4418118099da845d64, type: 3}
       propertyPath: list_switch.Array.data[5].Action_sw
       value: 
-      objectReference: {fileID: 11400000, guid: 018bc9aee302bfa4998499655570e72a, type: 2}
+      objectReference: {fileID: 11400000, guid: 3f948e2c68d3890e3988e0f2a2f91f45, type: 2}
     - target: {fileID: 4478464736625044075, guid: b5e99825f0acfb4418118099da845d64, type: 3}
       propertyPath: list_switch.Array.data[6].Action_sw
       value: 

@@ -701,6 +701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c894b8f22911728bfa114cbe36bb244a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _need_condition: []
+  _actionToggles: []
 --- !u!1 &7030792353477843138
 GameObject:
   m_ObjectHideFlags: 0
@@ -2984,6 +2986,26 @@ PrefabInstance:
       propertyPath: block_use
       value: 
       objectReference: {fileID: 8893763352687800001}
+    - target: {fileID: 3866870889565947400, guid: 02a075c2222eaeb799ed05396833444b, type: 3}
+      propertyPath: switchs_obgs.Array.data[0].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c17d37ca72320341a9f989b6b0fa48b, type: 2}
+    - target: {fileID: 3866870889565947400, guid: 02a075c2222eaeb799ed05396833444b, type: 3}
+      propertyPath: switchs_obgs.Array.data[1].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 131fbafd66186384fb8090d842c068c4, type: 2}
+    - target: {fileID: 3866870889565947400, guid: 02a075c2222eaeb799ed05396833444b, type: 3}
+      propertyPath: switchs_obgs.Array.data[2].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 025a5f374bb4942458d0397676bfea2e, type: 2}
+    - target: {fileID: 3866870889565947400, guid: 02a075c2222eaeb799ed05396833444b, type: 3}
+      propertyPath: switchs_obgs.Array.data[3].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f519c4ad022ff04e9c6fba8e2b32f85, type: 2}
+    - target: {fileID: 3866870889565947400, guid: 02a075c2222eaeb799ed05396833444b, type: 3}
+      propertyPath: switchs_obgs.Array.data[4].pos_state
+      value: 
+      objectReference: {fileID: 11400000, guid: cd46370e58582f844bbb05e737b1df6f, type: 2}
     - target: {fileID: 6057245515455545498, guid: 02a075c2222eaeb799ed05396833444b, type: 3}
       propertyPath: m_Name
       value: Razyem_5
