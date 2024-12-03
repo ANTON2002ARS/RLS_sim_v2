@@ -21,12 +21,12 @@ public class Scene_Game : MonoBehaviour
 
     void Start()
     {
-        Active_Task = MenuManager.Menu_Instance.Active_Task;
+        //Active_Task = MenuManager.Menu_Instance.Active_Task;
          if(Active_Task == null){
             Debug.LogError("Task obj not set");
             return;
          } 
-
+    
          Show_Block(index_block);
          Show_SureChecker(false);
          CheckResult.SetActive(false);

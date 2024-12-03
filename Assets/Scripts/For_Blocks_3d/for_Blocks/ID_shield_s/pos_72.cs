@@ -25,9 +25,14 @@ public class pos_72 : Abst_Block
 
         if(Need_Condition.Count !=0){
             Debug.Log("________");
-            Checking_List(Action_Toggles, Need_Condition);
-        }  
-
+            if(Checking_List(Action_Toggles, Need_Condition)){
+                Debug.Log("__Checking_List is true__");
+                Check_Result();
+            }
+            else{
+                Debug.Log("Checking_List is false");
+            }
+        } 
     }
     public override void Del_status(switch_position switch_position)=> Delete_Status(this, switch_position);
 
@@ -47,7 +52,7 @@ public class pos_72 : Abst_Block
         else{
             Scene_Game.test_instance.Calling_Completion_Block(false);
             Debug.Log("кол-во не равно в списках");
-        }      
+        }     
     }
 
     void Update(){
