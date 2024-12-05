@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class Position_krutilka 
 {
     public float angle;
     public switch_position Action_sw;
+    public UnityEvent event_state;
 }
 
 public abstract class Abst_Toggles : MonoBehaviour

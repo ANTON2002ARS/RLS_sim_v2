@@ -151,7 +151,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82861a2ceb37cb4fbd2d42237f9f8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  push_button: {fileID: 0}
+  pos_krutilka:
+    angle: 0
+    Action_sw: {fileID: 0}
+  button: {fileID: 3449782319729014864}
+  material_off: {fileID: 2100000, guid: a7a1b2c23665b0132aa020c7790e4d4b, type: 2}
+  material_on: {fileID: 2100000, guid: 42ccbd6d8e4fcb84ca1c5994f01f5d4e, type: 2}
+  block_use: {fileID: 0}
 --- !u!1 &7128236240212033551
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +170,7 @@ GameObject:
   - component: {fileID: 1765120246796323481}
   - component: {fileID: 3449782319729014864}
   m_Layer: 0
-  m_Name: Sphere.001
+  m_Name: Sphere_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
