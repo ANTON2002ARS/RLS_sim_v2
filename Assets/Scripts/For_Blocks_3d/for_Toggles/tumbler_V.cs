@@ -36,7 +36,9 @@ public class tumbler_V : Abst_Toggles
 
     public override void Establish_pos(Position_krutilka position_krutilka)
     {
-        lever.rotation = Quaternion.Euler(position_krutilka.angle,0f,0f);        
+        //lever.rotation = Quaternion.Euler(position_krutilka.angle,0f,0f);      
+
+        lever.localEulerAngles = new Vector3(position_krutilka.angle,0f,0f);  
 
         foreach(var sw in list_switch){
             if(sw != position_krutilka)

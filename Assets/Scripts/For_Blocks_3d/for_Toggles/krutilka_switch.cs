@@ -33,7 +33,10 @@ public class krutilka_switch : Abst_Toggles
 
     public override void Establish_pos(Position_krutilka position_krutilka)
     {
-        krutilka.transform.rotation = Quaternion.Euler(0f,0f,position_krutilka.angle);
+        //krutilka.transform.rotation = Quaternion.Euler(0f,0f,position_krutilka.angle);
+        
+        krutilka.transform.localEulerAngles = new Vector3(0f,0f,position_krutilka.angle);
+        
         foreach(var sw in list_switch){
             if(sw != position_krutilka)
                 Del_Action(sw,block_use);

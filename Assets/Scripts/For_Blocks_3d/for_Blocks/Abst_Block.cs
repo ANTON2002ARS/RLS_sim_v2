@@ -32,9 +32,10 @@ public abstract class Abst_Block : MonoBehaviour
         }   
     }
 
+    // вызывается в процессе переключения при каждом добавлении элемента для завершение теста
     protected bool Checking_List(List<switch_position> action, List<switch_position> need){
         if(action.Count == 1){            
-            if(need.Count ==1){
+            if(need.Count == 1){
                 if(need[0] == action[0]){
                     Debug.Log("count of Need_Condition is 1");
                     return true;
@@ -42,18 +43,26 @@ public abstract class Abst_Block : MonoBehaviour
             }            
         }
         else if(action.Count == need.Count){
-            if(action[action.Count -1 ] == need[need.Count - 1]){
-                Debug.Log("списки равны, последний элемент получаем");
-                return true;                
+            if(action[action.Count -1 ] != need[need.Count - 1]){
+                Debug.Log("списки равны, последний элементы не равны");
+                return false;                
             }
+            else{
+                Debug.Log("списки равны, последний элементы равны");
+                return true;  
+            }
+        }
+        else if(action.Count > need.Count){
+            Debug.Log("переполнение списка");
+            return true;
         }
         else{            
             if(action[action.Count - 1] != need[need.Count - 1]){
                 Debug.Log("Преведущие НЕ равны элементы");
-                return true;
+                return false;
             }
             else{
-                Debug.Log("Преведужие равны элементы");               
+                Debug.Log("Преведужие равны элементы");                             
             }
         }      
         return false;
