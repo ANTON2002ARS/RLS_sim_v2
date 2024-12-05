@@ -41,6 +41,7 @@ public class krutilka_switch : Abst_Toggles
             if(sw != position_krutilka)
                 Del_Action(sw,block_use);
         }
+        position_krutilka.event_state.Invoke();
         Add_Status_to_blocks(position_krutilka.Action_sw, block_use);
         Debug.Log("Нажата кнопка: " + position_krutilka.Action_sw);
     }
