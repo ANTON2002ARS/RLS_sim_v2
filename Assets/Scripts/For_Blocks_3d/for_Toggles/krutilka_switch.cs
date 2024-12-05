@@ -19,7 +19,22 @@ public class krutilka_switch : Abst_Toggles
         foreach(var pos in list_switch){
             if(pos.Action_sw ==null)
             Debug.Log("Action_sw is null for block: "+ block_use.gameObject.name);
-        }            
+        }
+
+        foreach (var pos in list_switch)
+        {
+            if (Abst_Toggles.to_isxod_all_tumbler == true)
+            {
+                if (pos.Isxod == true)
+                    krutilka.transform.localEulerAngles = new Vector3(pos.angle, 0f, 0f);
+            }
+            else
+            {
+                if (pos.Isxod == false)
+                    krutilka.transform.localEulerAngles = new Vector3(pos.angle, 0f, 0f);
+            }
+        }
+
     } 
 
     private void OnMouseUpAsButton()

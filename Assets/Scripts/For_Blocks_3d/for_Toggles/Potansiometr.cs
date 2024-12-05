@@ -16,8 +16,21 @@ public class Potansiometr :  Abst_Toggles
         }            
         if(position_krutilka1.Action_sw == null)
             Debug.Log("Action_sw is null for block: "+ block_use.gameObject.name);
-    } 
-    public void Turning()=> animator.SetTrigger("purning");
+    }
+    private void Turning() 
+    {
+        if (Abst_Toggles.to_isxod_all_tumbler == true)
+            animator.speed = -1f;
+        else
+            animator.speed = 1f;
+        animator.SetTrigger("purning"); 
+    }
+
+    private void Reverse()
+    {
+        animator.speed = -1f;
+        animator.SetTrigger("purning");        
+    }
 
     private void OnMouseUpAsButton()
     {

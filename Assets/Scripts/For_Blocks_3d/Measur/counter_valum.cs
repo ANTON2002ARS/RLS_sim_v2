@@ -28,8 +28,6 @@ public class counter_valum : MonoBehaviour
         }
     }
 
-    public void StopCounting()
-    {
-        isCounting = false;
-    }
+    public void StopCounting()=> isCounting = false;
+    
 }

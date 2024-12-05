@@ -20,8 +20,20 @@ public class tumbler_V : Abst_Toggles
             if(sw.Action_sw ==null)
                 Debug.Log("Action_sw is null for block: "+ Block_use.gameObject.name);
         }
-               
 
+        foreach(var pos in list_switch)
+        {
+            if(Abst_Toggles.to_isxod_all_tumbler == true)
+            {
+                if(pos.Isxod == true)
+                    lever.localEulerAngles = new Vector3(pos.angle, 0f, 0f);
+            }
+            else
+            {
+                if(pos.Isxod == false)
+                    lever.localEulerAngles = new Vector3(pos.angle, 0f, 0f);
+            }
+        }
     } 
 
     private void OnMouseUpAsButton()
@@ -53,6 +65,5 @@ public class tumbler_V : Abst_Toggles
         _number_turnig = 0;
         Establish_pos(list_switch[_number_turnig]);    
     }
-
     
 }
