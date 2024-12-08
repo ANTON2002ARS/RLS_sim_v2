@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Scene_Game : MonoBehaviour
 {    
     [SerializeField] private Task Active_Task;
+    [SerializeField] private War_Task war_task;
     [SerializeField] private Transform folder;
 
     [Header("UI")]
@@ -21,11 +22,30 @@ public class Scene_Game : MonoBehaviour
 
     void Start()
     {
-        //Active_Task = MenuManager.Menu_Instance.Active_Task;
+        Abst_Task task = MenuManager.Menu_Instance.Active_Task;
+
+        if(task is Task){
+            Debug.Log("start task");
+            Active_Task = task as Task;
+
+        }
+        else if(task is War_Task){
+            Debug.Log("start war test");
+            war_task = task as War_Task;
+        }
+        else{
+            Debug.LogError("Неизвестный тип данных в Abst_Task");
+        }
+
+
          if(Active_Task == null){
             Debug.LogError("Task obj not set");
             return;
          } 
+
+
+
+
     
          Show_Block(index_block);
          Show_SureChecker(false);

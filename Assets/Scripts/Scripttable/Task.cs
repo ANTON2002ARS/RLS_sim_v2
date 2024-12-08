@@ -11,16 +11,10 @@ public class Action_Blocks
 }
 
 [CreateAssetMenu(fileName = "Task_", menuName = "Task", order = 0)]
-public class Task : ScriptableObject
+public class Task : Abst_Task
 {
     [Multiline] public string Text_Button;
     public List<Action_Blocks> block_need;
-
-    //public List<GameObject> Command_need;  
-
-    public bool IKO_PRS;   
-    
-
     
 }
 

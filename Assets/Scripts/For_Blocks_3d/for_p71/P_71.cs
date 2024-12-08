@@ -12,6 +12,14 @@ public class P_71 : Abst_Block
     [Header("for Target")]
     [SerializeField] private GameObject Target;
     [SerializeField] private GameObject prs_target;
+
+    [Header("for Interference")]
+    [SerializeField] private List<GameObject> passive;
+    [SerializeField] private List<GameObject> local;
+    [SerializeField] private List<GameObject> nip;
+    [SerializeField] private List<GameObject> active_noise;
+    [SerializeField] private List<GameObject> respons_answer;
+
     [Header("for Line")]
     [SerializeField] private GameObject IKO;
     [SerializeField]  private GameObject LineObject;    
@@ -57,7 +65,7 @@ public class P_71 : Abst_Block
             }
         }
     }
-
+    [Header("for Testing")]
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
     {          
@@ -131,18 +139,21 @@ public class P_71 : Abst_Block
     }
     void Update(){
         Work_of_Line();
-        if(Input.GetKeyDown(KeyCode.Return)){
-            Check_Result();
-            Debug.Log("is ENTER");
-        }
+        // if(Input.GetKeyDown(KeyCode.Return)){
+        //     Check_Result();
+        //     Debug.Log("is ENTER");
+        // }
     }
     
-    public void Clikc_Button(){
-        round_mode =!round_mode;
-    }
+    public void Clikc_Button()=> round_mode =!round_mode;
+    
     public void Click_B(){        
         Brightness_IKO += 0.1f;
         if( Brightness_IKO > 0.9f) Brightness_IKO = 0;
     }
+
+    
+
+
 
 }
