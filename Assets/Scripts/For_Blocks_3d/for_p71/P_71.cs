@@ -173,6 +173,8 @@ public class P_71 : Abst_Block
         } 
 
         interference.transform.SetParent(folder_Interfence);
+        interference.transform.localScale = Vector3.one;
+        interference.transform.eulerAngles = Vector3.zero;
     }
     
     public void Clikc_Button()=> round_mode =!round_mode;

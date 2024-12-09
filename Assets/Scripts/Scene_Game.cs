@@ -36,9 +36,11 @@ public class Scene_Game : MonoBehaviour
         Button_Show_IKO.SetActive(false);
         Button_Kill_Interference.SetActive(false);
         Panel_Target.SetActive(false);
-        Panel_Interference.SetActive(false);
+        //Panel_Interference.SetActive(false);
         Panel_PRS.SetActive(false);
-        Show_IKO(false);        
+        //IKO.gameObject.SetActive(false);
+        folder_blocks.gameObject.SetActive(true);
+             
         
         Abst_Task task = MenuManager.Menu_Instance.Active_Task;
 
@@ -54,29 +56,57 @@ public class Scene_Game : MonoBehaviour
         }
         else if(task is War_Task){
             Debug.Log("start war test");
-            War_Task war = task as War_Task;
+            war_task = task as War_Task; 
 
+            Active_Task = new Task();
+            Active_Task.block_need = war_task.block_need;
 
-            
+            if( war_task.use_passive){
+                IKO.Span_Interference(1);
+            }else if( war_task.use_local){
+                IKO.Span_Interference(2);
+            }else if( war_task.use_nip){
+                IKO.Span_Interference(3);
+            }else if( war_task.use_active_noise){
+                IKO.Span_Interference(4);
+            }else if ( war_task.use_respons_answer){
+                IKO.Span_Interference(5);
+            }
+            //else if(war.use_passive || war.use_local || war.use_nip || war.use_active_noise || war.use_respons_answer){
+               // Debug.Log("ALL ERROR");}
 
+            Button_Show_IKO.SetActive(true);
+            Button_Kill_Interference.SetActive(true);   
+            IKO.gameObject.SetActive(true);
+            folder_blocks.gameObject.SetActive(false);
         }
         else{
             Debug.LogError("Неизвестный тип данных в Abst_Task");
         }
-
     }
 
     void Update(){
         if(Input.GetKey(KeyCode.Y) && Input.GetKey(KeyCode.P))
             Pass_Testing();        
+    }   
+
+    public void Start_Test_Interference(){
+        IKO.gameObject.SetActive(false);
+        folder_blocks.gameObject.SetActive(true);
+        Show_Block(index_block);
+        Button_Kill_Interference.SetActive(false); 
     }
 
-    public void Show_IKO(bool is_active)
+    public void Show_IKO()
     {
+        bool is_active = !IKO.gameObject.activeSelf;
         IKO.gameObject.SetActive(is_active);
         folder_blocks.gameObject.SetActive(!is_active);
     }
     
+    public void Show_Interference(){
+        IKO.Span_Interference(1);
+    }
    
 
     public void Show_Block( int index){
@@ -94,6 +124,7 @@ public class Scene_Game : MonoBehaviour
             Faid_Testing();
         else{
             index_block++;
+            
             if(index_block >= Active_Task.block_need.Count){
                 Pass_Testing();
                 index_block=0;
