@@ -307,6 +307,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: fee67e677590fb249b62f2467f67ce50, type: 3}
+--- !u!114 &139478486 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1204233559834578447, guid: fee67e677590fb249b62f2467f67ce50, type: 3}
+  m_PrefabInstance: {fileID: 139478485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5bd0c772a1f3a44bc86f98e983f660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &206733538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,12 +2706,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active_Task: {fileID: 11400000, guid: cc32b046a646101cf8ec848a445ec376, type: 2}
   war_task: {fileID: 0}
-  folder: {fileID: 213427408}
+  folder_blocks: {fileID: 0}
   SureCheck: {fileID: 499143477}
   CheckResult: {fileID: 1737077583}
   Pass_Test: {fileID: 1708513090}
   Faid_Test: {fileID: 749538911}
   index_block: 0
+  Button_Show_IKO: {fileID: 7550641835809289314}
+  Button_Kill_Interference: {fileID: 430971613}
+  Panel_Target: {fileID: 5936768201784270881}
+  Panel_Interference: {fileID: 4503514419919751973}
+  Panel_PRS: {fileID: 6289936630053378238}
+  IKO: {fileID: 139478486}
 --- !u!4 &2086493334
 Transform:
   m_ObjectHideFlags: 0
@@ -6647,7 +6664,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -61}
-  m_SizeDelta: {x: 200, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7023379969837895289
 CanvasRenderer:
