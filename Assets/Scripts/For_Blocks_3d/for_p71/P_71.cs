@@ -10,10 +10,12 @@ public class P_71 : Abst_Block
     [SerializeField] private GameObject Line;
 
     [Header("for Target")]
+    [SerializeField] private Transform folder_target;
     [SerializeField] private GameObject Target;
     [SerializeField] private GameObject prs_target;
 
     [Header("for Interference")]
+    [SerializeField] private Transform folder_Interfence;
     [SerializeField] private List<GameObject> passive;
     [SerializeField] private List<GameObject> local;
     [SerializeField] private List<GameObject> nip;
@@ -143,6 +145,36 @@ public class P_71 : Abst_Block
         //     Check_Result();
         //     Debug.Log("is ENTER");
         // }
+    }
+
+    public void Span_Interference(int number)
+    {
+        GameObject interference;
+        switch (number)
+        {
+            case 1:
+                interference = Instantiate(passive[Random.Range(0, passive.Count)]);
+                break;
+            case 2:
+                interference = Instantiate(local[Random.Range(0, local.Count)]);
+                break;
+            case 3:
+                interference = Instantiate(nip[Random.Range(0, nip.Count)]);
+                break;
+            case 4:
+                interference = Instantiate(active_noise[Random.Range(0, active_noise.Count)]);
+                break;
+            case 5:
+                interference = Instantiate(respons_answer[Random.Range(0, respons_answer.Count)]);
+                break;
+            default:
+                Debug.LogError("number is out");
+                return;
+        } 
+
+        interference.transform.SetParent(folder_Interfence);
+        interference.transform.localScale = Vector3.one;
+        interference.transform.eulerAngles = Vector3.zero;
     }
     
     public void Clikc_Button()=> round_mode =!round_mode;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Body_Interference : MonoBehaviour
 {
-    // проверка на избавление от помехи \\
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ \\
     [SerializeField]
     public bool Check_work;
     [SerializeField]
@@ -13,7 +13,7 @@ public class Body_Interference : MonoBehaviour
     public string Tag_;
         
 
-    private readonly float max_Radius = 2.5f;
+    private readonly float max_Radius = 1.5f;
     private readonly float min_Radius = 0.5f;
 
     public void Delete() => Destroy(this.gameObject);
@@ -49,8 +49,8 @@ public class Body_Interference : MonoBehaviour
                 Random_Rotation();
                 break;
             case "PASSIVE":
-                Random_Movement();
-                Random_Rotation();
+               // Random_Movement();
+                //Random_Rotation();
                 break;
             default:
                 Debug.Log("TAG not find");
