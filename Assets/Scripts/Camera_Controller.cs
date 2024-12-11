@@ -14,8 +14,7 @@ public class Camera_Controller : MonoBehaviour
     
 
     private void Start()
-    {
-        Abst_Toggles.to_isxod_all_tumbler = true;
+    {        
         _cameraTransform = GetComponentInChildren<Camera>().transform; // Находим transform камеры
     }
 
