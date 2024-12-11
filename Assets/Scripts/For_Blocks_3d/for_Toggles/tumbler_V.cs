@@ -9,23 +9,6 @@ public class tumbler_V : Abst_Toggles
     [SerializeField] private Transform lever;
     [SerializeField] private Abst_Block Block_use;
     [SerializeField] private int _number_turnig;
-    [SerializeField] private bool Use_X;
-    [SerializeField] private bool Use_Y;
-    [SerializeField] private bool Use_Z;
-
-    private void Start(){        
-        if(Block_use == null){
-            Debug.Log("BLOCK IS NULL, name: " + this.gameObject.name);
-            return;
-        }
-
-        foreach(var sw in list_switch){
-            if(sw.Action_sw ==null)
-                Debug.Log("Action_sw is null for block: "+ Block_use.gameObject.name);
-        }
-                
-
-    } 
 
     private void OnMouseUpAsButton()
     {
@@ -36,24 +19,12 @@ public class tumbler_V : Abst_Toggles
         Establish_pos(list_switch[_number_turnig]);             
     }
 
-    public override void Establish_pos(Position_krutilka position_krutilka)
+    public override void Establish_pos(Position_krutilka position_Krutilka)
     {
-        //lever.rotation = Quaternion.Euler(position_krutilka.angle,0f,0f);      
-
-        if(Use_X)
-            lever.localEulerAngles = new Vector3(position_krutilka.angle,0f,0f);  
-        else if(Use_Y)
-            lever.localEulerAngles = new Vector3(0f,position_krutilka.angle,  0f);
-        else
-            lever.localEulerAngles = new Vector3(0f, 0f,position_krutilka.angle);
-
-        foreach (var sw in list_switch){
-            if(sw != position_krutilka)
-                Del_Action(sw,Block_use);
-        }
-        position_krutilka.event_state.Invoke();
-        Add_Status_to_blocks(position_krutilka.Action_sw, Block_use);
-        Debug.Log("Нажата кнопка: " + position_krutilka.Action_sw);
+        lever.rotation = Quaternion.Euler(position_Krutilka.angle,0f,0f);
+        Del_Action(list_switch[_number_turnig == 1 ? 1: 0], Block_use);
+        Add_Status_to_blocks(position_Krutilka.Action_sw, Block_use);
+        Debug.Log("Click tumbler_V");
     }    
 
     
@@ -61,7 +32,5 @@ public class tumbler_V : Abst_Toggles
     {
         _number_turnig = 0;
         Establish_pos(list_switch[_number_turnig]);    
-    }
-
-    
+    }    
 }

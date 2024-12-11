@@ -13,9 +13,10 @@ public class Action_Blocks
 [CreateAssetMenu(fileName = "Task_", menuName = "Task", order = 0)]
 public class Task : Abst_Task
 {
-    [Multiline] public string Text_Button;
-    public List<Action_Blocks> block_need;
+    [TextArea(3, 10)]public string Text_Button;
     
+    public List<Action_Blocks> block_need;
+    [TextArea(3, 10)] public string Text_Learnihg;    
 }
 
 
