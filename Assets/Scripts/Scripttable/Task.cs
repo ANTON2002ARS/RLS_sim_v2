@@ -7,7 +7,8 @@ using UnityEngine;
 public class Action_Blocks
 {
     public GameObject of_Blocks;
-    public List<switch_position> Command_need;      
+    public List<switch_position> Command_need;
+    [TextArea(3, 10)] public string Text_Learnihg_for_Block;
 }
 
 [CreateAssetMenu(fileName = "Task_", menuName = "Task", order = 0)]
@@ -16,7 +17,7 @@ public class Task : Abst_Task
     [TextArea(3, 10)]public string Text_Button;
     
     public List<Action_Blocks> block_need;
-    [TextArea(3, 10)] public string Text_Learnihg;    
+    [TextArea(3, 10)] public string Text_Learnihg_All;    
 }
 
 
