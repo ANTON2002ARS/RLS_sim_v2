@@ -19,7 +19,27 @@ public class krutilka_switch : Abst_Toggles
         foreach(var pos in list_switch){
             if(pos.Action_sw ==null)
             Debug.Log("Action_sw is null for block: "+ block_use.gameObject.name);
-        }            
+        }
+
+        for(int i=0; i < list_switch.Length; i++)
+        {
+            if (Abst_Toggles.to_isxod_all_tumbler == true)
+            {
+                if (list_switch[i].Isxod == true){
+                    krutilka.transform.localEulerAngles = new Vector3(0f,0f,list_switch[i].angle);
+                    _number_turnig = i;
+                    return;
+                }                    
+            }
+            else
+            {
+                if (list_switch[i].Isxod == false){
+                    krutilka.transform.localEulerAngles = new Vector3(0f,0f,list_switch[i].angle);
+                    _number_turnig = i;
+                    return;
+                }                    
+            }
+        }
     } 
 
     private void OnMouseUpAsButton()
@@ -41,6 +61,7 @@ public class krutilka_switch : Abst_Toggles
             if(sw != position_krutilka)
                 Del_Action(sw,block_use);
         }
+        position_krutilka.event_state.Invoke();
         Add_Status_to_blocks(position_krutilka.Action_sw, block_use);
         Debug.Log("Нажата кнопка: " + position_krutilka.Action_sw);
     }

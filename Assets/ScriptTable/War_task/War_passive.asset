@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23768ccf3f7d287e0945279d340adae5, type: 3}
+  m_Name: War_passive
+  m_EditorClassIdentifier: 
+  Text_Button: "\u0412 \u0443\u0441\u043B\u043E\u0432\u0438\u0438 \u0432\u043E\u0437\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0438
+    \u043F\u0430\u0441\u0441\u0438\u0432\u043D\u043E\u0439 \u043F\u043E\u043C\u0435\u0445\u0438"
+  use_target: 0
+  use_PRS: 0
+  use_passive: 1
+  use_local: 0
+  use_nip: 0
+  use_active_noise: 0
+  use_respons_answer: 0
+  block_need:
+  - of_Blocks: {fileID: 7335478148278099068, guid: 78fce034da9829d07ba345ef3bdf9a50, type: 3}
+    Command_need:
+    - {fileID: 11400000, guid: 2c2065d6ae265c247bd8fc22b22ba9b6, type: 2}
+  - of_Blocks: {fileID: 8123060092224639786, guid: 1e5c9b4f060918f358572caed258ed16, type: 3}
+    Command_need:
+    - {fileID: 11400000, guid: 7e4454be721c7c728a9bae55241a3612, type: 2}

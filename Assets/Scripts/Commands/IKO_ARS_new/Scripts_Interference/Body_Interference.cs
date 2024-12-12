@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Body_Interference : MonoBehaviour
 {
-    // проверка на избавление от помехи \\
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ \\
     [SerializeField]
     public bool Check_work;
     [SerializeField]
@@ -13,22 +13,22 @@ public class Body_Interference : MonoBehaviour
     public string Tag_;
         
 
-    private readonly float max_Radius = 2.5f;
+    private readonly float max_Radius = 1.5f;
     private readonly float min_Radius = 0.5f;
 
     public void Delete() => Destroy(this.gameObject);
 
     private void Random_Rotation()
     {
-        float randomAngle = Random.Range(0f, 360f);
-        transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
+        float randomAngle = Random.Range(0f, 180f);
+        this.transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
     }
 
 
     private void Random_Movement()
     {
         Vector2 randomOffset = Random.insideUnitCircle * max_Radius;        
-        transform.position = new Vector2(randomOffset.x + min_Radius, randomOffset.y + min_Radius);
+        this.transform.position = new Vector2(randomOffset.x + min_Radius, randomOffset.y + min_Radius);
     }
     
 
@@ -56,7 +56,7 @@ public class Body_Interference : MonoBehaviour
                 Debug.Log("TAG not find");
                 break;           
         }   
-        //Debug.Log("position Interference: " + this.transform.position);   
+        Debug.Log("position Interference: " +this.tag + "  pos: "+ this.transform.position + " angle: " + this.transform.rotation);   
     }
 
         

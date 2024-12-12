@@ -14,7 +14,7 @@ public class Camera_Controller : MonoBehaviour
     
 
     private void Start()
-    {
+    {        
         _cameraTransform = GetComponentInChildren<Camera>().transform; // Находим transform камеры
     }
 
