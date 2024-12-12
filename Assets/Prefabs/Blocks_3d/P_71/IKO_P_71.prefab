@@ -850,6 +850,7 @@ GameObject:
   - component: {fileID: 7008058484358048997}
   - component: {fileID: 4200005318312741785}
   - component: {fileID: 8099092635306311418}
+  - component: {fileID: 6293847812567726215}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -941,6 +942,29 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6293847812567726215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3185270085759625165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244dc5b0be21aed429cf65cd2ef550ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folder_Interfence: {fileID: 7687324226207259170}
+  passive:
+  - {fileID: 1532379679870972125, guid: e993a31f8d2933f4d96595a4517be765, type: 3}
+  local:
+  - {fileID: 1532379679870972125, guid: 7e868137ef310284a9fec55446a8e6e0, type: 3}
+  nip:
+  - {fileID: 1532379679870972125, guid: 16b47ecc7d5b71545b48240747361a94, type: 3}
+  active_noise:
+  - {fileID: 1532379679870972125, guid: 878f67c1ff535014e859cb3ef9d10721, type: 3}
+  respons_answer:
+  - {fileID: 1330522258578565827, guid: 27633d47322f7a346ad239def55cf685, type: 3}
 --- !u!1 &3353995783846635143
 GameObject:
   m_ObjectHideFlags: 0
@@ -3072,6 +3096,7 @@ MonoBehaviour:
   - {fileID: 1330522258578565827, guid: 44eafbf070c5a7b4ab3e0d5a9fc6140f, type: 3}
   - {fileID: 1330522258578565827, guid: aeb138ca3daea2646a2d167ab6cf7ae9, type: 3}
   - {fileID: 1330522258578565827, guid: bf956c8ac6dddae4282aa531ac66d066, type: 3}
+  iko_canvas: {fileID: 6293847812567726215}
   IKO: {fileID: 9085073383207627378}
   LineObject: {fileID: 8032601796956607961}
   LineRotationSpeed_6rpm: -36

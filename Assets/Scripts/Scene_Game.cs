@@ -9,7 +9,7 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private Task Active_Task;
     [SerializeField] private War_Task war_task;
     [SerializeField] private Transform folder_blocks;
-
+    public Abst_Task task_test;
     [Header("UI")]
     [SerializeField] private GameObject SureCheck;
     [SerializeField] private GameObject CheckResult;
@@ -31,7 +31,8 @@ public class Scene_Game : MonoBehaviour
 
     void Start()
     {
-         Abst_Task task = MenuManager.Menu_Instance.Active_Task;
+        //Abst_Task task = MenuManager.Menu_Instance.Active_Task;
+        Abst_Task task = task_test;
 
         Show_SureChecker(false);
         CheckResult.SetActive(false);        
