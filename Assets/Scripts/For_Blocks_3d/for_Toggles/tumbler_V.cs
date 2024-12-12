@@ -9,6 +9,9 @@ public class tumbler_V : Abst_Toggles
     [SerializeField] private Transform lever;
     [SerializeField] private Abst_Block Block_use;
     [SerializeField] private int _number_turnig;
+    [SerializeField] private bool Use_X;
+    [SerializeField] private bool Use_Y;
+    [SerializeField] private bool Use_Z;
 
     private void Start(){        
         if(Block_use == null){
@@ -20,8 +23,7 @@ public class tumbler_V : Abst_Toggles
             if(sw.Action_sw ==null)
                 Debug.Log("Action_sw is null for block: "+ Block_use.gameObject.name);
         }
-
-        
+                
 
     } 
 
@@ -38,9 +40,14 @@ public class tumbler_V : Abst_Toggles
     {
         //lever.rotation = Quaternion.Euler(position_krutilka.angle,0f,0f);      
 
-        lever.localEulerAngles = new Vector3(position_krutilka.angle,0f,0f);  
+        if(Use_X)
+            lever.localEulerAngles = new Vector3(position_krutilka.angle,0f,0f);  
+        else if(Use_Y)
+            lever.localEulerAngles = new Vector3(0f,position_krutilka.angle,  0f);
+        else
+            lever.localEulerAngles = new Vector3(0f, 0f,position_krutilka.angle);
 
-        foreach(var sw in list_switch){
+        foreach (var sw in list_switch){
             if(sw != position_krutilka)
                 Del_Action(sw,Block_use);
         }

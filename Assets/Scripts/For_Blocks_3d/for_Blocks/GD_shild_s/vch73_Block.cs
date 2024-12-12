@@ -64,7 +64,9 @@ public class vch73_Block : Abst_Block
         index_pos++;
         if(index_pos >= pos_handle.Count)
             index_pos = 0;
-        Handler.transform.rotation = Quaternion.Euler(0f,0f,pos_handle[index_pos].angle);     
+
+        //Handler.transform.rotation = Quaternion.Euler(0f,0f,pos_handle[index_pos].angle);             
+        Handler.transform.localEulerAngles = new Vector3(0f, 0f, pos_handle[index_pos].angle);
         Del_status(pos_handle[index_pos].Action_sw);
         Set_Status(pos_handle[index_pos].Action_sw);   
     }
