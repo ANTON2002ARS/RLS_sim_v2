@@ -21,20 +21,25 @@ public class krutilka_switch : Abst_Toggles
             Debug.Log("Action_sw is null for block: "+ block_use.gameObject.name);
         }
 
-        foreach (var pos in list_switch)
+        for(int i=0; i < list_switch.Length; i++)
         {
             if (Abst_Toggles.to_isxod_all_tumbler == true)
             {
-                if (pos.Isxod == true)
-                    krutilka.transform.localEulerAngles = new Vector3(pos.angle, 0f, 0f);
+                if (list_switch[i].Isxod == true){
+                    krutilka.transform.localEulerAngles = new Vector3(0f,0f,list_switch[i].angle);
+                    _number_turnig = i;
+                    return;
+                }                    
             }
             else
             {
-                if (pos.Isxod == false)
-                    krutilka.transform.localEulerAngles = new Vector3(pos.angle, 0f, 0f);
+                if (list_switch[i].Isxod == false){
+                    krutilka.transform.localEulerAngles = new Vector3(0f,0f,list_switch[i].angle);
+                    _number_turnig = i;
+                    return;
+                }                    
             }
         }
-
     } 
 
     private void OnMouseUpAsButton()

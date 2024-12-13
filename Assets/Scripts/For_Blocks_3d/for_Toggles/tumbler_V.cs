@@ -23,6 +23,34 @@ public class tumbler_V : Abst_Toggles
             if(sw.Action_sw ==null)
                 Debug.Log("Action_sw is null for block: "+ Block_use.gameObject.name);
         }
+
+        for(int i=0; i < list_switch.Length; i++)
+        {
+            if(Abst_Toggles.to_isxod_all_tumbler == true){
+                if(list_switch[i].Isxod == true){
+                    if(Use_X)
+                    lever.localEulerAngles = new Vector3(list_switch[i].angle,0f,0f);  
+                    else if(Use_Y)
+                    lever.localEulerAngles = new Vector3(0f,list_switch[i].angle,  0f);
+                    else
+                    lever.localEulerAngles = new Vector3(0f, 0f,list_switch[i].angle);
+                    _number_turnig = i;
+                    return;
+                }
+            }
+            else{
+                if(list_switch[i].Isxod == false){
+                    if(Use_X)
+                    lever.localEulerAngles = new Vector3(list_switch[i].angle,0f,0f);  
+                    else if(Use_Y)
+                    lever.localEulerAngles = new Vector3(0f,list_switch[i].angle,  0f);
+                    else
+                    lever.localEulerAngles = new Vector3(0f, 0f,list_switch[i].angle);
+                    _number_turnig = i;
+                    return;
+                }
+            }
+        }
                 
 
     } 

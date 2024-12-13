@@ -20,15 +20,15 @@ public class Body_Interference : MonoBehaviour
 
     private void Random_Rotation()
     {
-        float randomAngle = Random.Range(0f, 360f);
-        transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
+        float randomAngle = Random.Range(0f, 180f);
+        this.transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
     }
 
 
     private void Random_Movement()
     {
         Vector2 randomOffset = Random.insideUnitCircle * max_Radius;        
-        transform.position = new Vector2(randomOffset.x + min_Radius, randomOffset.y + min_Radius);
+        this.transform.position = new Vector2(randomOffset.x + min_Radius, randomOffset.y + min_Radius);
     }
     
 
@@ -49,14 +49,14 @@ public class Body_Interference : MonoBehaviour
                 Random_Rotation();
                 break;
             case "PASSIVE":
-               // Random_Movement();
-                //Random_Rotation();
+                Random_Movement();
+                Random_Rotation();
                 break;
             default:
                 Debug.Log("TAG not find");
                 break;           
         }   
-        //Debug.Log("position Interference: " + this.transform.position);   
+        Debug.Log("position Interference: " +this.tag + "  pos: "+ this.transform.position + " angle: " + this.transform.rotation);   
     }
 
         

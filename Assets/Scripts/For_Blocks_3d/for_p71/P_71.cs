@@ -21,6 +21,7 @@ public class P_71 : Abst_Block
     [SerializeField] private List<GameObject> nip;
     [SerializeField] private List<GameObject> active_noise;
     [SerializeField] private List<GameObject> respons_answer;
+    [SerializeField] private Show_Objects_on_IKO iko_canvas;
 
     [Header("for Line")]
     [SerializeField] private GameObject IKO;
@@ -153,28 +154,32 @@ public class P_71 : Abst_Block
         switch (number)
         {
             case 1:
-                interference = Instantiate(passive[Random.Range(0, passive.Count)]);
+                //interference = Instantiate(passive[Random.Range(0, passive.Count)]);
+                interference = Instantiate(passive[Random.Range(0, passive.Count)],folder_Interfence);
                 break;
             case 2:
-                interference = Instantiate(local[Random.Range(0, local.Count)]);
+                interference = Instantiate(local[Random.Range(0, local.Count)], folder_Interfence);
                 break;
             case 3:
-                interference = Instantiate(nip[Random.Range(0, nip.Count)]);
+                interference = Instantiate(nip[Random.Range(0, nip.Count)], folder_Interfence);
                 break;
             case 4:
-                interference = Instantiate(active_noise[Random.Range(0, active_noise.Count)]);
+                interference = Instantiate(active_noise[Random.Range(0, active_noise.Count)], folder_Interfence);
                 break;
             case 5:
-                interference = Instantiate(respons_answer[Random.Range(0, respons_answer.Count)]);
+                interference = Instantiate(respons_answer[Random.Range(0, respons_answer.Count)], folder_Interfence);
                 break;
             default:
                 Debug.LogError("number is out");
                 return;
         } 
 
-        interference.transform.SetParent(folder_Interfence);
+        interference.transform.SetParent(folder_Interfence, true);
         interference.transform.localScale = Vector3.one;
         interference.transform.eulerAngles = Vector3.zero;
+        interference.transform.rotation = Quaternion.Euler(Vector3.zero);
+        RectTransform trans = interference.GetComponent<RectTransform>();
+        trans.eulerAngles = Vector3.zero;
     }
     
     public void Clikc_Button()=> round_mode =!round_mode;

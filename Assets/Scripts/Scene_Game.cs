@@ -9,7 +9,7 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private Task Active_Task;
     [SerializeField] private War_Task war_task;
     [SerializeField] private Transform folder_blocks;
-
+    public Abst_Task task_test;
     [Header("UI")]
     [SerializeField] private GameObject SureCheck;
     [SerializeField] private GameObject CheckResult;
@@ -21,6 +21,7 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private GameObject Panel_Target;
     [SerializeField] private GameObject Panel_Interference;
     [SerializeField] private GameObject Panel_PRS;
+    [SerializeField] private GameObject report_text;
 
     [Header("for IKO")]
     [SerializeField] private P_71 IKO;
@@ -30,19 +31,19 @@ public class Scene_Game : MonoBehaviour
 
     void Start()
     {
-        Show_SureChecker(false);
-        CheckResult.SetActive(false);
+        //Abst_Task task = MenuManager.Menu_Instance.Active_Task;
+        Abst_Task task = task_test;
 
+        Show_SureChecker(false);
+        CheckResult.SetActive(false);        
         Button_Show_IKO.SetActive(false);
         Button_Kill_Interference.SetActive(false);
         Panel_Target.SetActive(false);
-        //Panel_Interference.SetActive(false);
+        Panel_Interference.SetActive(false);
         Panel_PRS.SetActive(false);
-        //IKO.gameObject.SetActive(false);
-        folder_blocks.gameObject.SetActive(true);
-             
-        
-        Abst_Task task = MenuManager.Menu_Instance.Active_Task;
+        report_text.SetActive(false);
+        IKO.gameObject.SetActive(false);
+        folder_blocks.gameObject.SetActive(true);        
 
         if(task is Task){
             Debug.Log("start task");
@@ -132,14 +133,17 @@ public class Scene_Game : MonoBehaviour
                 //Destroy(block);
             }
             else{
+                report_text.SetActive(true);
+                Invoke("Off_Report_Text",2f);
                 Show_Block(index_block);
                 Debug.Log("next block texting");
             }
         }
 
-        Debug.Log("отравотка блока, статус: " + is_pass);            
-        
+        Debug.Log("отравотка блока, статус: " + is_pass);
     }
+
+    private void Off_Report_Text()=> report_text.SetActive(false);
 
     public void Show_SureChecker(bool is_active)=> SureCheck.SetActive(is_active);
     public void Pass_Testing(){
