@@ -43,6 +43,7 @@ public class POV72_block : Abst_Block
                 if(Need_Condition[i] != Action_Toggles[i]){
                     Debug.Log("нужен был: " + Need_Condition[i] + " получен: " + Action_Toggles[i]);
                     Scene_Game.test_instance.Calling_Completion_Block(false);
+                    return;
                 }
                 Debug.Log("i: " + i);
             }

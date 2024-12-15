@@ -33,8 +33,8 @@ public class Scene_Game : MonoBehaviour
 
     void Start()
     {
-        //Abst_Task task = MenuManager.Menu_Instance.Active_Task;
-        Abst_Task task = task_test;
+        Abst_Task task = MenuManager.Menu_Instance.Active_Task;
+        //Abst_Task task = task_test;
 
         Show_SureChecker(false);
         CheckResult.SetActive(false);        
@@ -121,7 +121,9 @@ public class Scene_Game : MonoBehaviour
         GameObject b = Instantiate(Active_Task.block_need[index].of_Blocks);
         b.transform.SetParent(folder_blocks);
         b.GetComponent<Abst_Block>().Need_Condition = Active_Task.block_need[index].Command_need;
-        text_learning.text = Active_Task.block_need[index].Text_Learnihg_for_Block;
+        if(MenuManager.Menu_Instance.Use_Learning == true)
+            text_learning.text = Active_Task.block_need[index].Text_Learnihg_for_Block;
+        
     }
 
     public void Calling_Completion_Block(bool is_pass){

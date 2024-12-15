@@ -5,8 +5,8 @@ using UnityEngine;
 public class counter_valum : MonoBehaviour
 {
     public int counter = 0;
-    public TMPro.TextMeshPro counterText; // Или TMPro.TMP_Text для TextMeshPro
-    public int resetValue = 2524; // Значение для сброса
+    public TMPro.TextMeshPro counterText; 
+    public int resetValue = 9999; 
     private bool isCounting = true;
 
     void Start()
@@ -24,7 +24,7 @@ public class counter_valum : MonoBehaviour
             {
                 counter = 0;
             }
-            counterText.text = counter.ToString("D4"); // Форматирование в 0000
+            counterText.text = counter.ToString("D4"); // 0000
         }
     }
 
