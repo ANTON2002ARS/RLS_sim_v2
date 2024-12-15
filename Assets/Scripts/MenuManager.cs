@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public Abst_Task Isxod_test;
     public List<Abst_Task> Task_Work;
     public List<Abst_Task> Task_War;
     [SerializeField] private Transform panel_task_work;
@@ -26,6 +27,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        Abst_Toggles.to_isxod_all_tumbler = true;
         Panel_IKO.SetActive(false);
         Set_Button(panel_task_work,Task_Work);
         Set_Button(panel_task_war, Task_War);
@@ -53,7 +55,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Scene_Task");  
     }
 
-    
+    public void Start_Test_Isxod(){
+        Abst_Toggles.to_isxod_all_tumbler = false;
+        Active_Task = Isxod_test;
+        SceneManager.LoadScene("Scene_Task");  
+    }    
 
     private void Set_Button(Transform Children_panel, List<Abst_Task> tasks)
     {        
@@ -93,7 +99,7 @@ public class MenuManager : MonoBehaviour
             Button_learhihg.GetComponent<Image>().color = new Color(145f / 255, 145f / 255,145f / 255);
         }
 
-    }
+    }    
 
     public void Show_IKO() => Panel_IKO.SetActive(!Panel_IKO.activeSelf);
 

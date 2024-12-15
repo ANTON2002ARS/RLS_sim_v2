@@ -19,7 +19,7 @@ public abstract class Abst_Toggles : MonoBehaviour
         Block_use.Set_Status(switch_is);
     }
 
-    public static bool to_isxod_all_tumbler = true;
+    public static bool to_isxod_all_tumbler;
 
         
 
