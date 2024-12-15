@@ -22,6 +22,8 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private GameObject Panel_Interference;
     [SerializeField] private GameObject Panel_PRS;
     [SerializeField] private GameObject report_text;
+    [SerializeField] private GameObject Panel_learning;
+    [SerializeField] private Text text_learning;
 
     [Header("for IKO")]
     [SerializeField] private P_71 IKO;
@@ -41,7 +43,8 @@ public class Scene_Game : MonoBehaviour
         Panel_Target.SetActive(false);
         Panel_Interference.SetActive(false);
         Panel_PRS.SetActive(false);
-        report_text.SetActive(false);
+        report_text.SetActive(false);        
+        Panel_learning.SetActive(MenuManager.Menu_Instance.Use_Learning);
         IKO.gameObject.SetActive(false);
         folder_blocks.gameObject.SetActive(true);        
 
@@ -118,6 +121,7 @@ public class Scene_Game : MonoBehaviour
         GameObject b = Instantiate(Active_Task.block_need[index].of_Blocks);
         b.transform.SetParent(folder_blocks);
         b.GetComponent<Abst_Block>().Need_Condition = Active_Task.block_need[index].Command_need;
+        text_learning.text = Active_Task.block_need[index].Text_Learnihg_for_Block;
     }
 
     public void Calling_Completion_Block(bool is_pass){
@@ -128,8 +132,8 @@ public class Scene_Game : MonoBehaviour
             
             if(index_block >= Active_Task.block_need.Count){
                 Pass_Testing();
-                index_block=0;
-                GameObject block = folder_blocks.GetChild(0).gameObject;
+                index_block = 0;
+                //GameObject block = folder_blocks.GetChild(0).gameObject;
                 //Destroy(block);
             }
             else{

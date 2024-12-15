@@ -14,6 +14,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Transform panel_task_war;
     [SerializeField] private GameObject button_task;
     [SerializeField] private float button_spacing;
+    [Header("UI")]
+    [SerializeField] private Button Button_learhihg;
+    public bool Use_Learning;
 
     public static MenuManager Menu_Instance { get; private set; }
     private void Awake() => Menu_Instance = this;
@@ -78,6 +81,17 @@ public class MenuManager : MonoBehaviour
             }            
         }
     }    
+
+    public void Use_learning_Mode(){
+        Use_Learning = !Use_Learning;
+        if(Use_Learning == true){
+            Button_learhihg.GetComponent<Image>().color = new Color(60f / 255, 120f / 255, 0f / 255);
+        }
+        else{
+            Button_learhihg.GetComponent<Image>().color = new Color(145f / 255, 145f / 255,145f / 255);
+        }
+
+    }
 
 
     public void Open_Scene_RLS()=>SceneManager.LoadScene("RLS_Scene");
