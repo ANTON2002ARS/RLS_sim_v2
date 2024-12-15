@@ -14,6 +14,7 @@ public class Domain : MonoBehaviour
     {
         if (collision.tag != "Line")
             return;  
+
         // Показываем часть помехи \\
         image.SetActive(true);
         // Плавное удаление помехи \\
@@ -27,5 +28,8 @@ public class Domain : MonoBehaviour
         // Для стробирование не применяется\\
         if(this.tag == "PASSIVE" && Body_Passive._is_strobing == true)
             Canvas.alpha -= 0.4f; 
-    }   
+    }
+
+    private void Reduce_Volume() => Canvas.alpha = 0.8f;
+    
 }

@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private float button_spacing;
     [Header("UI")]
     [SerializeField] private Button Button_learhihg;
+    [SerializeField] private GameObject Panel_IKO;
     public bool Use_Learning;
 
     public static MenuManager Menu_Instance { get; private set; }
@@ -25,6 +26,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        Panel_IKO.SetActive(false);
         Set_Button(panel_task_work,Task_Work);
         Set_Button(panel_task_war, Task_War);
     }
@@ -92,6 +94,8 @@ public class MenuManager : MonoBehaviour
         }
 
     }
+
+    public void Show_IKO() => Panel_IKO.SetActive(!Panel_IKO.activeSelf);
 
 
     public void Open_Scene_RLS()=>SceneManager.LoadScene("RLS_Scene");
