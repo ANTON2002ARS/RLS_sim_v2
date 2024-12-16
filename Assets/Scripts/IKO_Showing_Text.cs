@@ -9,29 +9,37 @@ public class IKO_Showing_Text : MonoBehaviour
     [TextArea(3, 10)] public string text_local;
     [TextArea(3, 10)] public string text_nip;
     [TextArea(3, 10)] public string text_active_noise;
-    [TextArea(3, 10)] public string text_respons_answer;
+    [TextArea(3, 10)] public string text_respons_answer;    
     [SerializeField] private List<GameObject> passive;
     [SerializeField] private List<GameObject> local;
     [SerializeField] private List<GameObject> nip;
     [SerializeField] private List<GameObject> active_noise;
     [SerializeField] private List<GameObject> respons_answer;
-
-    [TextArea(3, 10)] public string text_target;
-    [SerializeField] private GameObject target;
+    
+    [SerializeField] private GameObject target_flying;
 
     [Header("UI")]
+    [SerializeField] public Text text_learning;
     [SerializeField] private Transform folder_Interfence;
-    [SerializeField] private Text text_learning;
+    [SerializeField] private Transform folder_target;
+    [TextArea(3, 10)] private Text text_Own_Target;
+    [TextArea(3, 10)] private Text text_NOT_Own_Target;
+    [TextArea(3, 10)] private Text text_Gruaps_Target;
+    [TextArea(3, 10)] private Text text_of_Passive_Interferense_Target;
+    [TextArea(3, 10)] private Text text_f_Active_Interferense_Target;
 
     [SerializeField] private GameObject Active_Interfence;
-    [SerializeField] private GameObject Active_Target;
+    public static List<GameObject> Active_Targets = new List<GameObject>();
 
     [Header("for Display")]
+    [SerializeField] private Scrollbar Scrobing_Line;  
+    [SerializeField] private Scrollbar ScrollbarGridBrightness;  
     [SerializeField] private CanvasGroup Grid;    
     [SerializeField] private GameObject LineObject;
     [SerializeField] private float LineRotationSpeed_6rpm = -36f;
     [SerializeField] private float LineRotationSpeed_12rpm = -72f;
 
+    
     private float _brightness;
     public float Brightness_IKO
     {
@@ -49,19 +57,9 @@ public class IKO_Showing_Text : MonoBehaviour
     public bool round_mode
     {
         get => _mode;
-        set
-        {
-            _mode = value;
-            var pos = LineObject.transform.localPosition;
-            var angles = LineObject.transform.localEulerAngles;
-            if (value == true) pos.y = 0;
-            else pos.y = -250;
-            angles.z = 135;
-            LineObject.transform.localPosition = pos;
-            LineObject.transform.localEulerAngles = angles;
-            Debug.Log("mode is round");
-        }
+        set => _mode = value; 
     }
+
     private float LineRotationSpeed
     {
         get
@@ -76,9 +74,14 @@ public class IKO_Showing_Text : MonoBehaviour
         }
     }
 
+    public void Set_Round_mode(bool mode)=> round_mode = mode;
+
+    public static IKO_Showing_Text Instance_mini_iko { get; private set; }
+    private void Awake() => Instance_mini_iko = this;
+
     void Start()
     {
-        round_mode = true;
+        round_mode = true;        
     }
 
     void Update() => Work_of_Line();
@@ -88,14 +91,8 @@ public class IKO_Showing_Text : MonoBehaviour
     private void Work_of_Line()
     {
         var angles = LineObject.transform.localEulerAngles;
-        if (round_mode == true) angles.z += LineRotationSpeed * Time.deltaTime;
-        else
-        {
-            if (turning_line == true) angles.z += LineRotationSpeed * Time.deltaTime;
-            else angles.z -= LineRotationSpeed * Time.deltaTime;
-            if (angles.z > 135) turning_line = true;
-            else if (angles.z < 45) turning_line = false;
-        }
+        var lastAngle = angles.z;
+        angles.z += LineRotationSpeed * Time.deltaTime;
         LineObject.transform.localEulerAngles = angles;
     }
 
@@ -147,40 +144,27 @@ public class IKO_Showing_Text : MonoBehaviour
 
     public void Span_Target(int number)
     {
-        switch (number)
-        {
-            case 1:
-                
-                break;
-            case 2:
-                
-                break;
-            case 3:
-                
-                break;
-            case 4:
-                
-                break;
-            case 5:
-                
-                break;
-            default:
-                Debug.LogError("number is out");
-                return;
-        }
-
-        if (folder_Interfence.childCount > 0)
-        {
-            GameObject block = folder_Interfence.GetChild(0).gameObject;
-            Destroy(block);
-        }
-
-        Active_Interfence.transform.SetParent(folder_Interfence, false);
-    }
-
-    public void Delete_Target()
-    {
+        GameObject targefly = Instantiate(target_flying);
+        targefly.transform.SetParent(folder_target, false);
+        Active_Targets.Add(targefly);
+        targefly.GetComponent<Targets_>().Set_Target(number, 2.5f);
+        Debug.Log("Start target");       
 
     }
+
+    public void BrightnessChanged(float value) => Grid.alpha = ScrollbarGridBrightness.value;  
+
+
+    public void Start_Strobing()
+    {        
+        // ???????? ????? \\
+        float angles_strib = Scrobing_Line.value;
+        var angles = LineObject.transform.localEulerAngles;
+        var lastAngle = angles.z;
+        angles.z += LineRotationSpeed *(float)(angles_strib / 10);
+        LineObject.transform.localEulerAngles = angles;
+              
+    }
+
 
 }

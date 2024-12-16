@@ -7,7 +7,7 @@ public class counter_valum : MonoBehaviour
     public int counter = 0;
     public TMPro.TextMeshPro counterText; 
     public int resetValue = 9999; 
-    private bool isCounting = true;
+    private bool isCounting = false;
 
     void Start()
     {
@@ -28,6 +28,8 @@ public class counter_valum : MonoBehaviour
         }
     }
 
-    public void StopCounting()=> isCounting = false;
+    public void STOP_COUNTING()=> isCounting = false;
+    public void START_COUNTING()=> isCounting = true;
+
     
 }
