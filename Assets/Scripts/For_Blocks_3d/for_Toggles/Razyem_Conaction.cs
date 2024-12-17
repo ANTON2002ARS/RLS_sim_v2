@@ -34,21 +34,24 @@ public class Razyem_Conaction : MonoBehaviour
     private void OnMouseUpAsButton()=> Establish_pos();
     
     public void Establish_pos()
-    {
+    {        
         if (index >= switchs_obgs.Count)
-            index = switchs_obgs.Count;
-        Disble_only(switchs_obgs[index]);
-        block_use.Set_Status(switchs_obgs[index].pos_state);
+            index = 0;        
+        Disble_only(switchs_obgs[index]); 
+        index++;
     }
 
     private void Disble_only(Switchs_Obg not_disble)
     {
         foreach(var obg in switchs_obgs)
         {
-            if (obg.pos_state != not_disble.pos_state)
+            if (obg.pos_state != not_disble.pos_state){
                 obg.obj_active.SetActive(false);
+                block_use.Del_status(obg.pos_state);
+            }                
         }
         not_disble.obj_active.SetActive(true);
+        block_use.Set_Status(not_disble.pos_state);
     }
 
     public void Reset_Switches(bool is_reset)

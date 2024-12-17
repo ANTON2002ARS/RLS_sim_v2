@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Camera_Controller : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Camera_Controller : MonoBehaviour
     
 
     private void Start()
-    {
+    {        
         _cameraTransform = GetComponentInChildren<Camera>().transform; // Находим transform камеры
     }
 
@@ -31,12 +32,15 @@ public class Camera_Controller : MonoBehaviour
         transform.Translate(new Vector3(horizontal, 0, vertical) * speed * Time.deltaTime);
         if(Input.GetKey(KeyCode.Space)){
             transform.Translate(new Vector3(0, 1 * speed * Time.deltaTime, 0));
-        }       
+        }   
+        else if(Input.GetKey(KeyCode.LeftShift)){
+            transform.Translate(new Vector3(0, -1 * speed * Time.deltaTime, 0));
+        }    
     }
 
     private void HandleTilting()
     {
-        if (Input.GetKey(KeyCode.LeftShift)) // правая кнопка мыши + Shift
+        if (Input.GetMouseButton(1)) // правая кнопка мыши + Shift Input.GetKey(KeyCode.LeftShift)
         {
             Cursor.lockState = CursorLockMode.Locked;           
             float mouseX = Input.GetAxis("Mouse X");
@@ -56,6 +60,8 @@ public class Camera_Controller : MonoBehaviour
             this.transform.localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0f);
         }
     }
+
+    public void Exit_Scene()=> SceneManager.LoadScene("Menu_Scene");
 
     
 }

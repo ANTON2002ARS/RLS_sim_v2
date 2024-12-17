@@ -456,6 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7493268306305339042}
+  - component: {fileID: 7724654912097854344}
   m_Layer: 0
   m_Name: Mini_ampermetr
   m_TagString: Untagged
@@ -484,6 +485,24 @@ Transform:
   - {fileID: 6241195709034327769}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7724654912097854344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833659151064863768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed52f2b144d86b4185a4b31dac81ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Line: {fileID: 1804935786635623791}
+  text_measur: {fileID: 4522046089817766411}
+  max_measurs: 200
+  text: {fileID: 50988021416610161}
+  min_angle: -70
+  max_angle: 70
 --- !u!1 &8981763198433690936
 GameObject:
   m_ObjectHideFlags: 0

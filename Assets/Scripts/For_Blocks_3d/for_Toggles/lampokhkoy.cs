@@ -11,7 +11,7 @@ public class lampokhkoy : MonoBehaviour
         
    
     public void Change_State(bool is_on)
-    {
+    {       
         if (is_on)
         {
             if(material_on == null)
