@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Body_Interference : MonoBehaviour
 {
-    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ \\
+    //      \\
     [SerializeField]
     public bool Check_work;
     [SerializeField]
@@ -13,22 +13,22 @@ public class Body_Interference : MonoBehaviour
     public string Tag_;
         
 
-    private readonly float max_Radius = 1.5f;
-    private readonly float min_Radius = 0.5f;
+    [SerializeField] private float max_Radius = 1.5f;
+    [SerializeField] private float min_Radius = 0.5f;
 
     public void Delete() => Destroy(this.gameObject);
 
     private void Random_Rotation()
     {
         float randomAngle = Random.Range(0f, 180f);
-        this.transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
+        this.transform.localRotation = Quaternion.Euler(0f, 0f, randomAngle);
     }
 
 
     private void Random_Movement()
     {
         Vector2 randomOffset = Random.insideUnitCircle * max_Radius;        
-        this.transform.position = new Vector2(randomOffset.x + min_Radius, randomOffset.y + min_Radius);
+        this.transform.localPosition = new Vector2(randomOffset.x + min_Radius, randomOffset.y + min_Radius);
     }
     
 

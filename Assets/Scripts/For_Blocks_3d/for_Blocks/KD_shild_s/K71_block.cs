@@ -38,10 +38,11 @@ public class K71_block : Abst_Block
     public override void Check_Result()
     { 
         if(Need_Condition.Count == Action_Toggles.Count){ 
-            for(int i = 0;i < Need_Condition.Count; i++){
+            for(int i = 0; i < Need_Condition.Count; i++){
                 if(Need_Condition[i] != Action_Toggles[i]){
                     Debug.Log("нужен был: " + Need_Condition[i] + " получен: " + Action_Toggles[i]);
                     Scene_Game.test_instance.Calling_Completion_Block(false);
+                    return;
                 }
                 Debug.Log("i: " + i);
             }

@@ -11,6 +11,8 @@ public class krutilka_switch : Abst_Toggles
     [SerializeField] private Abst_Block block_use;
     [SerializeField] private int _number_turnig;
 
+    private bool forward = true;
+
     private void Start(){        
         if(block_use == null){
             Debug.Log("BLOCK IS NULL, name: " + this.gameObject.name);
@@ -48,6 +50,26 @@ public class krutilka_switch : Abst_Toggles
         if(_number_turnig >= list_switch.Length)
             _number_turnig = 0;
         
+        // Изменение счетчика
+        // if (forward)
+        // {
+        //     _number_turnig++;
+        //     if (_number_turnig >= list_switch.Length)
+        //     {
+        //         _number_turnig = list_switch.Length -1;
+        //         forward = false;
+        //     }
+        // }
+        // else
+        // {
+        //     _number_turnig--;
+        //     if (_number_turnig < 0)
+        //     {
+        //         _number_turnig = 0;
+        //         forward = true;
+        //     }
+        // }
+
         Establish_pos(list_switch[_number_turnig]);
     }
 

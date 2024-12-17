@@ -19,10 +19,10 @@ public class Potansiometr :  Abst_Toggles
     }
     private void Turning() 
     {
-        if (Abst_Toggles.to_isxod_all_tumbler == true)
-            animator.speed = -1f;
-        else
-            animator.speed = 1f;
+        // if (Abst_Toggles.to_isxod_all_tumbler == true)
+        //     animator.speed = -1f;
+        // else
+        //     animator.speed = 1f;
         animator.SetTrigger("purning"); 
     }
 
@@ -38,11 +38,11 @@ public class Potansiometr :  Abst_Toggles
     }
 
     public override void Establish_pos(Position_krutilka position_Krutilka)
-    {
-        position_Krutilka.event_state.Invoke();
+    {        
         Del_Action(position_Krutilka, block_use);
         Add_Status_to_blocks(position_Krutilka.Action_sw, block_use);
         Turning();
+        position_Krutilka.event_state.Invoke();
     }
     
     public override void Reset_Switches(bool is_reset)=> throw new System.NotImplementedException();

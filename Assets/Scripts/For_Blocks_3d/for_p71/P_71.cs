@@ -108,6 +108,7 @@ public class P_71 : Abst_Block
                 if(Need_Condition[i] != Action_Toggles[i]){
                     Debug.Log("нужен был: " + Need_Condition[i] + " получен: " + Action_Toggles[i]);
                     Scene_Game.test_instance.Calling_Completion_Block(false);
+                    return;
                 }
                 Debug.Log("i: " + i);
             }
@@ -149,37 +150,39 @@ public class P_71 : Abst_Block
     }
 
     public void Span_Interference(int number)
-    {
+    {        
         GameObject interference;
         switch (number)
         {
             case 1:
                 //interference = Instantiate(passive[Random.Range(0, passive.Count)]);
-                interference = Instantiate(passive[Random.Range(0, passive.Count)],folder_Interfence);
+                interference = Instantiate(passive[Random.Range(0, passive.Count)]);
                 break;
             case 2:
-                interference = Instantiate(local[Random.Range(0, local.Count)], folder_Interfence);
+                interference = Instantiate(local[Random.Range(0, local.Count)]);
                 break;
             case 3:
-                interference = Instantiate(nip[Random.Range(0, nip.Count)], folder_Interfence);
+                interference = Instantiate(nip[Random.Range(0, nip.Count)]);
                 break;
             case 4:
-                interference = Instantiate(active_noise[Random.Range(0, active_noise.Count)], folder_Interfence);
+                interference = Instantiate(active_noise[Random.Range(0, active_noise.Count)]);
                 break;
             case 5:
-                interference = Instantiate(respons_answer[Random.Range(0, respons_answer.Count)], folder_Interfence);
+                interference = Instantiate(respons_answer[Random.Range(0, respons_answer.Count)]);
                 break;
             default:
                 Debug.LogError("number is out");
                 return;
         } 
 
-        interference.transform.SetParent(folder_Interfence, true);
-        interference.transform.localScale = Vector3.one;
-        interference.transform.eulerAngles = Vector3.zero;
-        interference.transform.rotation = Quaternion.Euler(Vector3.zero);
-        RectTransform trans = interference.GetComponent<RectTransform>();
-        trans.eulerAngles = Vector3.zero;
+         interference.transform.SetParent(folder_Interfence, false);
+         interference.transform.localScale = Vector3.one;
+         interference.transform.localPosition = Vector3.zero;
+        // interference.transform.eulerAngles = Vector3.zero;
+        // interference.transform.rotation = Quaternion.Euler(Vector3.zero);
+        // RectTransform trans = interference.GetComponent<RectTransform>();
+        // trans.rotation = Quaternion.Euler(22, 0, 0);
+        //interference.transform.localRotation = Quaternion.identity; 
     }
     
     public void Clikc_Button()=> round_mode =!round_mode;
