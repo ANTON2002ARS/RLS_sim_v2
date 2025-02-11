@@ -9,24 +9,24 @@ public class Targets_ : MonoBehaviour
     [SerializeField] private GameObject Middle;
     [SerializeField] private GameObject line_up;
     [SerializeField] private GameObject linu_down;
-    // Количество точек перехода от начала к  концу \\
+    // ќќќќќќќќќќ ќќќќќ ќќќќќќќќ ќќ ќќќќќќ ќ  ќќќќќ \\
     [SerializeField] private int Quantity_point = 30;
     [SerializeField] private int Quantity_Trace = 6;
-    // Для проверки на выполнение полного оборота \\
+    // ќќќ ќќќќќќќќ ќќ ќќќќќќќќќќ ќќќќќќќ ќќќќќќќ \\
     [HideInInspector] public bool flag_move;
-    // номер шага \\
+    // ќќќќќ ќќќќ \\
     [SerializeField] private int _Namber_Step = 1;
-    // Вектора начало и конца движение цели (R = +-2.4f) \\
+    // ќќќќќќќ ќќќќќќ ќ ќќќќќ ќќќќќќќќ ќќќќ (R = +-2.4f) \\
     [HideInInspector] public Vector2 startPosition;  
     [HideInInspector] public Vector2 endPosition;   
-    // Сама реальная цель \\
+    // ќќќќ ќќќќќќќќ ќќќќ \\
     private GameObject main_target; 
-    // След триектории\\
+    // ќќќќ ќќќќќќќќќќ\\
     private readonly List<GameObject> trace_trajectories = new List<GameObject>();
 
     private void Start()
     {
-        Set_off_all_obj();
+        //Set_off_all_obj();
     }
     private void Set_off_all_obj()
     {
@@ -63,8 +63,10 @@ public class Targets_ : MonoBehaviour
         linu_down.SetActive(true);
     }
 
-    private void Set_Random_Target(int number)
+    public void Set_Target(int number, float radius)
     {        
+        Set_off_all_obj();
+
         switch (number)
         {
             case 1:
@@ -86,11 +88,14 @@ public class Targets_ : MonoBehaviour
                 Debug.LogError("Target is not selected");
                 break;
         }
+        Generat_vector_circle(radius);
+        this.transform.position = startPosition;
+        main_target = this.gameObject;
     }
 
     private void Generat_vector_circle(float radius)
     {
-        // Выбираем сллучайною точку на окружности \\
+        // ќќќќќќќќ ќќќќќќќќќќ ќќќќќ ќќ ќќќќќќќќќќ \\
         //Vector2 randomOffset = Random.insideUnitCircle * radius;
         //Vector2 start_point = new Vector2(randomOffset.x + radius, randomOffset.y + radius);
         float angle = Random.Range(0f, Mathf.PI * 2f);
@@ -98,7 +103,7 @@ public class Targets_ : MonoBehaviour
         float y = Mathf.Cos(angle) * radius;
         Vector2 start_point = new Vector2(x, y);
         startPosition = start_point;
-        // Вычисляем противоположною по какой то из оси\\
+        // ќќќќќќќќќ ќќќќќќќќќќќќќќќ ќќ ќќќќќ ќќ ќќ ќќќ\\
         if (Random.Range(0, 2) == 1)
             endPosition = new Vector2(-1 * start_point.x, start_point.y);
         else
@@ -108,9 +113,9 @@ public class Targets_ : MonoBehaviour
 
     private void Turn_on_IKO(GameObject gameObject)
     {
-        // Поворот цели на ИКО для привильного вида \\
+        // ќќќќќќќ ќќќќ ќќ ќќќ ќќќ ќќќќќќќќќќќ ќќќќ \\
         gameObject.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, this.transform.position) + 180);
-        // СМИРНО РАВНЕНИЕ НА ЦЕНТР \\
+        // ќќќќќќ ќќќќќќќќ ќќ ќќќќќ \\
     }
 
     private Vector2 Walk_line(int namber_step)
@@ -124,23 +129,23 @@ public class Targets_ : MonoBehaviour
     {
         if(collision.tag == "Line" && flag_move == true)
         {
-            // опускаем флаг \\
+            // ќќќќќќќќ ќќќќ \\
             flag_move = false;            
                         
             
-            // Движемся по троектории на шаг \\
+            // ќќќќќќќќ ќќ ќќќќќќќќќќ ќќ ќќќ \\
             transform.position = Walk_line(_Namber_Step);
-            // показовать \\
+            // ќќќќќќќќќќ \\
             main_target.SetActive(true);
                           
 
-            // Двигоем главною цель \\            
+            // ќќќќќќќ ќќќќќќќ ќќќќ \\            
             Turn_on_IKO(main_target);
             main_target.transform .tag = "MAIN";   
             main_target.transform.position = Walk_line(_Namber_Step);
             
             
-            // создаем след на ико \\
+            // ќќќќќќќ ќќќќ ќќ ќќќ \\
             if(_Namber_Step < Quantity_Trace && _Namber_Step > 0)
             {
                 GameObject trace_trajectorie;                                  
@@ -161,7 +166,7 @@ public class Targets_ : MonoBehaviour
                     trace_trajectories[i].GetComponent<CanvasGroup>().alpha = 0.5f - (0.5f / (Quantity_Trace - Quantity_Trace / 2)) * i;                    
                 }
 
-            // Увеличиваем шаг\\
+            // ќќќќќќќќќќќ ќќќ\\
             _Namber_Step++;
         }
     }

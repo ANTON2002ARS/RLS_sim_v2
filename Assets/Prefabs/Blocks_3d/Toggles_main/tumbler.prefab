@@ -71,12 +71,22 @@ MonoBehaviour:
   list_switch:
   - angle: -60
     Action_sw: {fileID: 0}
+    event_state:
+      m_PersistentCalls:
+        m_Calls: []
+    Isxod: 0
   - angle: -120
     Action_sw: {fileID: 0}
-  first_pos_z: -60
-  secont_pos_z: -120
+    event_state:
+      m_PersistentCalls:
+        m_Calls: []
+    Isxod: 0
   lever: {fileID: 7198714797635446527}
+  Block_use: {fileID: 0}
   _number_turnig: 0
+  Use_X: 1
+  Use_Y: 0
+  Use_Z: 1
 --- !u!1 &6794704554976869387
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,13 +113,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6794704554976869387}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalRotation: {x: -0.5071271, y: -0, z: -0, w: 0.86187124}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0086462, y: 1.0086462, z: 1.0086462}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3341329640859498606}
-  m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -60.945, y: 0, z: 0}
 --- !u!33 &1923925388489844699
 MeshFilter:
   m_ObjectHideFlags: 0
