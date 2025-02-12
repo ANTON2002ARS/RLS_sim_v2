@@ -8,6 +8,8 @@ public class P_71 : Abst_Block
     [Header("for Display")]
     [SerializeField] private CanvasGroup Grid;
     [SerializeField] private GameObject Line;
+    public int Sector_Start;
+    public int Sector_End;
 
     [Header("for Target")]
     [SerializeField] private Transform folder_target_main;
@@ -158,6 +160,7 @@ public class P_71 : Abst_Block
         trace.transform.SetParent(folder_for_trace,false);
 
     }
+
     public void Remove_All_Trace()
     {
         foreach (Transform child in folder_for_trace)
