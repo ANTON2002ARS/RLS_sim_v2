@@ -8,15 +8,11 @@ public class P_71 : Abst_Block
     [Header("for Display")]
     [SerializeField] private CanvasGroup Grid;
     [SerializeField] private GameObject Line;
-    public int Sector_Start;
-    public int Sector_End;
 
     [Header("for Target")]
-    [SerializeField] private Transform folder_target_main;
-    [SerializeField] private Transform folder_for_trace;
-    [SerializeField] private GameObject Target_of_IKO;
+    [SerializeField] private Transform folder_target;
+    [SerializeField] private GameObject Target;
     [SerializeField] private GameObject prs_target;
-    public static Stack<GameObject> List_Target_On_IKO;
 
     [Header("for Interference")]
     [SerializeField] private Transform folder_Interfence;
@@ -125,6 +121,8 @@ public class P_71 : Abst_Block
         }     
     }
 
+
+
     private bool turning_line;
     private void Work_of_Line(){
         var angles = LineObject.transform.localEulerAngles;
@@ -150,22 +148,6 @@ public class P_71 : Abst_Block
         //     Debug.Log("is ENTER");
         // }
     }
-
-    public void Span_Target(){
-        GameObject target = Instantiate(Target_of_IKO);
-        target.transform.SetParent(folder_target_main,false); 
-    }
-    public void Set_Trace_on_IKO(GameObject trace_of_target, Vector2 position){
-        GameObject trace = Instantiate(trace_of_target);
-        trace.transform.SetParent(folder_for_trace,false);
-
-    }
-
-    public void Remove_All_Trace()
-    {
-        foreach (Transform child in folder_for_trace)
-            Destroy(child.gameObject);   
-    }   
 
     public void Span_Interference(int number)
     {        
