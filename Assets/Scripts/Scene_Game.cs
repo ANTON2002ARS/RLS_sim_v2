@@ -24,6 +24,8 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private GameObject report_text;
     [SerializeField] private GameObject Panel_learning;
     [SerializeField] private Text text_learning;
+    [SerializeField] private GameObject Panel_learning_Start;
+    [SerializeField] private Text Panel_Text_Start;
     [SerializeField] public Dropdown Choice_target;
     private int choice_target;
 
@@ -37,7 +39,7 @@ public class Scene_Game : MonoBehaviour
     {
         Abst_Task task = MenuManager.Menu_Instance.Active_Task;
         //Abst_Task task = task_test;
-
+       
         Show_SureChecker(false);
         CheckResult.SetActive(false);        
         Button_Show_IKO.SetActive(false);
@@ -59,6 +61,12 @@ public class Scene_Game : MonoBehaviour
                 return;
             }
             Show_Block(index_block);
+            if (MenuManager.Menu_Instance.Use_Learning == true)
+            {
+                Close_Panel_learning_Start(true);
+                Panel_Text_Start.text = Active_Task.Text_Learnihg_All;
+
+            }
         }
         else if(task is War_Task){
             Debug.Log("start war test");
@@ -193,12 +201,12 @@ public class Scene_Game : MonoBehaviour
 
 
 
-    
 
 
 
 
 
+    public void Close_Panel_learning_Start(bool is_active) => Panel_learning_Start.SetActive(is_active);
 
     private void Off_Report_Text()=> report_text.SetActive(false);
 
