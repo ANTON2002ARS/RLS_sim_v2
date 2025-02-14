@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Body_Interference : MonoBehaviour
-{
-    //      \\
-    [SerializeField]
-    public bool Check_work;
-    [SerializeField]
-    public bool Check_Test;
-    [SerializeField]
-    public string Tag_;
+{    
+    [SerializeField] public bool End_Work;
+    [SerializeField] public string Tag_;
         
 
-    [SerializeField] private float max_Radius = 1.5f;
+    [SerializeField] private float max_Radius = 2.4f;
     [SerializeField] private float min_Radius = 0.5f;
 
     public void Delete() => Destroy(this.gameObject);
