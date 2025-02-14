@@ -4,19 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class P_71 : Abst_Block
-{
-    [Header("for Display")]
-    [SerializeField] private CanvasGroup Grid;
-    [SerializeField] private GameObject Line;
-    public int Sector_Start;
-    public int Sector_End;
-
+{  
+    
     [Header("for Target")]
     [SerializeField] private Transform folder_target_main;
     [SerializeField] private Transform folder_for_trace;
     [SerializeField] private GameObject Target_of_IKO;
     [SerializeField] private GameObject prs_target;
-    public static Stack<GameObject> List_Target_On_IKO;
+    public List<GameObject> List_Target_On_IKO;
 
     [Header("for Interference")]
     [SerializeField] private Transform folder_Interfence;
@@ -24,8 +19,12 @@ public class P_71 : Abst_Block
     [SerializeField] private List<GameObject> local;
     [SerializeField] private List<GameObject> nip;
     [SerializeField] private List<GameObject> active_noise;
-    [SerializeField] private List<GameObject> respons_answer;
-    [SerializeField] private Show_Objects_on_IKO iko_canvas;
+    [SerializeField] private List<GameObject> respons_answer; 
+    [Header("for Display")]
+    [SerializeField] private SpriteRenderer Grid;
+    [SerializeField] private GameObject Line;
+    [SerializeField] private GameObject Display_IKO;
+    [SerializeField] private float step_position =20.0f;
 
     [Header("for Line")]
     [SerializeField] private GameObject IKO;
@@ -38,27 +37,15 @@ public class P_71 : Abst_Block
         private get{return _brightness;}
         set{            
             _brightness = value;
-            if(_brightness > 1) Grid.alpha = 1;
-            else if(_brightness < 0) Grid.alpha =0;
-            else Grid.alpha = value;
+            Color color = Grid.color;
+            if(_brightness > 1) color.a =1;
+            else if(_brightness < 0) color.a =0;
+            else color.a= value;
+            Grid.color = color;
         }  
     }
+    public bool round_mode;    
     
-    private bool _mode;
-    public bool round_mode{
-        get => _mode;
-        set{
-            _mode = value;
-            var pos = LineObject.transform.localPosition;
-            var angles = LineObject.transform.localEulerAngles;
-            if(value == true)pos.y = 0;          
-            else pos.y = -250;
-            angles.z = 135;            
-            LineObject.transform.localPosition = pos; 
-            LineObject.transform.localEulerAngles = angles;
-            Debug.Log("mode is round");          
-        }        
-    } 
      private float LineRotationSpeed
     {
         get
@@ -124,19 +111,16 @@ public class P_71 : Abst_Block
             Debug.Log("кол-во не равно в списках");
         }     
     }
-
-    private bool turning_line;
-    private void Work_of_Line(){
+    
+    private void Work_of_Line(){        
+        if(round_mode == false)
+            return;
         var angles = LineObject.transform.localEulerAngles;
-        if(round_mode == true) angles.z += LineRotationSpeed * Time.deltaTime;         
-        else{
-            if(turning_line == true)angles.z += LineRotationSpeed * Time.deltaTime;            
-            else angles.z -= LineRotationSpeed * Time.deltaTime;            
-            if(angles.z > 135) turning_line = true;            
-            else if(angles.z < 45)turning_line =false;   
-        }
+        angles.z += LineRotationSpeed * Time.deltaTime;
         LineObject.transform.localEulerAngles = angles;
     }
+
+
     public static  P_71 Instance_IKO;
     private void Awake() => Instance_IKO = this;
 
@@ -154,11 +138,13 @@ public class P_71 : Abst_Block
     public void Span_Target(){
         GameObject target = Instantiate(Target_of_IKO);
         target.transform.SetParent(folder_target_main,false); 
+        List_Target_On_IKO.Add(target);
     }
+
     public void Set_Trace_on_IKO(GameObject trace_of_target, Vector2 position){
         GameObject trace = Instantiate(trace_of_target);
         trace.transform.SetParent(folder_for_trace,false);
-
+        trace.transform.localPosition = position;
     }
 
     public void Remove_All_Trace()
@@ -176,7 +162,7 @@ public class P_71 : Abst_Block
                 //interference = Instantiate(passive[Random.Range(0, passive.Count)]);
                 interference = Instantiate(passive[Random.Range(0, passive.Count)]);
                 break;
-            case 2:
+            case 2: 
                 interference = Instantiate(local[Random.Range(0, local.Count)]);
                 break;
             case 3:
@@ -205,9 +191,52 @@ public class P_71 : Abst_Block
     
     public void Clikc_Button()=> round_mode =!round_mode;
     
-    public void Click_B(){        
-        Brightness_IKO += 0.1f;
-        if( Brightness_IKO > 0.9f) Brightness_IKO = 0;
+    // Move to Sevtor 
+    // min scale 1.2 max scale 2 (step=0.0033)
+    // min position -240 max position 240
+    public void Move_Horizontal_X(bool to_left){
+        float old_x_position = Display_IKO.transform.localPosition.x;
+        float old_y_position = Display_IKO.transform.localPosition.y;
+
+        if(to_left){
+            Display_IKO.transform.localPosition = new Vector3(old_x_position - step_position, old_y_position,0);            
+        }
+        else{
+            Display_IKO.transform.localPosition = new Vector3(old_x_position + step_position, old_y_position,0);
+        }
+
+        // Вычисляем относительное положение объекта в диапазоне от 0 до 1
+        float normalizedX = Mathf.InverseLerp(0f, 2.5f, Mathf.Abs(Display_IKO.transform.localPosition.x));
+        // Интерполируем масштаб в зависимости от положения объекта
+        float newScale = Mathf.Lerp(1.2f, 2f, normalizedX);        
+        // Применяем новый масштаб к объекту по оси X
+        Display_IKO.transform.localScale = new Vector3(newScale, Display_IKO.transform.localScale.y, Display_IKO.transform.localScale.z);
+    }
+    public void Move_Vertical_Y(bool to_left){
+        float old_x_position = Display_IKO.transform.localPosition.x;
+        float old_y_position = Display_IKO.transform.localPosition.y;
+
+        if(to_left){            
+            Display_IKO.transform.localPosition = new Vector3(old_x_position , old_y_position - step_position,0);
+        }
+        else{            
+            Display_IKO.transform.localPosition = new Vector3(old_x_position , old_y_position + step_position,0);
+        }
+
+        // Вычисляем относительное положение объекта в диапазоне от 0 до 1
+        float normalizedY = Mathf.InverseLerp(0f, 2.5f, Mathf.Abs(Display_IKO.transform.localPosition.y));
+        // Интерполируем масштаб в зависимости от положения объекта
+        float newScale = Mathf.Lerp(1.2f, 2f, normalizedY);        
+        // Применяем новый масштаб к объекту по оси X
+        Display_IKO.transform.localScale = new Vector3(Display_IKO.transform.localScale.x, newScale , Display_IKO.transform.localScale.z);
+    }
+
+    public void Brightness_Down(){        
+        Brightness_IKO = Brightness_IKO - 0.2f;        
+    }
+
+     public void Brightness_UP(){        
+        Brightness_IKO = Brightness_IKO + 0.2f;        
     }
 
     

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3279102029463197214}
   - component: {fileID: -5593111998128020053}
   m_Layer: 5
-  m_Name: IKO_Target
+  m_Name: IKO_Target_OLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,4 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd03cc1bddce48389894578a678c89f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Helper: {fileID: 1771548058981118083, guid: d25f80bb37073826d9a7db07ca742a65, type: 3}
+  Opponent: {fileID: 728618010891533439, guid: 30c79f0d3248674f285b27a08041aafb, type: 3}
+  Our: {fileID: 6748279736629234500, guid: 9ea1772e6917d331d840673d0c6d35e1, type: 3}
   flag_move: 0
+  startPoint: {x: 0, y: 0}
+  endPoint: {x: 0, y: 0}
+  speed: 0.01

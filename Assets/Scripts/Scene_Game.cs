@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Scene_Game : MonoBehaviour
 {    
+    [Header("Use of Task")]
+    public Abst_Task task_test;
     [SerializeField] private Task Active_Task;
     [SerializeField] private War_Task war_task;
+    [SerializeField] private War_targets war_targets;
     [SerializeField] private Transform folder_blocks;
-    public Abst_Task task_test;
+    
     [Header("UI")]
     [SerializeField] private GameObject SureCheck;
     [SerializeField] private GameObject CheckResult;
@@ -18,15 +22,14 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private int index_block;
     [SerializeField] private GameObject Button_Show_IKO;
     [SerializeField] private GameObject Button_Kill_Interference;
-    [SerializeField] private GameObject Panel_Target;
-    [SerializeField] private GameObject Panel_Interference;
-    [SerializeField] private GameObject Panel_PRS;
+    [SerializeField] private GameObject Panel_Blocks;
+    [SerializeField] private GameObject Panel_Target;  
+    [SerializeField] public Dropdown Choice_target;
     [SerializeField] private GameObject report_text;
     [SerializeField] private GameObject Panel_learning;
-    [SerializeField] private Text text_learning;
     [SerializeField] private GameObject Panel_learning_Start;
     [SerializeField] private Text Panel_Text_Start;
-    [SerializeField] public Dropdown Choice_target;
+    
     private int choice_target;
 
     [Header("for IKO")]
@@ -44,9 +47,7 @@ public class Scene_Game : MonoBehaviour
         CheckResult.SetActive(false);        
         Button_Show_IKO.SetActive(false);
         Button_Kill_Interference.SetActive(false);
-        Panel_Target.SetActive(false);
-        Panel_Interference.SetActive(false);
-        Panel_PRS.SetActive(false);
+        Panel_Target.SetActive(false);        
         report_text.SetActive(false);        
         Panel_learning.SetActive(MenuManager.Menu_Instance.Use_Learning);
         IKO.gameObject.SetActive(false);
@@ -69,7 +70,7 @@ public class Scene_Game : MonoBehaviour
             }
         }
         else if(task is War_Task){
-            Debug.Log("start war test");
+            Debug.Log("Задачи памех");
             war_task = task as War_Task; 
 
             Active_Task = new Task();
@@ -94,8 +95,26 @@ public class Scene_Game : MonoBehaviour
             IKO.gameObject.SetActive(true);
             folder_blocks.gameObject.SetActive(false);
         }
-        else if(task is War_targets){
+        else if(task is War_targets){            
              Debug.LogError("Задачи боевой работы");
+             war_targets = task as War_targets;
+             if(war_targets.use_sector){
+
+             }
+             else if(war_targets.use_reguest_target){
+
+             }
+             else if(war_targets.use_test_quantity){
+
+             }
+             else if(war_targets.use_report_for_target){
+
+             }
+             else if(war_targets.reguest_height){
+
+             }
+
+
         }
         else{
             Debug.LogError("Неизвестный тип данных в Abst_Task");
@@ -135,7 +154,7 @@ public class Scene_Game : MonoBehaviour
         b.transform.SetParent(folder_blocks);
         b.GetComponent<Abst_Block>().Need_Condition = Active_Task.block_need[index].Command_need;
         if(MenuManager.Menu_Instance.Use_Learning == true)
-            text_learning.text = Active_Task.block_need[index].Text_Learnihg_for_Block;
+            Panel_learning_Start.transform.GetChild(0).gameObject.GetComponent<Text>().text = Active_Task.block_need[index].Text_Learnihg_for_Block;
         
     }
 
