@@ -28,11 +28,34 @@ public class Target_Main : MonoBehaviour
     }
 
     void Start(){
-        startPoint = Generate_Random_Polar_Coordinates(Radius_IKO);
-        endPoint = Generate_Random_Polar_Coordinates(Radius_IKO);
-        this.transform.localPosition = startPoint;
-
+        if(!IsZeroVector(startPoint) || !IsZeroVector(endPoint)){
+            startPoint = Generate_Random_Polar_Coordinates(Radius_IKO);
+            endPoint = Generate_Random_Polar_Coordinates(Radius_IKO);
+            this.transform.localPosition = startPoint;
+        }   
     }
+
+    private bool IsZeroVector(Vector2 vector)
+    {
+        return vector.x == 0 && vector.y == 0;
+    }
+
+    public void Set_Point_Target(Vector2 start_Point, Vector2 end_Point){
+        startPoint = start_Point;
+        endPoint = end_Point;
+    }
+
+    public void Set_Point_Target(float radius_start, float angleInDegrees_start, float radius_end, float angleInDegrees_end){
+        startPoint = Polar_to_Cartesian_Degrees(radius_start,angleInDegrees_start);
+        endPoint = Polar_to_Cartesian_Degrees(radius_end, angleInDegrees_end);
+    }
+
+    public void Set_Point_Target(float angleInDegrees_start, float angleInDegrees_end){
+        startPoint = Polar_to_Cartesian_Degrees(Radius_IKO,angleInDegrees_start);
+        endPoint = Polar_to_Cartesian_Degrees(Radius_IKO, angleInDegrees_end);
+    }
+
+
 
     void Update()
     {

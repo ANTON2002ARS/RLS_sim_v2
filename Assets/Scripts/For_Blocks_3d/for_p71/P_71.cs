@@ -24,7 +24,7 @@ public class P_71 : Abst_Block
     [SerializeField] private SpriteRenderer Grid;
     [SerializeField] private GameObject Line;
     [SerializeField] private GameObject Display_IKO;
-    [SerializeField] private float step_position =20.0f;
+    [SerializeField] private float step_position =0.4f;
 
     [Header("for Line")]
     [SerializeField] private GameObject IKO;
@@ -32,6 +32,7 @@ public class P_71 : Abst_Block
     [SerializeField] private float LineRotationSpeed_6rpm = -36f;
     [SerializeField] private float LineRotationSpeed_12rpm = -72f;
 
+    private bool use_sector_review_IKO;
     private float _brightness;
     public float Brightness_IKO{
         private get{return _brightness;}
@@ -140,6 +141,28 @@ public class P_71 : Abst_Block
         target.transform.SetParent(folder_target_main,false); 
         List_Target_On_IKO.Add(target);
     }
+    
+    public void Span_Target(Vector2 start_Point, Vector2 end_Point){
+        GameObject target = Instantiate(Target_of_IKO);
+        target.transform.SetParent(folder_target_main,false); 
+        target.GetComponent<Target_Main>().Set_Point_Target(start_Point,end_Point);
+        List_Target_On_IKO.Add(target);
+    }
+
+    public void Span_Target(float radius_start, float angleInDegrees_start, float radius_end, float angleInDegrees_end){
+        GameObject target = Instantiate(Target_of_IKO);
+        target.transform.SetParent(folder_target_main,false); 
+        target.GetComponent<Target_Main>().Set_Point_Target(radius_start,  angleInDegrees_start, radius_end, angleInDegrees_end);
+        List_Target_On_IKO.Add(target);
+    }
+
+    public void Span_Target(float angleInDegrees_start, float angleInDegrees_end){
+        GameObject target = Instantiate(Target_of_IKO);
+        target.transform.SetParent(folder_target_main,false); 
+        target.GetComponent<Target_Main>().Set_Point_Target( angleInDegrees_start, angleInDegrees_end);
+        List_Target_On_IKO.Add(target);
+    }
+
 
     public void Set_Trace_on_IKO(GameObject trace_of_target, Vector2 position){
         GameObject trace = Instantiate(trace_of_target);
@@ -195,6 +218,8 @@ public class P_71 : Abst_Block
     // min scale 1.2 max scale 2 (step=0.0033)
     // min position -240 max position 240
     public void Move_Horizontal_X(bool to_left){
+        if(use_sector_review_IKO == false)
+            return;
         float old_x_position = Display_IKO.transform.localPosition.x;
         float old_y_position = Display_IKO.transform.localPosition.y;
 
@@ -208,11 +233,16 @@ public class P_71 : Abst_Block
         // Вычисляем относительное положение объекта в диапазоне от 0 до 1
         float normalizedX = Mathf.InverseLerp(0f, 2.5f, Mathf.Abs(Display_IKO.transform.localPosition.x));
         // Интерполируем масштаб в зависимости от положения объекта
-        float newScale = Mathf.Lerp(1.2f, 2f, normalizedX);        
+        float newScale = Mathf.Lerp(1f, 2f, normalizedX);        
         // Применяем новый масштаб к объекту по оси X
         Display_IKO.transform.localScale = new Vector3(newScale, Display_IKO.transform.localScale.y, Display_IKO.transform.localScale.z);
+
+        //проверка теста
+        Scene_Game.test_instance.Proverka_Test_Sector_Review(Display_IKO.transform.localPosition);
     }
     public void Move_Vertical_Y(bool to_left){
+        if(use_sector_review_IKO == false)
+            return;
         float old_x_position = Display_IKO.transform.localPosition.x;
         float old_y_position = Display_IKO.transform.localPosition.y;
 
@@ -226,10 +256,25 @@ public class P_71 : Abst_Block
         // Вычисляем относительное положение объекта в диапазоне от 0 до 1
         float normalizedY = Mathf.InverseLerp(0f, 2.5f, Mathf.Abs(Display_IKO.transform.localPosition.y));
         // Интерполируем масштаб в зависимости от положения объекта
-        float newScale = Mathf.Lerp(1.2f, 2f, normalizedY);        
+        float newScale = Mathf.Lerp(1f, 2f, normalizedY);        
         // Применяем новый масштаб к объекту по оси X
         Display_IKO.transform.localScale = new Vector3(Display_IKO.transform.localScale.x, newScale , Display_IKO.transform.localScale.z);
+
+        //проверка теста
+        Scene_Game.test_instance.Proverka_Test_Sector_Review(Display_IKO.transform.localPosition);
     }
+    public void Use_Sector_Review(bool is_sector){
+        if(is_sector == true){
+            use_sector_review_IKO = true;  
+        }
+        else{
+            use_sector_review_IKO = false;  
+            Display_IKO.transform.localPosition = new Vector3(0,0,0);
+            Display_IKO.transform.localScale = new Vector3(1f,1f,1);
+        }
+    }
+
+
 
     public void Brightness_Down(){        
         Brightness_IKO = Brightness_IKO - 0.2f;        
