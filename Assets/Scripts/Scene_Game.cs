@@ -22,11 +22,19 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private int index_block;
     [SerializeField] private GameObject Button_Show_IKO;
     [SerializeField] private GameObject Button_Kill_Interference;
+    [Header("list blocks")]
+    [SerializeField] private GameObject pedalka;
+    [SerializeField] private GameObject pos_72;
+    [SerializeField] private GameObject pov_71;
+    [Header("Text of Target")]
     [SerializeField] private GameObject Panel_Blocks;
-    [SerializeField] private GameObject Panel_Target;  
-    [SerializeField] public Dropdown Choice_target;
-    [SerializeField] private Text report_text;
+    [SerializeField] private GameObject Panel_Target; 
+    [SerializeField] private GameObject Buttons_Target_Test;
+    [SerializeField] private GameObject Buttons_Target_Test_Report; 
+    [SerializeField] public Dropdown Choice_target; 
+
     [SerializeField] private Text Report_Text_UP;
+    [SerializeField] private Text report_text;   
     [SerializeField] private GameObject Panel_learning;
     [SerializeField] private GameObject Panel_learning_Start;
     [SerializeField] private Text Panel_Text_Start;
@@ -52,7 +60,8 @@ public class Scene_Game : MonoBehaviour
         CheckResult.SetActive(false);        
         Button_Show_IKO.SetActive(false);
         Button_Kill_Interference.SetActive(false);
-        Panel_Target.SetActive(false);        
+        Panel_Target.SetActive(false);     
+        Buttons_Target_Test_Report.SetActive(false);        
         report_text.gameObject.SetActive(false);   
         Report_Text_UP.gameObject.SetActive(false);     
         //Panel_learning.SetActive(MenuManager.Menu_Instance.Use_Learning);
@@ -108,9 +117,10 @@ public class Scene_Game : MonoBehaviour
                 IKO.gameObject.SetActive(true);
              }
              else if(war_targets.use_reguest_target){
-
+                Start_Test_Reguest();
+                IKO.gameObject.SetActive(true);
              }
-             else if(war_targets.use_test_quantity){
+             else if(war_targets.reguest_height){
                 
              }
              else if(war_targets.use_report_for_target){
@@ -132,7 +142,7 @@ public class Scene_Game : MonoBehaviour
             Pass_Testing();        
     }   
 
-    public void Start_Test_Interference(){
+    public void Kill_Test_Interference(){
         IKO.gameObject.SetActive(false);
         folder_blocks.gameObject.SetActive(true);
         Show_Block(index_block);
@@ -214,8 +224,6 @@ public class Scene_Game : MonoBehaviour
     }
 
 
-
-
     public void Show_IKO()
     {
         bool is_active = !IKO.gameObject.activeSelf;
@@ -224,13 +232,8 @@ public class Scene_Game : MonoBehaviour
     }
     
     
-    public void Show_Interference(){
-        IKO.Span_Interference(1);
-    }
-
-    public void Show_Target()=> IKO.Span_Target();
-    
-   
+    //public void Show_Interference()=> IKO.Span_Interference(1);  
+    //public void Show_Target()=> IKO.Span_Target();
 
     public void Show_Block( int index){
         if( folder_blocks.childCount > 0){
@@ -268,37 +271,128 @@ public class Scene_Game : MonoBehaviour
         Debug.Log("отравотка блока, статус: " + is_pass);
     }
 
+
+
+    private void Start_Test_Reguest(){
+        IKO.Span_Target();
+        Report_Text_UP.gameObject.SetActive(true);
+        Report_Text_UP.text = "Определить государственную принадлежность и кол-во целей";
+        Panel_Target.SetActive(true);    
+
+    }
+
+    public void Show_Pedalka(){
+        IKO.gameObject.SetActive(false);
+        if( folder_blocks.childCount > 0){            
+            Destroy(folder_blocks.GetChild(0).gameObject);
+        }  
+        GameObject block_pedalka = Instantiate(pedalka);
+        block_pedalka.transform.SetParent(folder_blocks);  
+        block_pedalka.GetComponent<Block_Pedalka>().jump_foot.AddListener(Ckick_Pedalka);
+
+    }
+
+    public void Show_POV_71(){
+        IKO.gameObject.SetActive(false);
+        if( folder_blocks.childCount > 0){            
+            Destroy(folder_blocks.GetChild(0).gameObject);
+        }  
+        GameObject block_pov71 = Instantiate(pov_71);
+        block_pov71 .transform.SetParent(folder_blocks);  
+    }
+
+    public void Show_POS_71(){
+        IKO.gameObject.SetActive(false);
+        if( folder_blocks.childCount > 0){            
+            Destroy(folder_blocks.GetChild(0).gameObject);
+        }  
+        GameObject block_pov71 = Instantiate(pov_71);
+        block_pov71 .transform.SetParent(folder_blocks); 
+    }
+
+
+    public void Ckick_Pedalka(){
+        IKO.gameObject.SetActive(true);
+        folder_blocks.gameObject.SetActive(false);       
+        IKO.Request_Target_last(); 
+    }
+
+    private int Status_Test_Target;
+
+    // 2 из функции получаем
+    public void  Click_Button_Target(int number){
+        switch (number){
+            case 1:
+                // Одиночная
+                if(!IKO.Last_Target_is_Group())
+                    Faid_Testing();
+                Status_Test_Target++;
+                break;
+            case 2:
+                // Групповая
+                if(IKO.Last_Target_is_Group())
+                    Faid_Testing();
+                Status_Test_Target++;
+                break;
+            case 3:
+                // Цель 00 нет ответа
+                if(!IKO.Last_Target_is_Our())
+                    Faid_Testing();
+                    Status_Test_Target++;                
+                break;
+            case 4:
+                // Цель 00 свой
+                if(IKO.Last_Target_is_Our())
+                    Faid_Testing();
+
+                break;
+            case 5:
+                // Цель 00 сигнал бедствие
+                if(!IKO.Last_Target_is_Helper())
+                    Faid_Testing();
+                    Status_Test_Target++;                
+                break;            
+        }
+        Buttons_Target_Test_Report.SetActive(true);
+        End_Test_Target();
+    }
+    
+    
+
+    private void End_Test_Target(){
+        if(Status_Test_Target == 2){
+            Pass_Testing();
+            Status_Test_Target =0;
+        }
+    }
+    
+
     public void Remove_Option(int optionIndex)
     {
-        // ???????? ?????? ???? ????? \\
         List<Dropdown.OptionData> options = Choice_target.options;
-        // ??????? ????? ? ???????? ???????? \\
+ 
         options.RemoveAt(optionIndex);
-        // ????????? ?????? ????? \\
+  
         Choice_target.options = options;        
         Choice_target.value = 0;
     }
 
     public int Find_Free_Number(List<int> numbers)
-    {
-        // ???? ????????? ????? ??? ????\\
-        numbers.Sort(); // ????????? ?????? ?????
-        int lastNumber = -1; // ?????????? ????? ?? ??????
-        // ??????? ??????????? ?????
+    {     
+        numbers.Sort(); 
+        int lastNumber = -1;    
         foreach (int number in numbers)
         {
             if (number - lastNumber > 1)
                 return lastNumber + 1;
             lastNumber = number;
-        }
-        // ???? ??? ??????????? ?????, ?????????? ????????? ????? ?? ?????????
+        }   
         return lastNumber + 1;
     }
 
     public void Request_Targets()
     {            
-        int namber = 0;
-        // ????????????? ????? ???????? ??? ????????? ??????? \\
+        int namber = 0;        
         Choice_target.SetValueWithoutNotify(namber);                
         Choice_target.GetComponentInChildren<Text>().text = Choice_target.options[namber].text;
         //Choice_target.options.Add(new Dropdown.OptionData() { text = "???? 0" + Targets.Count });
