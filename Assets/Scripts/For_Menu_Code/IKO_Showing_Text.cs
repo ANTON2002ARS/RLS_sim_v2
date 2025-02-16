@@ -138,7 +138,7 @@ public class IKO_Showing_Text : MonoBehaviour
 
     private void Delete_Interference()
     {
-        Active_Interfence.GetComponent<Body_Interference>().Check_work = true;
+        Active_Interfence.GetComponent<Body_Interference>().End_Work= true;
     }
 
 
