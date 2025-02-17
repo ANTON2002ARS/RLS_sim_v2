@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class vch73_Block : Abst_Block
 {
+    [SerializeField] private Animator animator;
     [SerializeField] private List<Position_krutilka> pos_handle;
     [SerializeField] private GameObject Handler;
     [SerializeField] private int index_pos;
@@ -20,6 +21,10 @@ public class vch73_Block : Abst_Block
     {
         get => _actionToggles;
         set => _actionToggles = value;
+    }
+
+    private void Start(){
+        animator = this.GetComponent<Animator>();
     }
     
     public override void Set_Status(switch_position switch_position)
@@ -65,11 +70,41 @@ public class vch73_Block : Abst_Block
         index_pos++;
         if(index_pos >= pos_handle.Count)
             index_pos = 0;
+        changePosition(index_pos);
 
         //Handler.transform.rotation = Quaternion.Euler(0f,0f,pos_handle[index_pos].angle);             
         Handler.transform.localEulerAngles = new Vector3(0f, 0f, pos_handle[index_pos].angle);
         Del_status(pos_handle[index_pos].Action_sw);
         Set_Status(pos_handle[index_pos].Action_sw);   
+    }
+
+    private void FirstPositionAnimation() {
+        animator.SetTrigger("position_one"); 
+    }
+
+    private void SecondPositionAnimation() {
+
+    } 
+
+    //position_one
+
+    private void ThirdPositionAnimation() {
+
+    }
+
+    private void changePosition(int position) {
+        switch(position) {
+            case 1:
+                FirstPositionAnimation();
+                break;
+            case 2:
+                SecondPositionAnimation();
+                break;
+            case 3:
+                ThirdPositionAnimation();
+                break;
+           
+        }
     }
 
 }
