@@ -8,9 +8,11 @@ using UnityEngine.UI;
 public class Scene_Game : MonoBehaviour
 {    
     [Header("Use of Task")]
-    public Abst_Task task_test;
-    [SerializeField] private Task Active_Task;
-    [SerializeField] private War_Task war_task;
+    // public Abst_Task task_test;
+    //[SerializeField] private Task Active_Task;
+    public Abst_Task Active_Task;
+    [SerializeField] private Task Task;
+    [SerializeField] private War_Interference war_task;
     [SerializeField] private War_targets war_targets;
     [SerializeField] private Transform folder_blocks;
     
@@ -31,6 +33,7 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private GameObject Panel_Target; 
     [SerializeField] private GameObject Buttons_Target_Test;
     [SerializeField] private GameObject Buttons_Target_Test_Report; 
+    [SerializeField] private List<Button> Buttons_Report;
     [SerializeField] public Dropdown Choice_target; 
 
     [SerializeField] private Text Report_Text_UP;
@@ -53,24 +56,14 @@ public class Scene_Game : MonoBehaviour
 
     void Start()
     {               
-        //Abst_Task task = MenuManager.Menu_Instance.Active_Task;
-        Abst_Task task = task_test;
+        Hide_All_Elements();
+        this.Active_Task = MenuManager.Active_Task;
+        //Abst_Task task = task_test;
        
-        Show_SureChecker(false);
-        CheckResult.SetActive(false);        
-        Button_Show_IKO.SetActive(false);
-        Button_Kill_Interference.SetActive(false);
-        Panel_Target.SetActive(false);     
-        Buttons_Target_Test_Report.SetActive(false);        
-        report_text.gameObject.SetActive(false);   
-        Report_Text_UP.gameObject.SetActive(false);     
-        //Panel_learning.SetActive(MenuManager.Menu_Instance.Use_Learning);
-        IKO.gameObject.SetActive(false);
-        folder_blocks.gameObject.SetActive(true);        
-
-        if(task is Task){
-            Debug.Log("start task");
-            Active_Task = task as Task;
+        // Задачи теста
+        if(Active_Task is Task){
+            Debug.Log("Задание простого теста");
+            Task = Active_Task  as Task;
             if(Active_Task == null)
             {
                 Debug.LogError("Task obj not set");
@@ -80,16 +73,16 @@ public class Scene_Game : MonoBehaviour
             if (MenuManager.Menu_Instance.Use_Learning == true)
             {
                 Close_Panel_learning_Start(true);
-                Panel_Text_Start.text = Active_Task.Text_Learnihg_All;
+                Panel_Text_Start.text = Task.Text_Learnihg_All;
 
             }
         }
-        else if(task is War_Task){
-            Debug.Log("Задачи памех");
-            war_task = task as War_Task; 
+        else if(Active_Task  is War_Interference){
+            Debug.Log("Задачи избавление от памех");
+            war_task = Active_Task  as War_Interference; 
 
-            Active_Task = new Task();
-            Active_Task.block_need = war_task.block_need;
+            Task = new Task();
+            Task.block_need = war_task.block_need;
 
             if( war_task.use_passive){
                 IKO.Span_Interference(1);
@@ -104,33 +97,24 @@ public class Scene_Game : MonoBehaviour
             }
             //else if(war.use_passive || war.use_local || war.use_nip || war.use_active_noise || war.use_respons_answer){
                // Debug.Log("ALL ERROR");}
-
+            // Нужные элемены для теста
             Button_Show_IKO.SetActive(true);
             Button_Kill_Interference.SetActive(true);   
             IKO.gameObject.SetActive(true);
             folder_blocks.gameObject.SetActive(false);
         }
-        else if(task is War_targets){ 
-             war_targets = task as War_targets;
+        else if(Active_Task  is War_targets){ 
+             Debug.Log("Задачи слежение за целями");
+             war_targets = Active_Task  as War_targets;
              if(war_targets.use_sector){
-                Start_Test_Sector_Review(); 
-                IKO.gameObject.SetActive(true);
+                Start_Test_Sector_Review();                 
              }
              else if(war_targets.use_reguest_target){
-                Start_Test_Reguest();
-                IKO.gameObject.SetActive(true);
+                Start_Test_Reguest(); 
              }
              else if(war_targets.reguest_height){
-                
-             }
-             else if(war_targets.use_report_for_target){
-
-             }
-             else if(war_targets.reguest_height){
-
-             }
-
-
+                // запрос высоты на ПОВ71 задача 
+             } 
         }
         else{
             Debug.LogError("Неизвестный тип данных в Abst_Task");
@@ -142,6 +126,21 @@ public class Scene_Game : MonoBehaviour
             Pass_Testing();        
     }   
 
+    private void Hide_All_Elements(){
+        Show_SureChecker(false);
+        CheckResult.SetActive(false);        
+        Button_Show_IKO.SetActive(false);
+        Button_Kill_Interference.SetActive(false);
+        Panel_Blocks.SetActive(false);
+        Panel_Target.SetActive(false);     
+        Buttons_Target_Test_Report.SetActive(false);        
+        report_text.gameObject.SetActive(false);   
+        Report_Text_UP.gameObject.SetActive(false);
+        IKO.gameObject.SetActive(false);
+        folder_blocks.gameObject.SetActive(true);      
+        Panel_learning.SetActive(MenuManager.Menu_Instance.Use_Learning);  
+    }
+
     public void Kill_Test_Interference(){
         IKO.gameObject.SetActive(false);
         folder_blocks.gameObject.SetActive(true);
@@ -150,6 +149,7 @@ public class Scene_Game : MonoBehaviour
     }
 
     private void Start_Test_Sector_Review(){
+        IKO.gameObject.SetActive(true);
         Report_Text_UP.gameObject.SetActive(true);
         int use_sector = Random.Range(1,5);              
         switch(use_sector){
@@ -223,28 +223,24 @@ public class Scene_Game : MonoBehaviour
             Faid_Testing();        
     }
 
-
+    // Переключение на ИКО
     public void Show_IKO()
     {
         bool is_active = !IKO.gameObject.activeSelf;
         IKO.gameObject.SetActive(is_active);
         folder_blocks.gameObject.SetActive(!is_active);
-    }
-    
-    
-    //public void Show_Interference()=> IKO.Span_Interference(1);  
-    //public void Show_Target()=> IKO.Span_Target();
+    }  
 
     public void Show_Block( int index){
         if( folder_blocks.childCount > 0){
             GameObject block = folder_blocks.GetChild(0).gameObject;
             Destroy(block);
         }        
-        GameObject b = Instantiate(Active_Task.block_need[index].of_Blocks);
+        GameObject b = Instantiate(Task.block_need[index].of_Blocks);
         b.transform.SetParent(folder_blocks);
-        b.GetComponent<Abst_Block>().Need_Condition = Active_Task.block_need[index].Command_need;
+        b.GetComponent<Abst_Block>().Need_Condition = Task.block_need[index].Command_need;
         if(MenuManager.Menu_Instance.Use_Learning == true)
-            Panel_learning_Start.transform.GetChild(0).gameObject.GetComponent<Text>().text = Active_Task.block_need[index].Text_Learnihg_for_Block;
+            Panel_learning_Start.transform.GetChild(0).gameObject.GetComponent<Text>().text = Task.block_need[index].Text_Learnihg_for_Block;
         
     }
 
@@ -254,7 +250,7 @@ public class Scene_Game : MonoBehaviour
         else{
             index_block++;
             
-            if(index_block >= Active_Task.block_need.Count){
+            if(index_block >= Task.block_need.Count){
                 Pass_Testing();
                 index_block = 0;
                 //GameObject block = folder_blocks.GetChild(0).gameObject;
@@ -271,16 +267,16 @@ public class Scene_Game : MonoBehaviour
         Debug.Log("отравотка блока, статус: " + is_pass);
     }
 
-
-
+    // задание слежение за целями
     private void Start_Test_Reguest(){
+        Panel_Blocks.SetActive(true);  
+        IKO.gameObject.SetActive(true);
         IKO.Span_Target();
         Report_Text_UP.gameObject.SetActive(true);
         Report_Text_UP.text = "Определить государственную принадлежность и кол-во целей";
         Panel_Target.SetActive(true);    
-
     }
-
+    // Запрос цели
     public void Show_Pedalka(){
         IKO.gameObject.SetActive(false);
         if( folder_blocks.childCount > 0){            
@@ -289,7 +285,11 @@ public class Scene_Game : MonoBehaviour
         GameObject block_pedalka = Instantiate(pedalka);
         block_pedalka.transform.SetParent(folder_blocks);  
         block_pedalka.GetComponent<Block_Pedalka>().jump_foot.AddListener(Ckick_Pedalka);
-
+    }
+    public void Ckick_Pedalka(){
+        IKO.gameObject.SetActive(true);
+        folder_blocks.gameObject.SetActive(false);       
+        IKO.Request_Target_last(); 
     }
 
     public void Show_POV_71(){
@@ -299,6 +299,7 @@ public class Scene_Game : MonoBehaviour
         }  
         GameObject block_pov71 = Instantiate(pov_71);
         block_pov71 .transform.SetParent(folder_blocks);  
+        folder_blocks.gameObject.SetActive(true);
     }
 
     public void Show_POS_71(){
@@ -308,64 +309,102 @@ public class Scene_Game : MonoBehaviour
         }  
         GameObject block_pov71 = Instantiate(pov_71);
         block_pov71 .transform.SetParent(folder_blocks); 
+        folder_blocks.gameObject.SetActive(true);
     }
 
+    private bool is_answer_group;
+    private bool is_answer_our;
 
-    public void Ckick_Pedalka(){
-        IKO.gameObject.SetActive(true);
-        folder_blocks.gameObject.SetActive(false);       
-        IKO.Request_Target_last(); 
-    }
-
-    private int Status_Test_Target;
-
-    // 2 из функции получаем
-    public void  Click_Button_Target(int number){
+    public void  Click_Button_Target_Group(int number){
+        is_answer_group = true;
         switch (number){
             case 1:
                 // Одиночная
                 if(!IKO.Last_Target_is_Group())
-                    Faid_Testing();
-                Status_Test_Target++;
+                    Faid_Testing();                
                 break;
             case 2:
                 // Групповая
-                if(IKO.Last_Target_is_Group())
-                    Faid_Testing();
-                Status_Test_Target++;
+                if(!IKO.Last_Target_is_Group())
+                    Faid_Testing();                
                 break;
-            case 3:
+            }        
+    }
+  
+    public void  Click_Button_Target_Our(int number){
+        is_answer_our = true;
+        switch (number){
+            case 1:
                 // Цель 00 нет ответа
                 if(!IKO.Last_Target_is_Our())
-                    Faid_Testing();
-                    Status_Test_Target++;                
+                    Faid_Testing();                                 
                 break;
-            case 4:
+            case 2:
                 // Цель 00 свой
-                if(IKO.Last_Target_is_Our())
+                if(!IKO.Last_Target_is_Our())
                     Faid_Testing();
-
                 break;
-            case 5:
+            case 3:
                 // Цель 00 сигнал бедствие
                 if(!IKO.Last_Target_is_Helper())
-                    Faid_Testing();
-                    Status_Test_Target++;                
+                    Faid_Testing();                                    
                 break;            
         }
         Buttons_Target_Test_Report.SetActive(true);
-        End_Test_Target();
+        Set_Report_last_Target();        
     }
-    
-    
 
-    private void End_Test_Target(){
-        if(Status_Test_Target == 2){
-            Pass_Testing();
-            Status_Test_Target =0;
-        }
+    private int Find_Azimuth(Vector2 of_Target)
+    {        
+        float angle = Vector3.SignedAngle(Vector2.up, of_Target, Vector3.forward); 
+        angle = -1 * angle;
+        if (angle < 0)
+            angle += 360f;                
+        //Debug.Log("????: " + angle + " ???????? ?? ??????? ???????");
+        return (int)angle;
+    }       
+
+    private int Find_Ring_of_Target(Vector2 of_target){
+        float ring_target = (float)(of_target.magnitude * 15 / 4);
+        return (int)ring_target;
+    }        
+
+    private float Get_Deviated_Random_Value(float initial)
+    {
+        float deviation_Percentage = 0.7f;
+        float deviation = initial * deviation_Percentage;
+        float minRange = initial - deviation;
+        float maxRange = initial + deviation;
+        return Random.Range(minRange, maxRange);
     }
+
+    private string Answer_Report;    
     
+    public void Set_Report_last_Target()
+    {           
+        Vector2 of_target =  IKO.Last_Target_position();                         
+        int ring_target = Find_Ring_of_Target(of_target) *10;
+        int azimuth_target = Find_Azimuth(of_target);        
+        Answer_Report = "Цель 00 " + azimuth_target + " " + ring_target; 
+        Debug.Log(Answer_Report);
+        foreach(var button in Buttons_Report){
+            string variant = "Цель 00 " + (int)Get_Deviated_Random_Value(azimuth_target) + " " + (int)Get_Deviated_Random_Value(ring_target);   
+            button.GetComponentInChildren<Text>().text = variant;
+            button.onClick.AddListener(()=> End_Test_Report_Targets(button));
+        }  
+        Button button_right = Buttons_Report[Random.Range(0,Buttons_Report.Count)];
+        button_right.GetComponentInChildren<Text>().text = Answer_Report;
+    }
+
+    public void End_Test_Report_Targets(Button button){
+        if(button.GetComponentInChildren<Text>().text != Answer_Report)
+            Faid_Testing();
+        if(is_answer_group && is_answer_our){
+            Faid_Testing();
+        }
+        Pass_Testing();
+    }       
+        
 
     public void Remove_Option(int optionIndex)
     {
@@ -398,12 +437,6 @@ public class Scene_Game : MonoBehaviour
         //Choice_target.options.Add(new Dropdown.OptionData() { text = "???? 0" + Targets.Count });
 
     }
-
-
-
-
-
-
 
 
     public void Close_Panel_learning_Start(bool is_active) => Panel_learning_Start.SetActive(is_active);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "War_", menuName = "Wars", order = 0)]
-public class War_Task : Abst_Task
+public class War_Interference : Abst_Task
 {
     [Multiline] public string Text_Button;
     

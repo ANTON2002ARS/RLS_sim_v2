@@ -190,6 +190,10 @@ public class P_71 : Abst_Block
         return target.Is_Helper;
     }
 
+    public Vector2 Last_Target_position(){
+        return Get_last_Target().GetComponent<Transform>().localPosition;
+    }
+
 
     private GameObject Get_last_Target(){
         if(List_Target_On_IKO.Count == 0){
