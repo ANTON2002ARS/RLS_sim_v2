@@ -7,15 +7,11 @@ using UnityEngine.UI;
 
 public class Scene_Game : MonoBehaviour
 {    
-    [Header("Use of Task")]
-    // public Abst_Task task_test;
-    //[SerializeField] private Task Active_Task;
+    [Header("Use of Task from Menu")]
     public Abst_Task Active_Task;
-    [SerializeField] private Task Task;
-    [SerializeField] private War_Interference war_task;
-    [SerializeField] private War_targets war_targets;
-    [SerializeField] private Transform folder_blocks;
-    
+    [SerializeField] private Task Use_Simple_Test;
+    //[SerializeField] private War_Interference war_interference;
+    //[SerializeField] private War_targets war_targets;
     [Header("UI")]
     [SerializeField] private GameObject SureCheck;
     [SerializeField] private GameObject CheckResult;
@@ -25,11 +21,13 @@ public class Scene_Game : MonoBehaviour
     [SerializeField] private GameObject Button_Show_IKO;
     [SerializeField] private GameObject Button_Kill_Interference;
     [Header("list blocks")]
+    [SerializeField] private Transform folder_blocks;
     [SerializeField] private GameObject pedalka;
     [SerializeField] private GameObject pos_72;
     [SerializeField] private GameObject pov_71;
     [Header("Text of Target")]
     [SerializeField] private GameObject Panel_Blocks;
+     [SerializeField] private InputField Input_Height;
     [SerializeField] private GameObject Panel_Target; 
     [SerializeField] private GameObject Buttons_Target_Test;
     [SerializeField] private GameObject Buttons_Target_Test_Report; 
@@ -58,12 +56,12 @@ public class Scene_Game : MonoBehaviour
     {               
         Hide_All_Elements();
         this.Active_Task = MenuManager.Active_Task;
-        //Abst_Task task = task_test;
+        //Abst_Task task = Active_Task;
        
         // Задачи теста
         if(Active_Task is Task){
             Debug.Log("Задание простого теста");
-            Task = Active_Task  as Task;
+            Use_Simple_Test = Active_Task  as Task;
             if(Active_Task == null)
             {
                 Debug.LogError("Task obj not set");
@@ -73,38 +71,15 @@ public class Scene_Game : MonoBehaviour
             if (MenuManager.Menu_Instance.Use_Learning == true)
             {
                 Close_Panel_learning_Start(true);
-                Panel_Text_Start.text = Task.Text_Learnihg_All;
-
+                Panel_Text_Start.text = Use_Simple_Test.Text_Learnihg_All;
             }
         }
-        else if(Active_Task  is War_Interference){
-            Debug.Log("Задачи избавление от памех");
-            war_task = Active_Task  as War_Interference; 
-
-            Task = new Task();
-            Task.block_need = war_task.block_need;
-
-            if( war_task.use_passive){
-                IKO.Span_Interference(1);
-            }else if( war_task.use_local){
-                IKO.Span_Interference(2);
-            }else if( war_task.use_nip){
-                IKO.Span_Interference(3);
-            }else if( war_task.use_active_noise){
-                IKO.Span_Interference(4);
-            }else if ( war_task.use_respons_answer){
-                IKO.Span_Interference(5);
-            }
-            //else if(war.use_passive || war.use_local || war.use_nip || war.use_active_noise || war.use_respons_answer){
-               // Debug.Log("ALL ERROR");}
-            // Нужные элемены для теста
-            Button_Show_IKO.SetActive(true);
-            Button_Kill_Interference.SetActive(true);   
-            IKO.gameObject.SetActive(true);
-            folder_blocks.gameObject.SetActive(false);
+        else if(Active_Task  is War_Interference){            
+            Start_Test_Interference(Active_Task);            
         }
         else if(Active_Task  is War_targets){ 
              Debug.Log("Задачи слежение за целями");
+             War_targets war_targets = new War_targets();
              war_targets = Active_Task  as War_targets;
              if(war_targets.use_sector){
                 Start_Test_Sector_Review();                 
@@ -113,7 +88,7 @@ public class Scene_Game : MonoBehaviour
                 Start_Test_Reguest(); 
              }
              else if(war_targets.reguest_height){
-                // запрос высоты на ПОВ71 задача 
+                Start_Test_Reguest_Height();
              } 
         }
         else{
@@ -132,13 +107,43 @@ public class Scene_Game : MonoBehaviour
         Button_Show_IKO.SetActive(false);
         Button_Kill_Interference.SetActive(false);
         Panel_Blocks.SetActive(false);
+        Input_Height.gameObject.SetActive(false);
         Panel_Target.SetActive(false);     
         Buttons_Target_Test_Report.SetActive(false);        
         report_text.gameObject.SetActive(false);   
         Report_Text_UP.gameObject.SetActive(false);
         IKO.gameObject.SetActive(false);
-        folder_blocks.gameObject.SetActive(true);      
+        folder_blocks.gameObject.SetActive(false);
+        Panel_learning_Start.SetActive(false);
         Panel_learning.SetActive(MenuManager.Menu_Instance.Use_Learning);  
+    }
+
+    private void Start_Test_Interference(Abst_Task task){
+        Debug.Log("Задачи избавление от памех");
+        War_Interference war_interference = new War_Interference();
+            war_interference = task  as War_Interference; 
+            Use_Simple_Test= new Task();
+            Use_Simple_Test.block_need = war_interference.block_need;
+
+            if( war_interference.use_passive){
+                IKO.Span_Interference(1);
+            }else if( war_interference.use_local){
+                IKO.Span_Interference(2);
+            }else if( war_interference.use_nip){
+                IKO.Span_Interference(3);
+            }else if( war_interference.use_active_noise){
+                IKO.Span_Interference(4);
+            }else if ( war_interference.use_respons_answer){
+                IKO.Span_Interference(5);
+            }
+            //else if(war.use_passive || war.use_local || 
+            // war.use_nip || war.use_active_noise || 
+            // war.use_respons_answer){// Debug.Log("ALL ERROR");}
+            // Нужные элемены для теста
+            Button_Show_IKO.SetActive(true);
+            Button_Kill_Interference.SetActive(true);   
+            IKO.gameObject.SetActive(true);
+            folder_blocks.gameObject.SetActive(false);
     }
 
     public void Kill_Test_Interference(){
@@ -149,6 +154,7 @@ public class Scene_Game : MonoBehaviour
     }
 
     private void Start_Test_Sector_Review(){
+        Button_Show_IKO.SetActive(true);
         IKO.gameObject.SetActive(true);
         Report_Text_UP.gameObject.SetActive(true);
         int use_sector = Random.Range(1,5);              
@@ -232,15 +238,16 @@ public class Scene_Game : MonoBehaviour
     }  
 
     public void Show_Block( int index){
+        folder_blocks.gameObject.SetActive(true);
         if( folder_blocks.childCount > 0){
             GameObject block = folder_blocks.GetChild(0).gameObject;
             Destroy(block);
         }        
-        GameObject b = Instantiate(Task.block_need[index].of_Blocks);
+        GameObject b = Instantiate(Use_Simple_Test.block_need[index].of_Blocks);
         b.transform.SetParent(folder_blocks);
-        b.GetComponent<Abst_Block>().Need_Condition = Task.block_need[index].Command_need;
+        b.GetComponent<Abst_Block>().Need_Condition = Use_Simple_Test.block_need[index].Command_need;
         if(MenuManager.Menu_Instance.Use_Learning == true)
-            Panel_learning_Start.transform.GetChild(0).gameObject.GetComponent<Text>().text = Task.block_need[index].Text_Learnihg_for_Block;
+            Panel_learning_Start.transform.GetChild(0).gameObject.GetComponent<Text>().text = Use_Simple_Test.block_need[index].Text_Learnihg_for_Block;
         
     }
 
@@ -250,7 +257,7 @@ public class Scene_Game : MonoBehaviour
         else{
             index_block++;
             
-            if(index_block >= Task.block_need.Count){
+            if(index_block >= Use_Simple_Test.block_need.Count){
                 Pass_Testing();
                 index_block = 0;
                 //GameObject block = folder_blocks.GetChild(0).gameObject;
@@ -269,6 +276,7 @@ public class Scene_Game : MonoBehaviour
 
     // задание слежение за целями
     private void Start_Test_Reguest(){
+        Button_Show_IKO.SetActive(true);
         Panel_Blocks.SetActive(true);  
         IKO.gameObject.SetActive(true);
         IKO.Span_Target();
@@ -278,6 +286,7 @@ public class Scene_Game : MonoBehaviour
     }
     // Запрос цели
     public void Show_Pedalka(){
+        folder_blocks.gameObject.SetActive(true);
         IKO.gameObject.SetActive(false);
         if( folder_blocks.childCount > 0){            
             Destroy(folder_blocks.GetChild(0).gameObject);
@@ -286,13 +295,14 @@ public class Scene_Game : MonoBehaviour
         block_pedalka.transform.SetParent(folder_blocks);  
         block_pedalka.GetComponent<Block_Pedalka>().jump_foot.AddListener(Ckick_Pedalka);
     }
-    public void Ckick_Pedalka(){
+    public void Ckick_Pedalka(){        
         IKO.gameObject.SetActive(true);
         folder_blocks.gameObject.SetActive(false);       
         IKO.Request_Target_last(); 
     }
 
     public void Show_POV_71(){
+        folder_blocks.gameObject.SetActive(true);
         IKO.gameObject.SetActive(false);
         if( folder_blocks.childCount > 0){            
             Destroy(folder_blocks.GetChild(0).gameObject);
@@ -303,11 +313,12 @@ public class Scene_Game : MonoBehaviour
     }
 
     public void Show_POS_71(){
+        folder_blocks.gameObject.SetActive(true);
         IKO.gameObject.SetActive(false);
         if( folder_blocks.childCount > 0){            
             Destroy(folder_blocks.GetChild(0).gameObject);
         }  
-        GameObject block_pov71 = Instantiate(pov_71);
+        GameObject block_pov71 = Instantiate(pos_72);
         block_pov71 .transform.SetParent(folder_blocks); 
         folder_blocks.gameObject.SetActive(true);
     }
@@ -403,7 +414,35 @@ public class Scene_Game : MonoBehaviour
             Faid_Testing();
         }
         Pass_Testing();
-    }       
+    }     
+
+    
+    private void Start_Test_Reguest_Height(){
+        Button_Show_IKO.SetActive(true);
+        Panel_Blocks.SetActive(true);  
+        Input_Height.gameObject.SetActive(true);
+        IKO.gameObject.SetActive(true);
+        IKO.Span_Target();
+        Report_Text_UP.gameObject.SetActive(true);
+        Report_Text_UP.text = "Определить высоту цели на ИКО";
+        pov_71.GetComponent<POV72_block>().Use_Height = Random.Range(0,31);        
+    }  
+    public void Check_Height(){
+        string answer_str = Input_Height.text;
+        int answer;
+        if(!int.TryParse(answer_str, out answer)){
+            Debug.Log("Ошибка ввода: " + answer_str);
+            Input_Height.text = "не то что нужно";
+        }
+        if(answer == pov_71.GetComponent<POV72_block>().Use_Height){
+            End_Test_Reguest_Height();
+        }
+        else
+            Faid_Testing();
+    }
+
+    private void End_Test_Reguest_Height()=> Pass_Testing();
+    
         
 
     public void Remove_Option(int optionIndex)

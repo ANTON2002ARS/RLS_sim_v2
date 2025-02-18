@@ -29,8 +29,7 @@ public class Target_Main : MonoBehaviour
         {
             flag_move = false;
             if(Use_Our == true){
-                P_71.Instance_IKO.Set_Trace_on_IKO(Our, this.transform.localPosition, IS_Request_Target, Use_Group);
-                
+                P_71.Instance_IKO.Set_Trace_on_IKO(Our, this.transform.localPosition, IS_Request_Target, Use_Group);                
             }
             else if(Is_Helper == true){
                 P_71.Instance_IKO.Set_Trace_on_IKO(Helper, this.transform.localPosition,IS_Request_Target, Use_Group);
@@ -103,9 +102,9 @@ public class Target_Main : MonoBehaviour
         
         if (t == 1){
             Debug.Log("Цель достигнута конца");
-            if(IS_Request_Target == false || !check_group || !check_our ){
-                Scene_Game.test_instance.Faid_Testing();
-            }
+            // if(IS_Request_Target == false || !check_group || !check_our ){
+            //     Scene_Game.test_instance.Faid_Testing();
+            // }
             Destroy(this.gameObject);
         }
             

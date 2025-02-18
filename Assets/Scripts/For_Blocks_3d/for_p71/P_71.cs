@@ -197,7 +197,8 @@ public class P_71 : Abst_Block
 
     private GameObject Get_last_Target(){
         if(List_Target_On_IKO.Count == 0){
-            Debug.LogError("Целей нет на ико");
+            Debug.LogError("Целей нет на ико или закончились");
+            Scene_Game.test_instance.Faid_Testing();
             return null;
         }
         GameObject target;
