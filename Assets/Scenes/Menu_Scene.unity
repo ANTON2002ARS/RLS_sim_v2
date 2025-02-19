@@ -819,9 +819,9 @@ RectTransform:
   m_Children:
   - {fileID: 1113907647}
   - {fileID: 798324979}
-  - {fileID: 1585525125}
   - {fileID: 2027191198}
   - {fileID: 1658723868}
+  - {fileID: 1585525125}
   m_Father: {fileID: 1139703238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -3752,7 +3752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1585525125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3768,10 +3768,10 @@ RectTransform:
   - {fileID: 763721485}
   m_Father: {fileID: 501375596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 38}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: 600, y: 38}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1585525126
 MonoBehaviour:
@@ -4786,11 +4786,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Isxod_test: {fileID: 11400000, guid: c19905ed9a3d54d1989f9b852df7f77b, type: 2}
   Task_Work:
-  - {fileID: 11400000, guid: 07d05e11a44036cb596f73783936dacc, type: 2}
   - {fileID: 11400000, guid: ee50c81df83f4fd5295307fc940f9af2, type: 2}
+  - {fileID: 11400000, guid: 07d05e11a44036cb596f73783936dacc, type: 2}
+  - {fileID: 11400000, guid: c0e218bbc9519f44d9040e1bca6dd61c, type: 2}
+  - {fileID: 11400000, guid: 0446fa6d4b6d6ee459bf489befe1af5d, type: 2}
   - {fileID: 11400000, guid: cc32b046a646101cf8ec848a445ec376, type: 2}
   - {fileID: 11400000, guid: 2c302f32655fc227288762bf4771a644, type: 2}
+  - {fileID: 11400000, guid: 1f11c893994964b489116da7313bb8b8, type: 2}
   - {fileID: 11400000, guid: 639e7510fe4a74bc3b50368ed92ad7e0, type: 2}
+  - {fileID: 11400000, guid: ef483423b048bfd4f9b16a5ef6cbc4a7, type: 2}
   Task_War:
   - {fileID: 11400000, guid: 5d34decc6a0557209890750f7049952b, type: 2}
   - {fileID: 11400000, guid: 37d4278a1bcada966a2ffe04efea2232, type: 2}

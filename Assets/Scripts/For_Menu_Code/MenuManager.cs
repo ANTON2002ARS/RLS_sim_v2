@@ -68,7 +68,8 @@ public class MenuManager : MonoBehaviour
 
     public void Start_Test_Isxod(){
         Abst_Toggles.to_isxod_all_tumbler = false;
-        Scene_Game.test_instance.Active_Task = Isxod_test;
+        //Scene_Game.test_instance.Active_Task = Isxod_test;
+        Active_Task = Isxod_test;
         SceneManager.LoadScene("Scene_Task");  
     }    
 
