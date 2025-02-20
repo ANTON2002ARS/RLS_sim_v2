@@ -7,6 +7,7 @@ using UnityEngine;
 public class War_Interference : Abst_Task
 {
     [Multiline] public string Text_Button;
+    public bool Visualize_Interfence;
     
     [Header("use target")]
     public bool use_target;
