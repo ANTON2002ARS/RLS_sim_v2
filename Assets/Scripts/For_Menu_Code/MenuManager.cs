@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    public Abst_Task Isxod_test;
+    public static Abst_Task Active_Task;
+    public Task Isxod_test;
     public List<Abst_Task> Task_Work;
     public List<Abst_Task> Task_War;
     [SerializeField] private Transform panel_task_work;
@@ -23,7 +24,7 @@ public class MenuManager : MonoBehaviour
     public static MenuManager Menu_Instance { get; private set; }
     private void Awake() => Menu_Instance = this;
     
-    public Abst_Task Active_Task;
+    //public Abst_Task Active_Task;
 
     void Start()
     {
@@ -45,7 +46,17 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Scene_Task");
     }
 
-    private void Test_War(int index_button){
+    private void Test_Interference(int index_button){
+        Debug.Log("test war, index: " + index_button.ToString());
+        if(Task_War[index_button] == null){
+            Debug.LogError("TaskWork is not faind");
+            return;
+        }
+        Active_Task = Task_War[index_button];
+        SceneManager.LoadScene("Scene_Task");  
+    }
+
+    private void Test_Target(int index_button){
         Debug.Log("test war, index: " + index_button.ToString());
         if(Task_War[index_button] == null){
             Debug.LogError("TaskWork is not faind");
@@ -57,6 +68,7 @@ public class MenuManager : MonoBehaviour
 
     public void Start_Test_Isxod(){
         Abst_Toggles.to_isxod_all_tumbler = false;
+        //Scene_Game.test_instance.Active_Task = Isxod_test;
         Active_Task = Isxod_test;
         SceneManager.LoadScene("Scene_Task");  
     }    
@@ -71,21 +83,20 @@ public class MenuManager : MonoBehaviour
             int index = i;
             
             Text text = button.GetComponentInChildren<Text>();
-            if(tasks[i] is War_Task){
-                War_Task t = tasks[i] as War_Task;
+            if(tasks[i] is War_Interference){
+                War_Interference t = tasks[i] as War_Interference;
                 text.text = t.Text_Button;
-                button.onClick.AddListener(() =>
-            {  
-                Test_War(index);         
-            });
+                button.onClick.AddListener(() => { Test_Interference(index); });
+            }
+            else if(tasks[i] is War_targets){
+                War_targets t = tasks[i] as War_targets;
+                text.text = t.Text_Button;
+                button.onClick.AddListener(() => { Test_Target(index); });
             }
             else if(tasks[i] is Task){
                 Task t = tasks[i] as Task;
                 text.text = t.Text_Button;
-                button.onClick.AddListener(() =>
-            {  
-                Test_Work(index);         
-            });
+                button.onClick.AddListener(() => {Test_Work(index); });
             }            
         }
     }    
