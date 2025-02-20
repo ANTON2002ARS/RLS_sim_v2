@@ -434,7 +434,7 @@ public class IKO_Controll : MonoBehaviour
             Report.color = Color.green;
         }
         // ???? ?? ?????????? ?? ??????\\
-        Interferenses_.Pop().Check_work = true;       
+        Interferenses_.Pop().End_Work = true;       
         //GameManager.Instance.Clear_Action();
     }
 
@@ -789,7 +789,7 @@ public class IKO_Controll : MonoBehaviour
         if (Interferenses_.Count > 0 && Interferenses_.Peek() != null)
         {
             var OLD_interferense = Interferenses_.Peek();            
-            if(OLD_interferense.GetComponent<Body_Interference>().Check_Test == false)
+            if(OLD_interferense.GetComponent<Body_Interference>().End_Work == false)
             {
                 Mistakes++;
                 Report.text = Str_Mistakes = "??????, ?? ????????? ?????? ??????";
@@ -810,7 +810,7 @@ public class IKO_Controll : MonoBehaviour
         Body_Interference interference = Interferenses_.Peek();
         if (interference == null)
             return;
-        interference.Check_Test = true;
+        interference.End_Work = true;
         // ????????? ??? ????????? ????????? ?????? \\
         switch (namber_button)
         {
