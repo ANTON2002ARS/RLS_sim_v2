@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
+//using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class Trace_of_Target : MonoBehaviour
 {
     [SerializeField] private List<SpriteRenderer> Canvas;
-    public GameObject Use_Group;
+    public GameObject Line_Group;
     public GameObject TaiL;
     void Start()
     {
@@ -31,11 +31,13 @@ public class Trace_of_Target : MonoBehaviour
 
     private void Turn_on_IKO()
     {        
-        this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, this.transform.localPosition) + 180);
-        
+        this.gameObject.transform.localRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, this.transform.localPosition) + 180);        
     }
 
-    public void Set_Group()=> Use_Group.SetActive(true); 
+    public void Use_Group()=> Line_Group.SetActive(true); 
 
-    public void Show_tail()=> TaiL.SetActive(true);
+    public void Show_tail(){
+        if(TaiL != null)
+            TaiL.SetActive(true);
+    }
 }
