@@ -820,8 +820,8 @@ RectTransform:
   - {fileID: 1113907647}
   - {fileID: 798324979}
   - {fileID: 2027191198}
-  - {fileID: 1658723868}
   - {fileID: 1585525125}
+  - {fileID: 1658723868}
   m_Father: {fileID: 1139703238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -1746,7 +1746,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0412\u0438\u0437\u0443\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F
-    \u0440\u0430\u0431\u043E\u0442\u044B \u0418\u041A\u041E"
+    \u043F\u0430\u043C\u0435\u0445 \u043D\u0430 \u0418\u041A\u041E"
 --- !u!222 &763721487
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3752,7 +3752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1585525125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3768,10 +3768,10 @@ RectTransform:
   - {fileID: 763721485}
   m_Father: {fileID: 501375596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 600, y: 38}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 38}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1585525126
 MonoBehaviour:
@@ -3819,7 +3819,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2115948748}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: Show_IKO
+        m_MethodName: Simply_Interference
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4804,6 +4804,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b3a8aff3622da8c7a8a5de27549ba31, type: 2}
   - {fileID: 11400000, guid: 5d3ef1e4c44f47bc1bb75380b4836a4d, type: 2}
   - {fileID: 11400000, guid: ecd93c77ec4c8d988ad1cf78a7db0320, type: 2}
+  Simply_Show_Interference: {fileID: 11400000, guid: 54574d9c3ff0a4bbba4c50b1e7e4b46b, type: 2}
   panel_task_work: {fileID: 62601276}
   panel_task_war: {fileID: 834717895}
   button_task: {fileID: 3212834949268317157, guid: c112be67a57b9717398a68d09c2a42e5, type: 3}

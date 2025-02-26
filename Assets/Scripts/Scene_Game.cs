@@ -96,7 +96,7 @@ public class Scene_Game : MonoBehaviour
             else if (war_targets.reguest_height)
             {
                 Start_Test_Reguest_Height();
-            }
+            }            
         }
         else
         {

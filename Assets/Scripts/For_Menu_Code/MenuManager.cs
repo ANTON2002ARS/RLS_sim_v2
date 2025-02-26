@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public Task Isxod_test;
     public List<Abst_Task> Task_Work;
     public List<Abst_Task> Task_War;
+    public War_Interference Simply_Show_Interference;
     [SerializeField] private Transform panel_task_work;
     [SerializeField] private Transform panel_task_war;
     [SerializeField] private GameObject button_task;
@@ -53,6 +54,12 @@ public class MenuManager : MonoBehaviour
             return;
         }
         Active_Task = Task_War[index_button];
+        SceneManager.LoadScene("Scene_Task");  
+    }
+
+    public void Simply_Interference(){
+        Debug.Log("test war, Interfence");        
+        Active_Task = Simply_Show_Interference;
         SceneManager.LoadScene("Scene_Task");  
     }
 
