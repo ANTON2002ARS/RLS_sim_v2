@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class O71_block : Abst_Block
 {
+    //[SerializeField] private 
    [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
     {          
