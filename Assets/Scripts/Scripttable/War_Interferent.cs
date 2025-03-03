@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "War_", menuName = "Wars", order = 0)]
+[CreateAssetMenu(fileName = "War_Interference", menuName = "War_Interference", order = 0)]
 public class War_Interference : Abst_Task
 {
     [Multiline] public string Text_Button;

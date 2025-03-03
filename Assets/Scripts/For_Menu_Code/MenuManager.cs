@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public Task Isxod_test;
     public List<Abst_Task> Task_Work;
     public List<Abst_Task> Task_War;
+    public War_Interference Simply_Show_Interference;
     [SerializeField] private Transform panel_task_work;
     [SerializeField] private Transform panel_task_war;
     [SerializeField] private GameObject button_task;
@@ -43,6 +44,13 @@ public class MenuManager : MonoBehaviour
             return;
         }
         Active_Task = Task_Work[index_button];
+        
+        //Abst_Toggles.to_isxod_all_tumbler
+        if (Active_Task is Task){
+            Task Use_Simple_Test = Active_Task as Task;
+            Abst_Toggles.to_isxod_all_tumbler = Use_Simple_Test.to_isxod_all_tumbler;
+            Debug.Log("to_isxod_all_tumbler: " + Abst_Toggles.to_isxod_all_tumbler);
+        }        
         SceneManager.LoadScene("Scene_Task");
     }
 
@@ -55,6 +63,17 @@ public class MenuManager : MonoBehaviour
         Active_Task = Task_War[index_button];
         SceneManager.LoadScene("Scene_Task");  
     }
+
+    public void Simply_Interference(){
+        Debug.Log("test war, Interfence");        
+        Active_Task = Simply_Show_Interference;
+        SceneManager.LoadScene("Scene_Task");  
+    }
+
+    public void Scene_O71_block(){
+        SceneManager.LoadScene("Scene_signal");  
+    }
+
 
     private void Test_Target(int index_button){
         Debug.Log("test war, index: " + index_button.ToString());

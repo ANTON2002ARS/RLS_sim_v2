@@ -64,10 +64,11 @@ public class Target_Main : MonoBehaviour
     public void Set_Side(){
         Use_Group = Random.Range(0, 2) == 0;    
         Use_Our = Random.Range(0, 2) == 0;
-        Is_Helper = false;
+        Is_Helper = false;        
     }
 
     public void Set_Helper_Side(){
+        Use_Group = false;
         Is_Helper = true;
     }
 
