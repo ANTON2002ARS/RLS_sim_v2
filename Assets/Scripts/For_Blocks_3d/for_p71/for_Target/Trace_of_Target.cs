@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
+//using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class Trace_of_Target : MonoBehaviour
@@ -10,8 +10,8 @@ public class Trace_of_Target : MonoBehaviour
     public GameObject TaiL;
     void Start()
     {
-        if(TaiL != null)
-            TaiL.SetActive(false);
+        // if(TaiL != null)
+        //     TaiL.SetActive(false);
         Turn_on_IKO();
     }
 
@@ -37,7 +37,11 @@ public class Trace_of_Target : MonoBehaviour
     public void Use_Group()=> Line_Group.SetActive(true); 
 
     public void Show_tail(){
-        if(TaiL != null)
+        
+        if(TaiL != null){
             TaiL.SetActive(true);
+            Debug.Log("SHOW TAIL");
+        }
+            
     }
 }

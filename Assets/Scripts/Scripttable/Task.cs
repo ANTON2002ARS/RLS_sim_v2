@@ -15,7 +15,8 @@ public class Action_Blocks
 public class Task : Abst_Task
 {
     [TextArea(3, 10)]public string Text_Button;
-    
+    [Header("Установить все тумблеры в исходное положение")]
+    public bool to_isxod_all_tumbler; 
     public List<Action_Blocks> block_need;
     [TextArea(3, 10)] public string Text_Learnihg_All;    
 }

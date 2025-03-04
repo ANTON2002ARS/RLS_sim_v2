@@ -140,7 +140,12 @@ public class P_71 : Abst_Block
         GameObject target = Instantiate(Target_of_IKO);
         target.transform.SetParent(folder_target_main,false); 
         List_Target_On_IKO.Add(target);
-        target.GetComponent<Target_Main>().Set_Side();
+        if(Random.Range(0, 5) == 0){
+            target.GetComponent<Target_Main>().Set_Helper_Side();            
+        }
+        else{
+            target.GetComponent<Target_Main>().Set_Side();
+        }        
     }
     
     public void Span_Target(Vector2 start_Point, Vector2 end_Point){
@@ -197,7 +202,8 @@ public class P_71 : Abst_Block
 
     private GameObject Get_last_Target(){
         if(List_Target_On_IKO.Count == 0){
-            Debug.LogError("Целей нет на ико");
+            Debug.LogError("Целей нет на ико или закончились");
+            Scene_Game.test_instance.Faid_Testing();
             return null;
         }
         GameObject target;
@@ -235,6 +241,12 @@ public class P_71 : Abst_Block
 
     public void Span_Interference(int number)
     {        
+        if (folder_Interfence.childCount > 0)
+        {
+            GameObject block = folder_Interfence.GetChild(0).gameObject;
+            Destroy(block);
+        }
+
         GameObject interference;
         switch (number)
         {
