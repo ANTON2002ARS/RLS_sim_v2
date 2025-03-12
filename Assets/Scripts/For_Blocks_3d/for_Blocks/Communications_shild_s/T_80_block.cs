@@ -62,12 +62,12 @@ public class T_80_block : Abst_Block
         }
     }
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Check_Result();
             Debug.Log("is ENTER");
         }
-    }
+    }*/
 }
