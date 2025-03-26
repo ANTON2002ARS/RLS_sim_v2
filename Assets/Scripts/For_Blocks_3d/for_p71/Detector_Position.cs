@@ -12,5 +12,10 @@ public class Detector_Position : MonoBehaviour
             if(target !=null)
                 target.GetComponent<Target_Main>().flag_move = true;
         }
+        //P_71.Instance_IKO.PRS.GetComponent<prs_target>().flag_move = true;
+        if (P_71.Instance_IKO.PRS?.GetComponent<prs_target>() is prs_target prs)
+        {  
+            prs.flag_move = true;
+        }
     }
 }

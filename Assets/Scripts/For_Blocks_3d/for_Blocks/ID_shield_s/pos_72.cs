@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class pos_72 : Abst_Block
-{ 
+{    
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
     {          
@@ -54,6 +54,13 @@ public class pos_72 : Abst_Block
             Scene_Game.test_instance.Calling_Completion_Block(false);
             Debug.Log("кол-во не равно в списках");
         }     
+    }
+
+    public static bool MODE_M;
+
+    public static void Set_Mode_M()=> MODE_M = !MODE_M;
+    public static bool Get_Mode_M(){
+        return MODE_M;
     }
 
     void Update(){
