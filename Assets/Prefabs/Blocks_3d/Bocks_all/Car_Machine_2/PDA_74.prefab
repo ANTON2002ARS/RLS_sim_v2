@@ -509,6 +509,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: knopka (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: block_use
+      value: 
+      objectReference: {fileID: 6286475958536924581}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 059480857e73d374e9e869c855f00931, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -800,6 +808,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: Block_use
+      value: 
+      objectReference: {fileID: 6286475958536924581}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[0].angle
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[1].angle
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[0].Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 2df693ca997a0604f8e6df8e4f70b6b9, type: 2}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[1].Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 65ca5cf2a5e147a46b4828b4c4fb7810, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1280,11 +1308,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8861918108055329645, guid: 8f6959fd426b7ecc89799d9faa69beaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.029
+      value: 1.0388056
       objectReference: {fileID: 0}
     - target: {fileID: 8861918108055329645, guid: 8f6959fd426b7ecc89799d9faa69beaa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.69100046
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 8861918108055329645, guid: 8f6959fd426b7ecc89799d9faa69beaa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1292,7 +1320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8861918108055329645, guid: 8f6959fd426b7ecc89799d9faa69beaa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.10851064
       objectReference: {fileID: 0}
     - target: {fileID: 8861918108055329645, guid: 8f6959fd426b7ecc89799d9faa69beaa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1304,7 +1332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8861918108055329645, guid: 8f6959fd426b7ecc89799d9faa69beaa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.99409527
       objectReference: {fileID: 0}
     - target: {fileID: 8861918108055329645, guid: 8f6959fd426b7ecc89799d9faa69beaa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1316,7 +1344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8861918108055329645, guid: 8f6959fd426b7ecc89799d9faa69beaa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 167.541
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2420,6 +2448,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: Block_use
+      value: 
+      objectReference: {fileID: 6286475958536924581}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[0].Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 8bf405ebce0da94469919e422487ad5d, type: 2}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[1].Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 99cbc0c1346ad894783d80edb24cf36c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2482,6 +2522,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: Block_use
+      value: 
+      objectReference: {fileID: 6286475958536924581}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[2].angle
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[0].Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 43a24b4e492a03643840218c00b9a7e8, type: 2}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[1].Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: c70cc450a5c3e6947b2f8000f050d7e7, type: 2}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[2].Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 184b9f150e433a941aeb8cafc804ebb0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3238,6 +3302,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: knopka (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: block_use
+      value: 
+      objectReference: {fileID: 6286475958536924581}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: material_on
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f017876b644219f68fbe02139853e67, type: 2}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: material_off
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a4ea9991cffeb9bfaa9e7577e55213b, type: 2}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: f401d66996998ba45b5b1c22891162c6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3387,6 +3467,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: knopka
       objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: block_use
+      value: 
+      objectReference: {fileID: 6286475958536924581}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: material_on
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f017876b644219f68fbe02139853e67, type: 2}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: material_off
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a4ea9991cffeb9bfaa9e7577e55213b, type: 2}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e343ec8705902b48b5eaafd26a36ec2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3511,6 +3607,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: knopka (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: block_use
+      value: 
+      objectReference: {fileID: 6286475958536924581}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: material_on
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f017876b644219f68fbe02139853e67, type: 2}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: material_off
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a4ea9991cffeb9bfaa9e7577e55213b, type: 2}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 2de7b7ac524a0b0499f9b096f8f11f9f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3573,6 +3685,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: knopka (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: block_use
+      value: 
+      objectReference: {fileID: 6286475958536924581}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: ccc09a04ae7a2ae4cb14a5a30be93b55, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
