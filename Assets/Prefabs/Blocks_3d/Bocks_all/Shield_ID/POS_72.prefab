@@ -6761,11 +6761,11 @@ PrefabInstance:
     - target: {fileID: 1650662949521423012, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
       propertyPath: material_on
       value: 
-      objectReference: {fileID: 2100000, guid: 3109cdb3c593cb4169465033624fda9a, type: 2}
+      objectReference: {fileID: 2100000, guid: 42ccbd6d8e4fcb84ca1c5994f01f5d4e, type: 2}
     - target: {fileID: 1650662949521423012, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
       propertyPath: material_off
       value: 
-      objectReference: {fileID: 2100000, guid: 1b0c9ae90f0aefc4e861c6dfeaae397c, type: 2}
+      objectReference: {fileID: 2100000, guid: a7a1b2c23665b0132aa020c7790e4d4b, type: 2}
     - target: {fileID: 5950378595103096421, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.059000075
@@ -6815,6 +6815,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
+--- !u!114 &3615753339921932849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1650662949521423012, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
+  m_PrefabInstance: {fileID: 2649780921848682645}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500c0189444f41940a4bd60fb8250b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8527025466665658096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5950378595103096421, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
@@ -7336,6 +7347,66 @@ PrefabInstance:
       propertyPath: pos_krutilka.Action_sw
       value: 
       objectReference: {fileID: 11400000, guid: 5c5655358fd7faf41810442af480ec92, type: 2}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6876708929768556606}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3615753339921932849}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Change_State
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Change_State
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: lampokhkoy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: lampokhkoy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10053,6 +10124,62 @@ PrefabInstance:
       propertyPath: pos_krutilka.Action_sw
       value: 
       objectReference: {fileID: 11400000, guid: f85212c4500ed6240a3fbd256a44fb3a, type: 2}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9012981888798252649}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6876708929768556606}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Change_State
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Change_State
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: lampokhkoy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: lampokhkoy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207560470061306777, guid: f1bd70aa1eed52656bbb9227938d2ab3, type: 3}
+      propertyPath: pos_krutilka.event_state.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10901,6 +11028,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5981319358122901631}
     m_Modifications:
+    - target: {fileID: 1650662949521423012, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
+      propertyPath: material_on
+      value: 
+      objectReference: {fileID: 2100000, guid: 3109cdb3c593cb4169465033624fda9a, type: 2}
+    - target: {fileID: 1650662949521423012, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
+      propertyPath: material_off
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b0c9ae90f0aefc4e861c6dfeaae397c, type: 2}
     - target: {fileID: 5950378595103096421, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.708
@@ -10955,6 +11090,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5950378595103096421, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
   m_PrefabInstance: {fileID: 5298114849916842650}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6876708929768556606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1650662949521423012, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
+  m_PrefabInstance: {fileID: 5298114849916842650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500c0189444f41940a4bd60fb8250b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5304472594229583654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14557,6 +14703,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5950378595103096421, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
   m_PrefabInstance: {fileID: 7781338839926580429}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9012981888798252649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1650662949521423012, guid: c7070e4e3f0a4b74fa6aad34dbc1c79a, type: 3}
+  m_PrefabInstance: {fileID: 7781338839926580429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500c0189444f41940a4bd60fb8250b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7784103587707910663
 PrefabInstance:
   m_ObjectHideFlags: 0
