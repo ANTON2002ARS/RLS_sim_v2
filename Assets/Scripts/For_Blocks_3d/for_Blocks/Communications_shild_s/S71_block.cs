@@ -55,11 +55,11 @@ public class S71_block : Abst_Block
         }     
     }
 
-    void Update(){
+    /*void Update(){
         if(Input.GetKeyDown(KeyCode.Return)){
             Check_Result();
             Debug.Log("is ENTER");
         }
-    } 
+    } */
            
 }
