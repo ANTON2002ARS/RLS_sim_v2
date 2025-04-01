@@ -10,8 +10,9 @@ public class P_71 : Abst_Block
     [SerializeField] private Transform folder_target_main;
     [SerializeField] private Transform folder_for_trace;
     [SerializeField] private GameObject Target_of_IKO;
-    [SerializeField] private GameObject prs_target;
+    [SerializeField] private GameObject PRS_of_IKO;
     public List<GameObject> List_Target_On_IKO;
+    [HideInInspector] public GameObject PRS;
 
     [Header("for Interference")]
     [SerializeField] private Transform folder_Interfence;
@@ -136,6 +137,31 @@ public class P_71 : Abst_Block
         // }
     }
 
+    public void Span_PRS(Vector2 position){
+        PRS = Instantiate(PRS_of_IKO);
+        PRS.transform.SetParent(folder_target_main,false); 
+        PRS.transform.localPosition = position;
+    }
+
+    public void PRS_End_Trace(){
+        Debug.Log("PRS in Center IKO");
+        Destroy(PRS);
+
+    }
+
+    public void Span_Target_with_PRS(){
+        GameObject target = Instantiate(Target_of_IKO);
+        target.transform.SetParent(folder_target_main,false); 
+        List_Target_On_IKO.Add(target);
+        if(Random.Range(0, 5) == 0){
+            target.GetComponent<Target_Main>().Set_Helper_Side();            
+        }
+        else{
+            target.GetComponent<Target_Main>().Set_Side();
+        }        
+        target.GetComponent<Target_Main>().Use_RPS = true;
+    }
+
     public void Span_Target(){
         GameObject target = Instantiate(Target_of_IKO);
         target.transform.SetParent(folder_target_main,false); 
@@ -219,7 +245,7 @@ public class P_71 : Abst_Block
 
 
 
-    public void Set_Trace_on_IKO(GameObject trace_of_target, Vector2 position, bool is_request_target,bool use_group){
+    public void Set_Trace_of_Target_on_IKO(GameObject trace_of_target, Vector2 position, bool is_request_target,bool use_group){
         GameObject trace = Instantiate(trace_of_target);
         trace.transform.SetParent(folder_for_trace,false);
         trace.transform.localPosition = position;
@@ -229,6 +255,12 @@ public class P_71 : Abst_Block
         if(use_group == true){
             trace.GetComponent<Trace_of_Target>().Use_Group();
         }
+    }
+
+    public void Set_Trace_of_PRS_on_IKO(Vector2 position, GameObject trace_of_PRS){
+        GameObject trace = Instantiate(trace_of_PRS);
+        trace.transform.SetParent(folder_for_trace,false);
+        trace.transform.localPosition = position;
     }
 
 

@@ -16,6 +16,8 @@ public class Target_Main : MonoBehaviour
     [SerializeField] private GameObject Our;
     public bool flag_move;
 
+    public bool Use_RPS;
+
     public Vector2 startPoint; // Начальная точка
     public Vector2 endPoint; // Конечная точка
 
@@ -29,23 +31,30 @@ public class Target_Main : MonoBehaviour
         {
             flag_move = false;
             if(Use_Our == true){
-                P_71.Instance_IKO.Set_Trace_on_IKO(Our, this.transform.localPosition, IS_Request_Target, Use_Group);                
+                P_71.Instance_IKO.Set_Trace_of_Target_on_IKO(Our, this.transform.localPosition, IS_Request_Target, Use_Group);                
             }
             else if(Is_Helper == true){
-                P_71.Instance_IKO.Set_Trace_on_IKO(Helper, this.transform.localPosition,IS_Request_Target, Use_Group);
+                P_71.Instance_IKO.Set_Trace_of_Target_on_IKO(Helper, this.transform.localPosition,IS_Request_Target, Use_Group);
             }
             else{
-                P_71.Instance_IKO.Set_Trace_on_IKO(Opponent, this.transform.localPosition, IS_Request_Target, Use_Group);                
+                P_71.Instance_IKO.Set_Trace_of_Target_on_IKO(Opponent, this.transform.localPosition, IS_Request_Target, Use_Group);                
             }
         }
     }
 
     void Start(){
+        if(Use_RPS == true){
+            Invoke("Start_PRS", 2f);
+        }
         if(IsZeroVector(startPoint) || IsZeroVector(endPoint)){
             startPoint = Generate_Random_Polar_Coordinates(Radius_IKO);
             endPoint = Generate_Random_Polar_Coordinates(Radius_IKO);
             this.transform.localPosition = startPoint;
         }   
+    }
+
+    private void Start_PRS(){
+        P_71.Instance_IKO.Span_PRS(this.transform.localPosition);
     }
 
     private bool IsZeroVector(Vector2 vector)

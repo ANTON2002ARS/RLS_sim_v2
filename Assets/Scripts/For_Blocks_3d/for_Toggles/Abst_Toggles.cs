@@ -10,6 +10,8 @@ public class Position_krutilka
     public switch_position Action_sw;
     public UnityEvent event_state;
     public bool Isxod;
+    [TextArea(3, 10)] public string Text_Learnihg_for_Center;
+    [TextArea(3, 10)] public string Text_Learnihg_for_Panel;
 }
 
 public abstract class Abst_Toggles : MonoBehaviour
