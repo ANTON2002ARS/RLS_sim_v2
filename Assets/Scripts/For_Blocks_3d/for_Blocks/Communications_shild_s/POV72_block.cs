@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class POV72_block : Abst_Block
 { 
+    public int Use_Height;
+    
+    public bool Give_Target;
+    public void Set_Give_Target()=> Give_Target = true;
+
+    [SerializeField] private Disk_Swivel disk_Swivel;
+    public void Set_Height(){
+        if(Give_Target == true)
+            disk_Swivel.Set_Disk_Position(Use_Height);
+    }
+
+    public void Zeno_Height()=> disk_Swivel.Set_Disk_Position(0);
+    
+
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
     {          
