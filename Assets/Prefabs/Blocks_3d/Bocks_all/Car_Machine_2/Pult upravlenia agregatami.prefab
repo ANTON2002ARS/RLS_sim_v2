@@ -5139,13 +5139,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 2718505314723117926}
     m_Modifications:
     - target: {fileID: 2327828989868124080, guid: 626e07b4ede26cef08911fbfe90723a8, type: 3}
+      propertyPath: Block_use
+      value: 
+      objectReference: {fileID: 3898373175090874247}
+    - target: {fileID: 2327828989868124080, guid: 626e07b4ede26cef08911fbfe90723a8, type: 3}
+      propertyPath: list_switch.Array.data[0].Isxod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327828989868124080, guid: 626e07b4ede26cef08911fbfe90723a8, type: 3}
+      propertyPath: list_switch.Array.data[1].Isxod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327828989868124080, guid: 626e07b4ede26cef08911fbfe90723a8, type: 3}
       propertyPath: list_switch.Array.data[0].Action_sw
       value: 
-      objectReference: {fileID: 11400000, guid: a0324f21daae4694da3c9ea1d5a60d7c, type: 2}
+      objectReference: {fileID: 11400000, guid: 0186653d48c9216448e54f7563f406dc, type: 2}
     - target: {fileID: 2327828989868124080, guid: 626e07b4ede26cef08911fbfe90723a8, type: 3}
       propertyPath: list_switch.Array.data[1].Action_sw
       value: 
-      objectReference: {fileID: 11400000, guid: 0186653d48c9216448e54f7563f406dc, type: 2}
+      objectReference: {fileID: 11400000, guid: a0324f21daae4694da3c9ea1d5a60d7c, type: 2}
     - target: {fileID: 2962563794908606293, guid: 626e07b4ede26cef08911fbfe90723a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6155,8 +6167,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3898373175090874247}
     - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
-      propertyPath: list_switch.Array.data[1].Isxod
+      propertyPath: list_switch.Array.data[0].Isxod
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
+      propertyPath: list_switch.Array.data[1].Isxod
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3591130311055944243, guid: 714f3fd73c888685685c6e344eab29b2, type: 3}
       propertyPath: list_switch.Array.data[0].Action_sw
