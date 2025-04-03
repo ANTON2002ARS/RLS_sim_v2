@@ -3,18 +3,47 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Camera_Controller : MonoBehaviour
 {
-   public float speed = 3f;
+    public float speed = 3f;
     public float rotationSpeed = 55f;
     public float tiltSpeed = 55f;
-    
-    private Transform _cameraTransform;
-    
+
+    [SerializeField] private Text text_center;
+    [SerializeField] private GameObject panel_text;
+    [SerializeField] private Text text_panel;
+    private Transform _cameraTransform;    
+
+    public void Show_Text_Center(string text)
+    {
+        text_center.gameObject.SetActive(true);
+        text_center.text = text;
+        Invoke("Off_Text_Center", 4.0f);
+    }
+
+    private void Off_Text_Center() => text_center.gameObject.SetActive(false);
+
+    public void Show_Text_Panel(string text)
+    {
+        text_panel.text = text;
+        if (panel_text.activeSelf == false)
+            panel_text.SetActive(true);
+    }
+
+    public void Use_Panel(bool show)
+    {
+        panel_text.SetActive(show);
+    }
 
     private void Start()
-    {        
+    {
+        if(text_center != null)
+            text_center.gameObject.SetActive(false);
+        if(panel_text != null)
+            panel_text.SetActive(false);
+            
         _cameraTransform = GetComponentInChildren<Camera>().transform; // Находим transform камеры
     }
 

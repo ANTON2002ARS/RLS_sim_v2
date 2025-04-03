@@ -7,6 +7,7 @@ public class O71_block : Abst_Block
 {
     [SerializeField] private SpriteRenderer folder;
     [SerializeField] private List<Sprite> signals;
+       
     [Header("For Test")]
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
@@ -64,7 +65,7 @@ public class O71_block : Abst_Block
             Debug.Log("is ENTER");
         }
     }
-
+    
     // Все сигналы из учебника \\
     public void SH79_Submodule()=> Show_Signal(36);
     public void SH79_module()=>Show_Signal(0);

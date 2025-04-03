@@ -984,7 +984,7 @@ Transform:
   - {fileID: 5087514378077931640}
   - {fileID: 7216524481513884201}
   - {fileID: 7648082684060788099}
-  - {fileID: 5907076109495634122}
+  - {fileID: 8833017557224493399}
   - {fileID: 8721965370191603385}
   - {fileID: 2929208485641875625}
   - {fileID: 6221070747121683352}
@@ -12246,6 +12246,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5981319358122901631}
     m_Modifications:
+    - target: {fileID: 2434708582859533678, guid: 0bddea58fd475f2328444abd69b9abe4, type: 3}
+      propertyPath: block_use
+      value: 
+      objectReference: {fileID: 7643364478251664706}
+    - target: {fileID: 2434708582859533678, guid: 0bddea58fd475f2328444abd69b9abe4, type: 3}
+      propertyPath: pos_krutilka.Action_sw
+      value: 
+      objectReference: {fileID: 11400000, guid: 7574fb410b55ff34d9d143141c36a81a, type: 2}
     - target: {fileID: 3414557149719880097, guid: 0bddea58fd475f2328444abd69b9abe4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.75
@@ -15766,78 +15774,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5981319358122901631}
     m_Modifications:
-    - target: {fileID: 1745840728155375708, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 203016409124140981, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_Name
-      value: SW_krutilka_switch (6)
+      value: Krutilka_Potansiometer
       objectReference: {fileID: 0}
-    - target: {fileID: 1745840728155375708, guid: b5e99825f0acfb4418118099da845d64, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.624
       objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.862
       objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4478464736625044075, guid: b5e99825f0acfb4418118099da845d64, type: 3}
-      propertyPath: Block_use
-      value: 
-      objectReference: {fileID: 7643364478251664706}
-    - target: {fileID: 4478464736625044075, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+    - target: {fileID: 6369640317891240910, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
       propertyPath: block_use
       value: 
       objectReference: {fileID: 7643364478251664706}
-    - target: {fileID: 4478464736625044075, guid: b5e99825f0acfb4418118099da845d64, type: 3}
-      propertyPath: list_switch.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4478464736625044075, guid: b5e99825f0acfb4418118099da845d64, type: 3}
-      propertyPath: list_switch.Array.data[0].Action_sw
-      value: 
-      objectReference: {fileID: 11400000, guid: 7574fb410b55ff34d9d143141c36a81a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b5e99825f0acfb4418118099da845d64, type: 3}
---- !u!4 &5907076109495634122 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
+--- !u!4 &8833017557224493399 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2350449466951201745, guid: b5e99825f0acfb4418118099da845d64, type: 3}
+  m_CorrespondingSourceObject: {fileID: 860593874251901516, guid: ed9ebd01a15eb04a1a7266507ef84906, type: 3}
   m_PrefabInstance: {fileID: 8170760330621680411}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8353801679622048843
