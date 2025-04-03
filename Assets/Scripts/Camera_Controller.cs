@@ -39,8 +39,11 @@ public class Camera_Controller : MonoBehaviour
 
     private void Start()
     {
-        text_center.gameObject.SetActive(false);
-        panel_text.SetActive(false);
+        if(text_center != null)
+            text_center.gameObject.SetActive(false);
+        if(panel_text != null)
+            panel_text.SetActive(false);
+            
         _cameraTransform = GetComponentInChildren<Camera>().transform; // Находим transform камеры
     }
 

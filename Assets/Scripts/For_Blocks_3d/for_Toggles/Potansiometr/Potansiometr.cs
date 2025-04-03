@@ -72,7 +72,7 @@ public class Potansiometr :  Abst_Toggles
   
 
     public override void Establish_pos(Position_krutilka position_Krutilka)
-    {        
+    { 
         Del_Action(position_Krutilka, block_use);
         Add_Status_to_blocks(position_Krutilka.Action_sw, block_use);        
         position_Krutilka.event_state.Invoke();
