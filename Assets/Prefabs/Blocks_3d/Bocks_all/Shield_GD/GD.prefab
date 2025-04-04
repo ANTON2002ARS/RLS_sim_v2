@@ -1618,6 +1618,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7628780199934871372}
+  - component: {fileID: 8790162106540186535}
+  - component: {fileID: 7304217224060963851}
   m_Layer: 0
   m_Name: GD
   m_TagString: Untagged
@@ -1662,6 +1664,50 @@ Transform:
   - {fileID: 2771629600253754082}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8790162106540186535
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103601032430001654}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8109256, y: 1.6922101, z: 0.43056482}
+  m_Center: {x: -0.013268569, y: 0.09619199, z: 0.04913658}
+--- !u!114 &7304217224060963851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103601032430001654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82861a2ceb37cb4fbd2d42237f9f8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pos_krutilka:
+    angle: 0
+    Action_sw: {fileID: 11400000, guid: bd230542ce3952c4089d509dc76b7efd, type: 2}
+    event_state:
+      m_PersistentCalls:
+        m_Calls: []
+    Isxod: 0
+  button: {fileID: 0}
+  material_off: {fileID: 0}
+  material_on: {fileID: 0}
+  block_use: {fileID: 0}
 --- !u!1 &7343071408728933597
 GameObject:
   m_ObjectHideFlags: 0
