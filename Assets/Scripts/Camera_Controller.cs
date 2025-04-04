@@ -2,32 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-<<<<<<< HEAD
-
-public class Camera_Controller : MonoBehaviour
-{
-   public float speed = 10f;
-    public float rotationSpeed = 100f;
-    public float tiltSpeed = 5f;
-=======
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Camera_Controller : MonoBehaviour
 {
-   public float speed = 3f;
+    public float speed = 3f;
     public float rotationSpeed = 55f;
     public float tiltSpeed = 55f;
->>>>>>> Test_building
-    
-    private Transform _cameraTransform;
-    
+
+    [SerializeField] private Text text_center;
+    [SerializeField] private GameObject panel_text;
+    [SerializeField] private Text text_panel;
+    private Transform _cameraTransform;    
+
+    public void Show_Text_Center(string text)
+    {
+        text_center.gameObject.SetActive(true);
+        text_center.text = text;
+        Invoke("Off_Text_Center", 4.0f);
+    }
+
+    private void Off_Text_Center() => text_center.gameObject.SetActive(false);
+
+    public void Show_Text_Panel(string text)
+    {
+        text_panel.text = text;
+        if (panel_text.activeSelf == false)
+            panel_text.SetActive(true);
+    }
+
+    public void Use_Panel(bool show)
+    {
+        panel_text.SetActive(show);
+    }
 
     private void Start()
-<<<<<<< HEAD
     {
-=======
-    {        
->>>>>>> Test_building
+        if(text_center != null)
+            text_center.gameObject.SetActive(false);
+        if(panel_text != null)
+            panel_text.SetActive(false);
+            
         _cameraTransform = GetComponentInChildren<Camera>().transform; // Находим transform камеры
     }
 
@@ -45,23 +61,15 @@ public class Camera_Controller : MonoBehaviour
         transform.Translate(new Vector3(horizontal, 0, vertical) * speed * Time.deltaTime);
         if(Input.GetKey(KeyCode.Space)){
             transform.Translate(new Vector3(0, 1 * speed * Time.deltaTime, 0));
-<<<<<<< HEAD
-        }       
-=======
         }   
         else if(Input.GetKey(KeyCode.LeftShift)){
             transform.Translate(new Vector3(0, -1 * speed * Time.deltaTime, 0));
         }    
->>>>>>> Test_building
     }
 
     private void HandleTilting()
     {
-<<<<<<< HEAD
-        if (Input.GetKey(KeyCode.LeftShift)) // правая кнопка мыши + Shift
-=======
         if (Input.GetMouseButton(1)) // правая кнопка мыши + Shift Input.GetKey(KeyCode.LeftShift)
->>>>>>> Test_building
         {
             Cursor.lockState = CursorLockMode.Locked;           
             float mouseX = Input.GetAxis("Mouse X");
@@ -82,10 +90,7 @@ public class Camera_Controller : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-=======
     public void Exit_Scene()=> SceneManager.LoadScene("Menu_Scene");
 
->>>>>>> Test_building
     
 }

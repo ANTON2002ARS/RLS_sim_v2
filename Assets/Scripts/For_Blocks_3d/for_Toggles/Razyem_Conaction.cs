@@ -69,8 +69,23 @@ public class Razyem_Conaction : MonoBehaviour
     {        
         if (index >= switchs_obgs.Count)
             index = 0;        
-        Disble_only(switchs_obgs[index]); 
-        index++;
+        Disble_only(switchs_obgs[index]);
+        if (Machine_1.instance_car_1 != null)
+        {
+            if (switchs_obgs[index].pos_state.Text_Learnihg_for_Center != "")
+                Machine_1.instance_car_1.Show_Text_Center(switchs_obgs[index].pos_state.Text_Learnihg_for_Center);
+            else
+                Debug.Log("Текст центра на тумблере отсутствует");
+            if (switchs_obgs[index].pos_state.Text_Learnihg_for_Panel != "")
+                Machine_1.instance_car_1.Show_Text_Panel(switchs_obgs[index].pos_state.Text_Learnihg_for_Panel);
+            else
+            {
+                Debug.Log("Текст панели на тумблере отсутствует");
+                Machine_1.instance_car_1.Use_Panel(false);
+            }
+
+        }
+        index++;        
     }
 
     private void Disble_only(Switchs_Obg not_disble)

@@ -14,12 +14,9 @@ public class Action_Blocks
 [CreateAssetMenu(fileName = "Task_", menuName = "Task", order = 0)]
 public class Task : Abst_Task
 {
-<<<<<<< HEAD
-    [Multiline] public string Text_Button;
-=======
     [TextArea(3, 10)]public string Text_Button;
-    
->>>>>>> Test_building
+    [Header("Установить все тумблеры в исходное положение")]
+    public bool to_isxod_all_tumbler; 
     public List<Action_Blocks> block_need;
     [TextArea(3, 10)] public string Text_Learnihg_All;    
 }

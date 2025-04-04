@@ -7,7 +7,7 @@ public class vch73_Block : Abst_Block
     [SerializeField] private List<Position_krutilka> pos_handle;
     [SerializeField] private GameObject Handler;
     [SerializeField] private int index_pos;
-
+    private Animator animator;
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
     {          
@@ -60,16 +60,45 @@ public class vch73_Block : Abst_Block
         }     
     }
 
+    private void Use_Animation(int index)
+    {        
+        switch (index)
+        {
+            case 0:
+                animator.SetTrigger("RLS");
+                Debug.Log("RLS index = 1 ");
+                break;
+            case 1:
+                animator.SetTrigger("GSH");
+                Debug.Log("GSH index = 2 ");
+                break;
+            case 2:
+                animator.SetTrigger("AMY");
+                Debug.Log("AMY index = 3 ");
+                break;
+            default:
+                break;
+        }
+    }
+
+    void Start()
+    {        
+        animator = GetComponent<Animator>();
+    }
+
     private void OnMouseUpAsButton()
     {
         index_pos++;
         if(index_pos >= pos_handle.Count)
             index_pos = 0;
 
+        Use_Animation(index_pos);
         //Handler.transform.rotation = Quaternion.Euler(0f,0f,pos_handle[index_pos].angle);             
-        Handler.transform.localEulerAngles = new Vector3(0f, 0f, pos_handle[index_pos].angle);
-        Del_status(pos_handle[index_pos].Action_sw);
-        Set_Status(pos_handle[index_pos].Action_sw);   
+        // Handler.transform.localEulerAngles = new Vector3(0f, 0f, pos_handle[index_pos].angle);
+        //Del_status(pos_handle[index_pos].Action_sw);
+        //Set_Status(pos_handle[index_pos].Action_sw);
+        Action_Toggles.Clear();
+        Set_Status(pos_handle[index_pos].Action_sw);
     }
 
 }
