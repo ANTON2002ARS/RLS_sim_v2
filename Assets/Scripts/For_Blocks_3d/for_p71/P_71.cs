@@ -13,6 +13,7 @@ public class P_71 : Abst_Block
     [SerializeField] private GameObject PRS_of_IKO;
     public List<GameObject> List_Target_On_IKO;
     [HideInInspector] public GameObject PRS;
+    public bool ON_MODE_M;
 
     [Header("for Interference")]
     [SerializeField] private Transform folder_Interfence;
@@ -144,21 +145,17 @@ public class P_71 : Abst_Block
     }
 
     public void PRS_End_Trace(){
-        Debug.Log("PRS in Center IKO");
+        Scene_Game.test_instance.End_Text_war_with_PRS(ON_MODE_M);
         Destroy(PRS);
-
     }
 
     public void Span_Target_with_PRS(){
         GameObject target = Instantiate(Target_of_IKO);
         target.transform.SetParent(folder_target_main,false); 
         List_Target_On_IKO.Add(target);
-        if(Random.Range(0, 5) == 0){
-            target.GetComponent<Target_Main>().Set_Helper_Side();            
-        }
-        else{
-            target.GetComponent<Target_Main>().Set_Side();
-        }        
+        //target.GetComponent<Target_Main>().Set_Side(); 
+        target.GetComponent<Target_Main>().Use_Group = Random.Range(0, 2) == 0; 
+        target.GetComponent<Target_Main>().Use_Our = false;     
         target.GetComponent<Target_Main>().Use_RPS = true;
     }
 

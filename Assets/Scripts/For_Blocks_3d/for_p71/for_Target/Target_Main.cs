@@ -44,7 +44,7 @@ public class Target_Main : MonoBehaviour
 
     void Start(){
         if(Use_RPS == true){
-            Invoke("Start_PRS", 2f);
+            Invoke("Start_PRS", 1f);
         }
         if(IsZeroVector(startPoint) || IsZeroVector(endPoint)){
             startPoint = Generate_Random_Polar_Coordinates(Radius_IKO);
