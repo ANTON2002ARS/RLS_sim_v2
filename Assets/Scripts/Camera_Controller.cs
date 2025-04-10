@@ -20,7 +20,7 @@ public class Camera_Controller : MonoBehaviour
     {
         text_center.gameObject.SetActive(true);
         text_center.text = text;
-        Invoke("Off_Text_Center", 4.0f);
+        Invoke("Off_Text_Center", 7.0f);
     }
 
     private void Off_Text_Center() => text_center.gameObject.SetActive(false);
