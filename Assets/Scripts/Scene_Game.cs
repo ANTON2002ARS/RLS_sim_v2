@@ -23,7 +23,7 @@ public class Scene_Game : MonoBehaviour
     [Header("list blocks")]
     [SerializeField] private Transform folder_blocks;
     [SerializeField] private GameObject pedalka;
-    [SerializeField] private GameObject pos_72;
+    [SerializeField] private GameObject block_pos_72;
     [SerializeField] private GameObject pov_71;
     [Header("Text of Target")]
     [SerializeField] private GameObject Panel_Blocks;
@@ -54,7 +54,7 @@ public class Scene_Game : MonoBehaviour
     private void Awake() => test_instance = this;
 
     void Start()
-    {       
+    {   
         Hide_All_Elements();        
 
         this.Active_Task = MenuManager.Active_Task;
@@ -92,28 +92,28 @@ public class Scene_Game : MonoBehaviour
             war_targets = Active_Task as War_targets;
             if (war_targets.use_sector)
             {
-                Start_Test_Sector_Review();
-                if (MenuManager.Menu_Instance.Use_Learning == true)
-                {
-                    Panel_learning.transform.GetChild(0).gameObject.GetComponent<Text>().text = war_targets.Text_Learning;                   
-                }
+                Start_Test_Sector_Review();                
             }
             else if (war_targets.use_reguest_target)
             {
-                Start_Test_Reguest();
-                if (MenuManager.Menu_Instance.Use_Learning == true)
-                {
-                    Panel_learning.transform.GetChild(0).gameObject.GetComponent<Text>().text = war_targets.Text_Learning;
-                }
+                Start_Test_Reguest();                
             }
             else if (war_targets.reguest_height)
             {
-                Start_Test_Reguest_Height();
-                if (MenuManager.Menu_Instance.Use_Learning == true)
-                {
-                    Panel_learning.transform.GetChild(0).gameObject.GetComponent<Text>().text = war_targets.Text_Learning;
-                }
-            }            
+                Start_Test_Reguest_Height();                
+            }
+            else if(war_targets.use_war_with_PRS){
+                Start_Test_war_with_PRS();       
+            } 
+            else{
+                Debug.LogError("War task is not active");
+                return;
+            }  
+
+            if (MenuManager.Menu_Instance.Use_Learning == true)
+            {
+                Panel_learning.transform.GetChild(0).gameObject.GetComponent<Text>().text = war_targets.Text_Learning;
+            } 
         }
         else
         {
@@ -482,7 +482,7 @@ public class Scene_Game : MonoBehaviour
         {
             Destroy(folder_blocks.GetChild(0).gameObject);
         }
-        GameObject block_pov71 = Instantiate(pos_72);
+        GameObject block_pov71 = Instantiate(block_pos_72);
         block_pov71.transform.SetParent(folder_blocks);
         folder_blocks.gameObject.SetActive(true);
     }
@@ -635,7 +635,21 @@ public class Scene_Game : MonoBehaviour
 
     private void End_Test_Reguest_Height() => Pass_Testing();
 
+    public void Start_Test_war_with_PRS(){
+        IKO.gameObject.SetActive(true);
+        Panel_Blocks.SetActive(true);
+        Button_Show_IKO.SetActive(true);
+        IKO.Span_Target_with_PRS();
+    }
 
+    public void End_Text_war_with_PRS(bool is_pass){
+        if(is_pass == true){
+            Pass_Testing();
+        }
+        else{
+            Faid_Testing();
+        }
+    }
 
     public void Remove_Option(int optionIndex)
     {
