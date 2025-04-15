@@ -73,8 +73,12 @@ public class Scene_Game : MonoBehaviour
             Show_Block(index_block);
             if (MenuManager.Menu_Instance.Use_Learning == true)
             {
-                Close_Panel_learning_Start(true);
-                Panel_Text_Start.text = Use_Simple_Test.Text_Learnihg_All;
+                if(Use_Simple_Test.Text_Learnihg_All != "")
+                {                    
+                    Panel_Text_Start.gameObject.SetActive(true);
+                    Panel_Text_Start.text = Use_Simple_Test.Text_Learnihg_All;
+                }
+                
             }
         }
         else if (Active_Task is War_Interference)
@@ -383,7 +387,14 @@ public class Scene_Game : MonoBehaviour
         b.GetComponent<Abst_Block>().Need_Condition = Use_Simple_Test.block_need[index].Command_need;
         if (MenuManager.Menu_Instance.Use_Learning == true)
         {
-            Panel_learning_Start.transform.GetChild(0).gameObject.GetComponent<Text>().text = Use_Simple_Test.Text_Learnihg_All;
+            if (Use_Simple_Test.Text_Learnihg_All != "")
+            {
+                Panel_Text_Start.gameObject.SetActive(true);
+                Panel_learning_Start.transform.GetChild(0).gameObject.GetComponent<Text>().text = Use_Simple_Test.Text_Learnihg_All;
+            }               
+            else
+                Panel_learning_Start.SetActive(false);
+
             Panel_learning.transform.GetChild(0).gameObject.GetComponent<Text>().text = Use_Simple_Test.block_need[index].Text_Learnihg_for_Block;
         }
 

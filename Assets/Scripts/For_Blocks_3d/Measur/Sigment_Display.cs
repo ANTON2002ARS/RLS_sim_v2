@@ -14,6 +14,7 @@ public class Sigment_Display : MonoBehaviour
     public void Set_Number(float number)
     {
         var resulf = ParseFloat(number);
+        //  не доделал  \\
 
 
     }
