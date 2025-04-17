@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class L211_BLOCK : Abst_Block
+public class kg_145_block : Abst_Block
 {
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
@@ -54,5 +54,4 @@ public class L211_BLOCK : Abst_Block
             Debug.Log("кол-во не равно в списках");
         }     
     }
-
 }
