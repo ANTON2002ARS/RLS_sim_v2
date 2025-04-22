@@ -70,6 +70,8 @@ public class pos_72 : Abst_Block
         MODE_M = ! MODE_M;
         if(P_71.Instance_IKO != null){
             P_71.Instance_IKO.ON_MODE_M = MODE_M;
+            if(Scene_Game.test_instance != null)
+                Scene_Game.test_instance.End_Text_war_with_PRS(MODE_M);
         }
     }
     public bool Get_Mode_M(){

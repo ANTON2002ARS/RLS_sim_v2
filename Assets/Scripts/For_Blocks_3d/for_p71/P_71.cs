@@ -145,7 +145,7 @@ public class P_71 : Abst_Block
     }
 
     public void PRS_End_Trace(){
-        Scene_Game.test_instance.End_Text_war_with_PRS(ON_MODE_M);
+        Scene_Game.test_instance.End_Text_war_with_PRS(ON_MODE_M);        
         Destroy(PRS);
     }
 
