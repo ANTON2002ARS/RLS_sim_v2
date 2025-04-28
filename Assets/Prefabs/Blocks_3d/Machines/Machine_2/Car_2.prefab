@@ -54,7 +54,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc79e3fea50043742a46d96529a51f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller_game: {fileID: 0}
+  LineObject: {fileID: 8923793110491297061}
+  LineRotationSpeed_6rpm: -36
+  LineRotationSpeed_12rpm: -72
+  round_mode: 0
 --- !u!1 &3329284053522703337
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +505,11 @@ PrefabInstance:
 --- !u!4 &5813732093881853288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8704132904896956919, guid: 402e86830385da74fb81afd06da66c9a, type: 3}
+  m_PrefabInstance: {fileID: 2910957359900765343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8923793110491297061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6030991455673702842, guid: 402e86830385da74fb81afd06da66c9a, type: 3}
   m_PrefabInstance: {fileID: 2910957359900765343}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3121761670064562979

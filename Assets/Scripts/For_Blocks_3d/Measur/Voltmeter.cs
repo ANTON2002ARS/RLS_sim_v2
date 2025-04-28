@@ -21,8 +21,8 @@ public class Voltmeter : Abst_Measurs
     public override void Replace_valum(float valum_measurs)
     {
         float outpun_value = Mathf.Lerp(min_angle, max_angle, valum_measurs / max_measurs);
-        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + valum_measurs + " ï¿½ï¿½ï¿½ï¿½:" + outpun_value);
-        Line.rotation = Quaternion.Euler(0f, 0f, outpun_value);
+        Debug.Log("  : " + valum_measurs + " :" + outpun_value);
+        Line.localRotation = Quaternion.Euler(0f, 0f, outpun_value);
     }
 
 }
