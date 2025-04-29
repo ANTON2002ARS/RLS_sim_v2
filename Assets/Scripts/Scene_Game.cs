@@ -121,11 +121,39 @@ public class Scene_Game : MonoBehaviour
         }
     }
 
+    private float skipCooldown = 1f;
+    private float lastSkipTime = 0f;
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.Y) && Input.GetKey(KeyCode.P))
+        if (Input.GetKey(KeyCode.Y) && Input.GetKey(KeyCode.O))
+        {
             Pass_Testing();
+        }
+        else if (Input.GetKey(KeyCode.Z) && Input.GetKey(KeyCode.V) && Input.GetKey(KeyCode.O))
+        {
+            if (Time.time - lastSkipTime >= skipCooldown)
+            {
+                index_block++;
+                lastSkipTime = Time.time;
+
+                if (index_block >= Use_Simple_Test.block_need.Count)
+                {
+                    Pass_Testing();
+                    index_block = 0;
+                }
+                else
+                {
+                    report_text.gameObject.SetActive(true);
+                    report_text.text = "ТЕСТ НА БЛОКЕ ВЫПОЛНЕН ПРАВИЛЬНО, ПОЯВЛЕНИЕ СЛЕДУЮЩЕГО БЛОКА";
+                    Invoke("Off_Report_Text", 2f);
+                    Show_Block(index_block);
+                    Debug.Log("next block texting");
+                }
+            }
+        }
     }
+
 
     private void Hide_All_Elements()
     {
@@ -148,7 +176,7 @@ public class Scene_Game : MonoBehaviour
 
     private void Start_Test_Interference(Abst_Task task)
     {
-        Debug.Log("Задачи избавление от памех");
+        Debug.Log("Задачи избавление от помех");
         War_Interference war_interference = new War_Interference();
         war_interference = task as War_Interference;
         Use_Simple_Test = new Task();
@@ -427,7 +455,7 @@ public class Scene_Game : MonoBehaviour
             }
         }
 
-        Debug.Log("отравотка блока, статус: " + is_pass);
+        Debug.Log("отработка блока, статус: " + is_pass);
     }
 
     // задание слежение за целями
