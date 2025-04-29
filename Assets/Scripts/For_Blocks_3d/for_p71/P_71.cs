@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class P_71 : Abst_Block
 {  
@@ -47,9 +48,12 @@ public class P_71 : Abst_Block
             Grid.color = color;
         }  
     }
-    public bool round_mode;    
     
-     private float LineRotationSpeed
+    public bool use_round;
+    public bool round_mode;    
+    public bool is_backward;
+    
+    private float LineRotationSpeed
     {
         get
         {
@@ -62,6 +66,7 @@ public class P_71 : Abst_Block
             }
         }
     }
+    
     [Header("for Testing")]
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
@@ -116,10 +121,15 @@ public class P_71 : Abst_Block
     }
     
     private void Work_of_Line(){        
-        if(round_mode == false)
+        if(use_round == false)
             return;
         var angles = LineObject.transform.localEulerAngles;
-        angles.z += LineRotationSpeed * Time.deltaTime;
+        if(is_backward){
+            angles.z -= LineRotationSpeed * Time.deltaTime;
+        }
+        else{
+            angles.z += LineRotationSpeed * Time.deltaTime;
+        } 
         LineObject.transform.localEulerAngles = angles;
     }
 
@@ -127,8 +137,12 @@ public class P_71 : Abst_Block
     public static  P_71 Instance_IKO;
     private void Awake() => Instance_IKO = this;
 
-    void Start(){
+    void Start(){        
+        if (SceneManager.GetActiveScene().name == "RLS_Scene")
+            return;
+        
         round_mode = true;
+        use_round = true;
     }
     void Update(){
         Work_of_Line();
@@ -193,6 +207,20 @@ public class P_71 : Abst_Block
         target.GetComponent<Target_Main>().Set_Point_Target( angleInDegrees_start, angleInDegrees_end);
         List_Target_On_IKO.Add(target);
         target.GetComponent<Target_Main>().Set_Side();
+    }
+
+    public void Span_Target(bool use_our, bool use_group, bool is_helper){
+        GameObject target = Instantiate(Target_of_IKO);
+        target.transform.SetParent(folder_target_main,false); 
+        List_Target_On_IKO.Add(target);
+        if(is_helper){
+            target.GetComponent<Target_Main>().Set_Helper_Side();  
+            return;
+        }
+        else{
+            target.GetComponent<Target_Main>().Set_Side(use_group, use_our);
+            target.GetComponent<Target_Main>().IS_Request_Target = true; 
+        }
     }
 
     public void Request_Target_last(){
