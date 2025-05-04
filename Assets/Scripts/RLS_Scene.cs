@@ -186,4 +186,11 @@ public class RLS_Scene : MonoBehaviour
         }
        iko_P71.Span_Interference(number);
     }
+
+    public void Start_RLS_Rise() 
+    {
+        iko_P71.use_round = false;
+        machine_2.use_round = false;
+        machine_2.Start_Rise_RLS();        
+    } 
 }
