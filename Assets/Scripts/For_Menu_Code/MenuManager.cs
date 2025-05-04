@@ -136,6 +136,8 @@ public class MenuManager : MonoBehaviour
 
     public void Open_Scene_RLS()=>SceneManager.LoadScene("RLS_Scene");
 
+    public void Open_Scene_Test_RLS() => SceneManager.LoadScene("Test_RLS");
+
     public void Exit_App()=> Application.Quit();
 
 
