@@ -5,21 +5,58 @@ using UnityEngine;
 
 public class Machine_2 : MonoBehaviour
 {
-    [SerializeField] private Camera_Controller controller_game;
-
-    public void Show_Text_Center(string text)
+    [SerializeField]  private GameObject LineObject; 
+    [SerializeField] private float LineRotationSpeed_6rpm = -36f;
+    [SerializeField] private float LineRotationSpeed_12rpm = -72f;
+    private Animator _animator;
+    public bool use_round;
+    public bool round_mode; 
+    public bool is_backward;
+    private float LineRotationSpeed
     {
-        controller_game.Show_Text_Center(text);
+        get
+        {
+            switch (round_mode)
+            {
+                case true:                    
+                    return LineRotationSpeed_12rpm;                                                     
+                default:
+                    return LineRotationSpeed_6rpm;
+            }
+        }
+    }
+    public static  Machine_2 Instance_Car_2;
+    private void Awake() => Instance_Car_2 = this;
+
+    void Start()
+    {
+        _animator = this.GetComponent<Animator>();
+        
     }
 
-    public void Show_Text_Panel(string text)
+    void Update()
     {
-        controller_game.Show_Text_Panel(text);
+        Work_of_Line();
     }
 
-    public void Use_Panel(bool show)
-    {
-        controller_game.Use_Panel(show);
+    private void Work_of_Line(){        
+        if(use_round == false)
+            return;
+        var angles = LineObject.transform.localEulerAngles;
+        if(is_backward){
+            angles.y -= LineRotationSpeed * Time.deltaTime;
+        }
+        else{
+            angles.y += LineRotationSpeed * Time.deltaTime;
+        }        
+        LineObject.transform.localEulerAngles = angles;
+    }
+
+
+    public void Start_Rise_RLS() 
+    { 
+        _animator.SetTrigger("rise");
+        LineObject.transform.localEulerAngles = Vector3.zero;
     }
 
 

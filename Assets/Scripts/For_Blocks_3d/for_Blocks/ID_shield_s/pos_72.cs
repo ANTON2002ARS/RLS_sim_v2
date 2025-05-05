@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class pos_72 : Abst_Block
-{    
+{ 
+    [SerializeField] private bool MODE_M;
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
     {          
@@ -56,10 +57,24 @@ public class pos_72 : Abst_Block
         }     
     }
 
-    public static bool MODE_M;
+    
+    public static pos_72 Instance_pos72;
+    private void Awake() => Instance_pos72 = this;
 
-    public static void Set_Mode_M()=> MODE_M = !MODE_M;
-    public static bool Get_Mode_M(){
+    void Start()
+    {
+        MODE_M = false;
+    }
+
+    public void Set_Mode_M(){
+        MODE_M = ! MODE_M;
+        if(P_71.Instance_IKO != null){
+            P_71.Instance_IKO.ON_MODE_M = MODE_M;
+            if(Scene_Game.test_instance != null)
+                Scene_Game.test_instance.End_Text_war_with_PRS(MODE_M);
+        }
+    }
+    public bool Get_Mode_M(){
         return MODE_M;
     }
 
