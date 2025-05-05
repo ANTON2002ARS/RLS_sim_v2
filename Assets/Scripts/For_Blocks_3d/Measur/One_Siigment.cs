@@ -16,8 +16,6 @@ public class One_Siigment : MonoBehaviour
     [SerializeField] private GameObject Led_diod_g;
     [SerializeField] private GameObject Led_diod_point;
 
-    
-
     public void Show_Number(int number, bool use_point)
     {
         switch (number)

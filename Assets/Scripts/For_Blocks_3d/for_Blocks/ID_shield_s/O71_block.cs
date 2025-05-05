@@ -110,9 +110,7 @@ public class O71_block : Abst_Block
     public void K71_KG_70_G1()=>Show_Signal(35);
 
 
-    public void Show_Signal(int number){
-        if(number >= signals.Count || number < 0 )
-            return;
+    private void Show_Signal(int number){
         Debug.Log("signal show: " + number);
         folder.sprite = signals[number];
     } 

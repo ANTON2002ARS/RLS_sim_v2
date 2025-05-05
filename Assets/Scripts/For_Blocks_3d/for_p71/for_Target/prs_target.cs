@@ -12,8 +12,8 @@ public class prs_target : MonoBehaviour
     void Update()
     {
         // Перемещение объекта к центру координат
-        this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, targetPosition, speed * Time.deltaTime);
-        if(this.transform.localPosition.x == 0 && this.transform.localPosition.y == 0){
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, speed * Time.deltaTime);
+        if(transform.localPosition.x == 0 && transform.localPosition.y == 0){
             P_71.Instance_IKO.PRS_End_Trace();
         }
     }

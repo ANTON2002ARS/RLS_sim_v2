@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class P_71 : Abst_Block
 {  
@@ -14,7 +13,6 @@ public class P_71 : Abst_Block
     [SerializeField] private GameObject PRS_of_IKO;
     public List<GameObject> List_Target_On_IKO;
     [HideInInspector] public GameObject PRS;
-    public bool ON_MODE_M;
 
     [Header("for Interference")]
     [SerializeField] private Transform folder_Interfence;
@@ -48,12 +46,9 @@ public class P_71 : Abst_Block
             Grid.color = color;
         }  
     }
-    
-    public bool use_round;
     public bool round_mode;    
-    public bool is_backward;
     
-    private float LineRotationSpeed
+     private float LineRotationSpeed
     {
         get
         {
@@ -66,7 +61,6 @@ public class P_71 : Abst_Block
             }
         }
     }
-    
     [Header("for Testing")]
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
@@ -121,15 +115,10 @@ public class P_71 : Abst_Block
     }
     
     private void Work_of_Line(){        
-        if(use_round == false)
+        if(round_mode == false)
             return;
         var angles = LineObject.transform.localEulerAngles;
-        if(is_backward){
-            angles.z -= LineRotationSpeed * Time.deltaTime;
-        }
-        else{
-            angles.z += LineRotationSpeed * Time.deltaTime;
-        } 
+        angles.z += LineRotationSpeed * Time.deltaTime;
         LineObject.transform.localEulerAngles = angles;
     }
 
@@ -137,12 +126,8 @@ public class P_71 : Abst_Block
     public static  P_71 Instance_IKO;
     private void Awake() => Instance_IKO = this;
 
-    void Start(){        
-        if (SceneManager.GetActiveScene().name == "RLS_Scene")
-            return;
-        
+    void Start(){
         round_mode = true;
-        use_round = true;
     }
     void Update(){
         Work_of_Line();
@@ -159,17 +144,21 @@ public class P_71 : Abst_Block
     }
 
     public void PRS_End_Trace(){
-        Scene_Game.test_instance.End_Text_war_with_PRS(ON_MODE_M);        
+        Debug.Log("PRS in Center IKO");
         Destroy(PRS);
+
     }
 
     public void Span_Target_with_PRS(){
         GameObject target = Instantiate(Target_of_IKO);
         target.transform.SetParent(folder_target_main,false); 
         List_Target_On_IKO.Add(target);
-        //target.GetComponent<Target_Main>().Set_Side(); 
-        target.GetComponent<Target_Main>().Use_Group = Random.Range(0, 2) == 0; 
-        target.GetComponent<Target_Main>().Use_Our = false;     
+        if(Random.Range(0, 5) == 0){
+            target.GetComponent<Target_Main>().Set_Helper_Side();            
+        }
+        else{
+            target.GetComponent<Target_Main>().Set_Side();
+        }        
         target.GetComponent<Target_Main>().Use_RPS = true;
     }
 
@@ -207,20 +196,6 @@ public class P_71 : Abst_Block
         target.GetComponent<Target_Main>().Set_Point_Target( angleInDegrees_start, angleInDegrees_end);
         List_Target_On_IKO.Add(target);
         target.GetComponent<Target_Main>().Set_Side();
-    }
-
-    public void Span_Target(bool use_our, bool use_group, bool is_helper){
-        GameObject target = Instantiate(Target_of_IKO);
-        target.transform.SetParent(folder_target_main,false); 
-        List_Target_On_IKO.Add(target);
-        if(is_helper){
-            target.GetComponent<Target_Main>().Set_Helper_Side();  
-            return;
-        }
-        else{
-            target.GetComponent<Target_Main>().Set_Side(use_group, use_our);
-            target.GetComponent<Target_Main>().IS_Request_Target = true; 
-        }
     }
 
     public void Request_Target_last(){
