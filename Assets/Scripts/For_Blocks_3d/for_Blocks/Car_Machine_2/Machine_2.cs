@@ -8,6 +8,7 @@ public class Machine_2 : MonoBehaviour
     [SerializeField]  private GameObject LineObject; 
     [SerializeField] private float LineRotationSpeed_6rpm = -36f;
     [SerializeField] private float LineRotationSpeed_12rpm = -72f;
+    private Animator _animator;
     public bool use_round;
     public bool round_mode; 
     public bool is_backward;
@@ -29,6 +30,7 @@ public class Machine_2 : MonoBehaviour
 
     void Start()
     {
+        _animator = this.GetComponent<Animator>();
         
     }
 
@@ -48,6 +50,13 @@ public class Machine_2 : MonoBehaviour
             angles.y += LineRotationSpeed * Time.deltaTime;
         }        
         LineObject.transform.localEulerAngles = angles;
+    }
+
+
+    public void Start_Rise_RLS() 
+    { 
+        _animator.SetTrigger("rise");
+        LineObject.transform.localEulerAngles = Vector3.zero;
     }
 
 
