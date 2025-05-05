@@ -703,6 +703,8 @@ public class Scene_Game : MonoBehaviour
         Faid_Test.SetActive(true);
     }
 
+    public void Open_Scene_Test_RLS() => SceneManager.LoadScene("Scene_Task"); 
+
     public void Exit_Scene()
     {
         SceneManager.LoadScene("Menu_Scene");
