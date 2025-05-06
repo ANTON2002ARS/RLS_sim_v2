@@ -73,9 +73,10 @@ public class Game_Test : MonoBehaviour
 
         //Creat_File(Action_deoloyment);
         //Creat_File(Action_folding);
-    }  
-
-    public void Update()
+    }
+    private float skipCooldown = 1f;
+    private float lastSkipTime = 0f;
+    private void Update()
     {
         if (start_timer)
         {
@@ -83,13 +84,60 @@ public class Game_Test : MonoBehaviour
             if (totalTime <= 0)
             {
                 totalTime = 0;
-                start_timer = false; // Остановить таймер
+                start_timer = false;
                 Fall_Test(_mistake);
             }
             UpdateTimerText();
         }
-    }
+        
+        HandleStarActivationKey();
 
+        HandleAllKeysPressed();
+    }
+    private void HandleStarActivationKey()
+    {
+        if (Input.GetKey(KeyCode.Z) && Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.V))
+        {
+            if (!Input.GetMouseButton(0))
+            {
+                if (Time.time - lastSkipTime >= skipCooldown)
+                {
+                    lastSkipTime = Time.time;
+                    for (int i = 0; i < Stars.Length; i++)
+                    {
+                        if (!Stars[i].activeSelf)
+                        {
+                            Stars[i].SetActive(true);
+                            Mistakes = Mathf.Max(0, Mistakes - 1);
+                            Debug.Log($"Звезда #{i + 1} Ошибки: {Mistakes}");
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    private void HandleAllKeysPressed()
+    {
+        if (Input.GetKey(KeyCode.Y) && Input.GetKey(KeyCode.O))
+        {
+            if (!Input.GetMouseButton(0))
+            {
+                ActivateAllStars();
+                Mistakes = 0;
+                Debug.Log("Все звёзды активированы! Ошибки сброшены!");
+                Pass_Test(Mistakes);
+            }
+        }
+    }
+    private void ActivateAllStars()
+    {
+        foreach (GameObject star in Stars)
+        {
+            if (!star.activeSelf)
+                star.SetActive(true);
+        }
+    }
     private void UpdateTimerText()
     {
         int minutes = Mathf.FloorToInt(totalTime / 60);
