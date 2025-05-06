@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class JPG_block : Abst_Block
 {
+    [Header("for Target")]
+    [SerializeField] private Transform folder_target_main;
+    [SerializeField] private GameObject Target_of_IKO;
+    public List<GameObject> List_Target_On_IKO;
+    [SerializeField] private float targetDetectionRadius = 0.5f; // радиус обнаружения цели
+
     [SerializeField] private List<switch_position> _need_condition;
     public override List<switch_position> Need_Condition
     {          
@@ -17,6 +23,123 @@ public class JPG_block : Abst_Block
         get => _actionToggles;
         set => _actionToggles = value;
     }
+
+    public void Span_Target()
+    {
+        GameObject target = Instantiate(Target_of_IKO);
+        target.transform.SetParent(folder_target_main, false);
+        List_Target_On_IKO.Add(target);
+        if (Random.Range(0, 5) == 0)
+        {
+            target.GetComponent<Target_Main>().Set_Helper_Side();
+        }
+        else
+        {
+            target.GetComponent<Target_Main>().Set_Side();
+        }
+    }
+
+    public void Span_Target(Vector2 start_Point, Vector2 end_Point)
+    {
+        GameObject target = Instantiate(Target_of_IKO);
+        target.transform.SetParent(folder_target_main, false);
+        target.GetComponent<Target_Main>().Set_Point_Target(start_Point, end_Point);
+        List_Target_On_IKO.Add(target);
+        target.GetComponent<Target_Main>().Set_Side();
+    }
+
+    public void Span_Target(float radius_start, float angleInDegrees_start, float radius_end, float angleInDegrees_end)
+    {
+        GameObject target = Instantiate(Target_of_IKO);
+        target.transform.SetParent(folder_target_main, false);
+        target.GetComponent<Target_Main>().Set_Point_Target(radius_start, angleInDegrees_start, radius_end, angleInDegrees_end);
+        List_Target_On_IKO.Add(target);
+        target.GetComponent<Target_Main>().Set_Side();
+    }
+
+    public void Span_Target(float angleInDegrees_start, float angleInDegrees_end)
+    {
+        GameObject target = Instantiate(Target_of_IKO);
+        target.transform.SetParent(folder_target_main, false);
+        target.GetComponent<Target_Main>().Set_Point_Target(angleInDegrees_start, angleInDegrees_end);
+        List_Target_On_IKO.Add(target);
+        target.GetComponent<Target_Main>().Set_Side();
+    }
+
+    private GameObject Get_last_Target()
+    {
+        if (List_Target_On_IKO.Count == 0)
+        {
+            Debug.LogError("Целей нет на ико или закончились");
+            Scene_Game.test_instance.Faid_Testing();
+            return null;
+        }
+        GameObject target;
+        if (List_Target_On_IKO.Count == 1)
+        {
+            target = List_Target_On_IKO[0];
+        }
+        else
+        {
+            target = List_Target_On_IKO[List_Target_On_IKO.Count - 1];
+        }
+        return target;
+    }
+
+    public bool IsTargetAtPosition(Vector2 position)
+    {
+        foreach (GameObject target in List_Target_On_IKO)
+        {
+            if (target != null)
+            {
+                Vector2 targetPosition = target.transform.localPosition;
+                float distance = Vector2.Distance(targetPosition, position);
+                
+                if (distance <= targetDetectionRadius)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public GameObject GetTargetAtPosition(Vector2 position)
+    {
+        GameObject closestTarget = null;
+        float closestDistance = targetDetectionRadius;
+
+        foreach (GameObject target in List_Target_On_IKO)
+        {
+            if (target != null)
+            {
+                Vector2 targetPosition = target.transform.localPosition;
+                float distance = Vector2.Distance(targetPosition, position);
+                
+                if (distance <= closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTarget = target;
+                }
+            }
+        }
+        
+        return closestTarget;
+    }
+
+    public bool RemoveTargetAtPosition(Vector2 position)
+    {
+        GameObject targetToRemove = GetTargetAtPosition(position);
+        
+        if (targetToRemove != null)
+        {
+            List_Target_On_IKO.Remove(targetToRemove);
+            Destroy(targetToRemove);
+            return true;
+        }
+        
+        return false;
+    }
+
     public override void Set_Status(switch_position switch_position)
     {
         Debug.Log("Получен статус переключение" + switch_position.name);
