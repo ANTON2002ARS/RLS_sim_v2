@@ -21,6 +21,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button Button_learhihg;
     [SerializeField] private GameObject Panel_IKO;
     public bool Use_Learning;
+    [SerializeField] private GameObject panel_war;
+    [SerializeField] private GameObject panel_use;
+    [SerializeField] private GameObject SPRAVKA;
 
     public static MenuManager Menu_Instance { get; private set; }
     private void Awake() => Menu_Instance = this;
@@ -130,11 +133,28 @@ public class MenuManager : MonoBehaviour
         }
 
     }    
+    public void Show_Panel_War()
+    {
+        panel_war.SetActive(true);
+        panel_use.SetActive(false);
+    }
+    public void Show_Panel_Use()
+    {
+        panel_war.SetActive(false);
+        panel_use.SetActive(true);
+    }
+
+    public void Show_SPRAVKA()
+    {
+        SPRAVKA.SetActive(!SPRAVKA.activeSelf);
+    }
 
     public void Show_IKO() => Panel_IKO.SetActive(!Panel_IKO.activeSelf);
 
 
     public void Open_Scene_RLS()=>SceneManager.LoadScene("RLS_Scene");
+
+    public void Open_Scene_Test_RLS() => SceneManager.LoadScene("Test_RLS");
 
     public void Exit_App()=> Application.Quit();
 
